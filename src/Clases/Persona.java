@@ -1,5 +1,5 @@
 
-package com.mycompany.holamundo;
+package Clases;
 
 public class Persona {
     private String dni;
