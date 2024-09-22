@@ -1,7 +1,8 @@
 
-package com.mycompany.holamundo;
+package Clases;
 
 public class Main {
+
 
     public static void main(String[] args) {
         Bus busesDisponibles[] = new Bus[4];
@@ -14,5 +15,7 @@ public class Main {
 
         comprobante1.asignarBus(busesDisponibles);
         
+        System.out.println("El ID del bus asignado en el comprobante es: " + comprobante1.getIdBus());
     }
+    
 }

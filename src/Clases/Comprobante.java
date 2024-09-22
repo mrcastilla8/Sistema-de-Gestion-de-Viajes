@@ -1,5 +1,6 @@
 
-package com.mycompany.holamundo;
+package Clases;
+import java.util.Scanner;
 
 public class Comprobante {
     private int idComprobante;
@@ -9,6 +10,8 @@ public class Comprobante {
     private double precio;
     private String agencia;
     //Constructor 
+
+    Scanner entrada = new Scanner(System.in);
 
     public Comprobante() {
     }
@@ -23,11 +26,30 @@ public class Comprobante {
         this.agencia = agencia;
     }
     
-    public void asignarBus(Bus busesDisponibles[]){
-        for(int i =0; i < busesDisponibles.length;i =i+1){
-            busesDisponibles[i].mostrarBus();
+    public void asignarBus(Bus busesDisponibles[]) {
+        Scanner entrada = new Scanner(System.in);  // Inicializamos el Scanner para leer la entrada del usuario
+        System.out.println("Lista de buses disponibles:");
+
+        // Mostramos todos los buses
+        for (int i = 0; i < busesDisponibles.length; i++) {
+            System.out.println((i + 1) + ". ");
+            busesDisponibles[i].mostrarBus();  // Mostrar información del bus
+        }
+
+        // Solicitamos al usuario seleccionar un bus
+        System.out.println("Seleccione el número del bus que desea asignar:");
+        int seleccion = entrada.nextInt();  // Leemos la opción seleccionada
+
+        // Verificamos que la selección sea válida
+        if (seleccion > 0 && seleccion <= busesDisponibles.length) {
+            Bus busSeleccionado = busesDisponibles[seleccion - 1];  // Obtenemos el bus seleccionado
+            this.idBus = busSeleccionado.getIdBus();  // Asignamos el idBus al comprobante
+            System.out.println("El bus con ID " + this.idBus + " ha sido asignado correctamente.");
+        } else {
+            System.out.println("Selección no válida. Por favor, intente de nuevo.");
         }
     }
+
     
     //Getters and setters
 
@@ -79,8 +101,6 @@ public class Comprobante {
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
-    }
-    
-    
+    } 
     
 }

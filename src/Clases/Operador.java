@@ -1,5 +1,5 @@
 
-package com.mycompany.holamundo;
+package Clases;
 
 public class Operador extends Persona {
     private String usuario;
