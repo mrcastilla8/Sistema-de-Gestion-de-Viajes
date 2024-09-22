@@ -1,5 +1,5 @@
 
-package Clases;
+package com.mycompany.holamundo;
 
 public class Comprobante {
     private int idComprobante;
@@ -8,7 +8,6 @@ public class Comprobante {
     private String fechaEmision;
     private double precio;
     private String agencia;
-    
     //Constructor 
 
     public Comprobante() {
@@ -24,17 +23,17 @@ public class Comprobante {
         this.agencia = agencia;
     }
     
-    //Getters and setters
-
-    public void asignarBus(){
-        
-        for(int i = 0, i < busesDisponibles.length, i = i + 1){
-            
+    public void asignarBus(Bus busesDisponibles[]){
+        for(int i =0; i < busesDisponibles.length;i =i+1){
+            busesDisponibles[i].mostrarBus();
         }
-        
     }
     
-    public int getId_comprobante() {
+    //Getters and setters
+
+    
+    public int getId_comprobante() 
+    {
         return idComprobante;
     }
 

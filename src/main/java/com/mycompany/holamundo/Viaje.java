@@ -1,5 +1,5 @@
 
-package Clases;
+package com.mycompany.holamundo;
 
 public class Viaje {
     private int idViaje;
