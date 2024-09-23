@@ -8,6 +8,8 @@ public class Main {
     public static void main(String[] args) {
         //Lista de conductores (dinamico)
         List<Conductor> Conductores = new ArrayList<Conductor> ();
+        
+        //Creamos nuestro objeto de la clase CRUDconductor
         CRUDconductor crudConductor = new CRUDconductor();
         
         //menu basico para el CRUD de conductores:
@@ -16,8 +18,9 @@ public class Main {
         do{
            System.out.println("\nCRUD de choferes");
            System.out.println("1. Agregar chofer");
-           System.out.println("2. Verificar");
-           System.out.println("3. Eliminar chofer");
+           System.out.println("2. Verificar chofer");
+           System.out.println("3. Modificar chofer");        
+           System.out.println("4. Eliminar chofer");
            System.out.println("0. Salir");
            System.out.print("\nOpcion ---> ");
            opc_chofer = entrada.nextInt();
@@ -32,8 +35,11 @@ public class Main {
                    break;
                }
                case 3:{
-                   crudConductor.eliminarChofer(Conductores);
+                   crudConductor.modificarInfoChofer(Conductores);
                    break;
+               }
+               case 4: {
+                   crudConductor.eliminarChofer(Conductores);
                }
                case 0: break;
            }

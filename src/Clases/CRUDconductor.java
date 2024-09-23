@@ -55,8 +55,8 @@ public class CRUDconductor {
         }
         }
         
-        public void modificarInfo(List<Conductor> Conductores) {
-        System.out.println("Modificar o actualizar datos del conductor:");
+        public void modificarInfoChofer(List<Conductor> Conductores) {
+        System.out.println("\nModificar o actualizar datos del conductor:");
         //Mostremos una lista de los conductores para modificarlos:
         System.out.print("\n");
         for(int i=0; i<Conductores.size(); i++){
@@ -65,11 +65,18 @@ public class CRUDconductor {
         System.out.print("Conductor a modificar (indice): ");
         int opc = entrada.nextInt();
         
+            //Limpieza buffer
+            entrada.nextLine();    
+            
             System.out.print("Nombre: ");
             String nombre = entrada.nextLine();
             Conductores.get(opc-1).setNombre(nombre);
             System.out.print("Edad: ");
             int edad = entrada.nextInt();
+            
+            //Limpieza buffer
+            entrada.nextLine();
+            
             Conductores.get(opc-1).setEdad(edad);
             System.out.print("Numero de telefono: ");
             String numero = entrada.nextLine();
@@ -81,7 +88,7 @@ public class CRUDconductor {
             String numLicencia = entrada.nextLine();
             Conductores.get(opc -1).setNumLicencia(numLicencia);   
             
-            System.out.print("Modificacion exitosa!");
+            System.out.print("\nModificacion exitosa!");
             entrada.nextLine();
         }
             
