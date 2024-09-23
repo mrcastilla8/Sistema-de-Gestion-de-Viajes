@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class CRUDconductor {
     Scanner entrada = new Scanner(System.in);
-    int ID=0; //Iniciamos un contador de IDs
+    int ID=0; //Iniciamos un contador de IDs .
+    
         public void addChofer(List<Conductor> Conductores){
         System.out.println("Agregar nuevo conductor:");
         System.out.print("Nombre: ");
@@ -116,6 +117,45 @@ public class CRUDconductor {
         }
         
         }
+        
+        public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
+        int opc_chofer = 0;
+        do{
+           System.out.println("\nCRUD de choferes");
+           System.out.println("1. Agregar chofer");
+           System.out.println("2. Verificar chofer");
+           System.out.println("3. Modificar chofer");        
+           System.out.println("4. Eliminar chofer");
+           System.out.println("0. Salir");
+           System.out.print("\nOpcion ---> ");
+           opc_chofer = entrada.nextInt();
+           
+           //Limpieza de buffer
+           entrada.nextLine();
+           
+           switch(opc_chofer){
+               case 1: {
+                   crudConductor.addChofer(Conductores);
+                   break;
+               }
+               case 2: {
+                   crudConductor.verificarChofer(Conductores);          
+                   break;
+               }
+               case 3:{
+                   crudConductor.modificarInfoChofer(Conductores);
+                   break;
+               }
+               case 4: {
+                   crudConductor.eliminarChofer(Conductores);
+               }
+               case 0: break;
+           }
+        }while(opc_chofer != 0);
+        
+        
+    }
+        
         
         
 }
