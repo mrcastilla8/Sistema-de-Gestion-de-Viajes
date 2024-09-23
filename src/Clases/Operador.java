@@ -86,7 +86,7 @@ public class Operador extends Persona {
         System.out.println("2. Buscar operadores");
         System.out.println("3. Eliminar operadores");
         System.out.println("4. Actualizar operadores");
-        System.out.println("0. SALIR");
+        System.out.println("5. SALIR");
         System.out.println("Ingrese su opcion: ");
     }
     public void opcionesCRUD(List<Operador> lista,int opcion, Scanner entrada){
