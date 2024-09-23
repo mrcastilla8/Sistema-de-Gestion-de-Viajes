@@ -1,10 +1,15 @@
 
 package Clases;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Conductor extends Persona {
     private int idConductor;
     private String numLicencia;
-
+    //lista de conductores:
+    Scanner entrada = new Scanner(System.in);
+    
     // Constructor
 
     public Conductor(int idConductor, String numLicencia, String dni, String nombre, String numero, int edad) {
@@ -12,29 +17,15 @@ public class Conductor extends Persona {
         this.idConductor = idConductor;
         this.numLicencia = numLicencia;
     }
-    
 
     // Métodos de Conductor
-    public void addChofer() {
-        // Implementación del método
-    }
-
-    public void verificar() {
-        // Implementación del método
-    }
-
-    public void eliminarChofer() {
-        // Implementación del método
-    }
-
-    public void modificarInfo() {
-        // Implementación del método
-    }
 
     public void alertaSobrecargaDeTrabajo() {
         // Implementación del método
     }
 
+    
+    
     // Getters y Setters
     public int getIdConductor() {
         return idConductor;
@@ -51,4 +42,5 @@ public class Conductor extends Persona {
     public void setNumLicencia(String numLicencia) {
         this.numLicencia = numLicencia;
     }
+    
 }
