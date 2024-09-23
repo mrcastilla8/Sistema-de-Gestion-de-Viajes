@@ -15,7 +15,9 @@ public class Main {
         do {
             limpiarPantalla();
             //Menu de opciones:
-            System.out.println("Bienvenido al sistema de transporte");
+            System.out.println("---------------------------------------------------------");
+            System.out.println("\t===BIENVENIDO AL SISTEMA DE TRANSPORTE===");
+            System.out.println("---------------------------------------------------------");
             System.out.println("Seleccione una opcion:");
             System.out.println("1. Gestionar Conductores");
             System.out.println("2. Gestionar Buses");

@@ -120,9 +120,11 @@ public class BusCRUD {
     public void ejecutarMenu() {
         int opcion;
         do {
-            System.out.println("\n--- Gestion de Buses ---");
+            System.out.println("-------------------------------------");
+            System.out.println("\t=== Gestion de Buses ===");
+            System.out.println("-------------------------------------");
             System.out.println("1. Agregar Bus");
-            System.out.println("2. Listar Buses");
+            System.out.println("2. Lista de Buses");
             System.out.println("3. Actualizar Bus");
             System.out.println("4. Eliminar Bus");
             System.out.println("5. Salir");

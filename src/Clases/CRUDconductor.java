@@ -138,9 +138,11 @@ public class CRUDconductor {
         public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
         int opc_chofer;
         do{
-           System.out.println("\nCRUD de choferes");
+           System.out.println("-------------------------------------");
+           System.out.println("\t===Gestion de choferes===");
+           System.out.println("-------------------------------------");
            System.out.println("1. Agregar chofer");
-           System.out.println("2. Verificar chofer");
+           System.out.println("2. Lista de choferes");
            System.out.println("3. Modificar chofer");        
            System.out.println("4. Eliminar chofer");
            System.out.println("5. Salir");

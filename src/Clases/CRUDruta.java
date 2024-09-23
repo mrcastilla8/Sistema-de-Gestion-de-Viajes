@@ -123,9 +123,11 @@ public class CRUDruta {
     public void mostrarMenu() {
         int opcion = 0;
         do {
-            System.out.println("\n=== Menu de Gestion de Rutas ===");
+            System.out.println("---------------------------------------------------");
+            System.out.println("\t=== Menu de Gestion de Rutas ===");
+            System.out.println("---------------------------------------------------");
             System.out.println("1. Agregar Ruta");
-            System.out.println("2. Ver Rutas");
+            System.out.println("2. Lista de Rutas");
             System.out.println("3. Modificar Ruta");
             System.out.println("4. Borrar Ruta");
             System.out.println("5. Salir");
