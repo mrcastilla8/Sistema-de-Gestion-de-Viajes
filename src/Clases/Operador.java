@@ -44,13 +44,8 @@ public class Operador extends Persona {
         }while(!password.equals(this.contrasena)||!user.equals(this.usuario));
     }
 
-    public void verificarCredenciales() {
-        // Implementación del método
-    }
 
-    public void crearCuenta() {
-        // Implementación del método
-    }
+
 
     // Getters y Setters
     public String getUsuario() {
@@ -81,7 +76,7 @@ public class Operador extends Persona {
     }   
     public  void menuOperadoresCRUD(){
         System.out.println("-------------------------------------------------------");
-        System.out.println("\t===Gestión de operadores===");
+        System.out.println("\t===Gestion de operadores===");
         System.out.println("-------------------------------------------------------");
         System.out.println("1. Registro de operadores");
         System.out.println("2. Lista de operadores");
