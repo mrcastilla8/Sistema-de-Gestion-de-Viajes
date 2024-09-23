@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class CRUDconductor {
     Scanner entrada = new Scanner(System.in);
-    
+    int ID=0; //Iniciamos un contador de IDs
         public void addChofer(List<Conductor> Conductores){
         System.out.println("Agregar nuevo conductor:");
         System.out.print("Nombre: ");
@@ -22,7 +22,9 @@ public class CRUDconductor {
         String numero = entrada.nextLine();
         System.out.print("Numero de licencia: ");
         String num_licencia = entrada.nextLine();
-        Conductores.add(new Conductor(1, num_licencia, DNI, nombre, numero, edad));
+        
+        ID++;
+        Conductores.add(new Conductor(ID, num_licencia, DNI, nombre, numero, edad));
         
         System.out.println("\nNuevo conductor registrado!");
         entrada.nextLine();
