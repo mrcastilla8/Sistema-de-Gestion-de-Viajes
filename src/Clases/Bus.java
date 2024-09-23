@@ -2,57 +2,39 @@
 package Clases;
 
 public class Bus {
-    private int idBus;
+    private static int contadorId = 1; 
+    private final int idBus; 
     private String tipo;
     private int capacidad;
     private String estado;
-    private String conductor;
+    private String conductor1;
+     private String conductor2;
 
-//Default 
-    public Bus() {    
+
+    // Default
+    public Bus() {
+        this.idBus = contadorId++; 
     }
 
-// Constructor
-    public Bus(int idBus, String tipo, int capacidad, String estado, String conductor) {
-        this.idBus = idBus;
+    // Constructor con parámetros
+    public Bus(String tipo, int capacidad, String estado, String conductor1, String conductor2) {
+        this.idBus = contadorId++;
         this.tipo = tipo;
         this.capacidad = capacidad;
         this.estado = estado;
-        this.conductor = conductor;
+        this.conductor1 = conductor1;
     }
 
-    // Métodos
-    public void mostrarBus(){
-        System.out.println("id: "+this.idBus+", tipo: "+this.tipo+", capacidad: "+this.capacidad+" estado: "+this.estado+", conductor: "+this.conductor);
-    }
-    
-    public void addBus() {
-        // Implementación
+    // Muestra los atributos del bus
+    public void mostrarBus() {
+        System.out.println("ID: " + this.idBus + ", Tipo: " + this.tipo + ", Capacidad: " + this.capacidad + 
+                           ", Estado: " + this.estado + ", Conductor 1: " + this.conductor1+", Conductor 2: " + this.conductor2);
     }
 
-    public void alertaAveria() {
-        // Implementación
-    }
-
-    public void revisarEstado() {
-        // Implementación
-    }
-
-    public void borrarBus() {
-        // Implementación
-    }
-
-    public void modificarInfo() {
-        // Implementación
-    }
-
-    // Getters y Setters
+    // Getters y Setters 
+    //No hay setter para getIdBus, porque segun los atributos, tiene que ser inmutable, unico y no nulo
     public int getIdBus() {
         return idBus;
-    }
-
-    public void setIdBus(int idBus) {
-        this.idBus = idBus;
     }
 
     public String getTipo() {
@@ -79,12 +61,20 @@ public class Bus {
         this.estado = estado;
     }
 
-    public String getConductor() {
-        return conductor;
+    public String getConductor1() {
+        return conductor1;
     }
 
-    public void setConductor(String conductor) {
-        this.conductor = conductor;
+    public void setConductor1(String conductor) {
+        this.conductor1 = conductor;
     }
+
+    public String getConductor2() {
+        return conductor2;
+    }
+
+    public void setConductor2(String conductor2) {
+        this.conductor2 = conductor2;
+    }
+    
 }
-
