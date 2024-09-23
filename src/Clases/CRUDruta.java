@@ -47,6 +47,7 @@ public class CRUDruta {
             System.out.println("No hay rutas disponibles.");
             return;
         }
+        System.out.println(" ID     Inicio      Destino     Duracion");
         for (Ruta ruta : rutas) {
             System.out.println( ruta.getIdRuta() + " - " + ruta.getLugarInicio() + " - " + ruta.getLugarDestino() + " - "+ ruta.getDuracionEstimada()+ " hora(s)." );
         }
