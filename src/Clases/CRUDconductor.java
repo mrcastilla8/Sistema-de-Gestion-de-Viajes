@@ -25,7 +25,10 @@ public class CRUDconductor {
         String num_licencia = entrada.nextLine();
         
         ID++;
+
         System.out.println("ID asignada: " + ID);
+
+
         Conductores.add(new Conductor(ID, num_licencia, DNI, nombre, numero, edad));
         
         System.out.println("\nNuevo conductor registrado!");
@@ -33,13 +36,19 @@ public class CRUDconductor {
         }   
         
        public void verificarChofer(List<Conductor> Conductores){
+
         System.out.print("Ingrese la ID del chofer a buscar: ");
         int ID = entrada.nextInt();
+
+
         boolean flag = true;
         //Recorremos toda la lista buscando lo que se pide
         for(int i=0; i<Conductores.size(); i++){
             
+
             if(Conductores.get(i).getIdConductor() == ID){
+
+
                 System.out.println("\nConductor encontrado!");
                 System.out.println("Nombre: " + Conductores.get(i).getNombre());
                 System.out.println("Edad: " + Conductores.get(i).getEdad());
@@ -96,6 +105,7 @@ public class CRUDconductor {
             entrada.nextLine();
         }
             
+
         public void eliminarChofer(List<Conductor> Conductores) {
         System.out.print("ID del conductor a eliminar: ");
         int ID = entrada.nextInt();
@@ -122,6 +132,7 @@ public class CRUDconductor {
         if (flag) {
             System.out.println("Conductor no encontrado...");
         }
+
         }
         
         public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
@@ -145,19 +156,26 @@ public class CRUDconductor {
                    break;
                }
                case 2: {
+
                    crudConductor.verificarChofer(Conductores);   
                    entrada.nextLine();
+
                    break;
                }
                case 3:{
                    crudConductor.modificarInfoChofer(Conductores);
+
                    entrada.nextLine();
                    entrada.nextLine();
+
                    break;
                }
                case 4: {
                    crudConductor.eliminarChofer(Conductores);
+
                    entrada.nextLine();
+
+
                }
                case 0: break;
            }
