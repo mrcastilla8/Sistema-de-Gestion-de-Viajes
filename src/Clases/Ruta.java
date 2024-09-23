@@ -1,4 +1,3 @@
-
 package Clases;
 
 public class Ruta {
@@ -14,24 +13,7 @@ public class Ruta {
         this.lugarDestino = lugarDestino;
         this.duracionEstimada = duracionEstimada;
     }
-
-    // Métodos
-    public void addRuta() {
-        // Implementación
-    }
-
-    public void verRuta() {
-        // Implementación
-    }
-
-    public void borrarRuta() {
-        // Implementación
-    }
-
-    public void modificarRuta() {
-        // Implementación
-    }
-
+    
     // Getters y Setters
     public int getIdRuta() {
         return idRuta;
