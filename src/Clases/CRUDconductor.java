@@ -136,14 +136,16 @@ public class CRUDconductor {
         }
         
         public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
-        int opc_chofer = 0;
+        int opc_chofer;
         do{
-           System.out.println("\nCRUD de choferes");
+           System.out.println("-------------------------------------");
+           System.out.println("\t===Gestion de choferes===");
+           System.out.println("-------------------------------------");
            System.out.println("1. Agregar chofer");
-           System.out.println("2. Verificar chofer");
+           System.out.println("2. Lista de choferes");
            System.out.println("3. Modificar chofer");        
            System.out.println("4. Eliminar chofer");
-           System.out.println("0. Salir");
+           System.out.println("5. Salir");
            System.out.print("\nOpcion ---> ");
            opc_chofer = entrada.nextInt();
            
@@ -151,39 +153,27 @@ public class CRUDconductor {
            entrada.nextLine();
            
            switch(opc_chofer){
-               case 1: {
-                   crudConductor.addChofer(Conductores);
-                   break;
-               }
-               case 2: {
-
-                   crudConductor.verificarChofer(Conductores);   
-                   entrada.nextLine();
-
-                   break;
-               }
-               case 3:{
-                   crudConductor.modificarInfoChofer(Conductores);
-
-                   entrada.nextLine();
-                   entrada.nextLine();
-
-                   break;
-               }
-               case 4: {
-                   crudConductor.eliminarChofer(Conductores);
-
-                   entrada.nextLine();
-
-
-               }
-               case 0: break;
-           }
-        }while(opc_chofer != 0);
-        
-        
-    }
-        
-        
-        
+                case 1: 
+                    crudConductor.addChofer(Conductores);
+                    break;
+                case 2: 
+                    crudConductor.verificarChofer(Conductores);   
+                    entrada.nextLine();
+                    break;
+                case 3:
+                    crudConductor.modificarInfoChofer(Conductores);
+                    entrada.nextLine();
+                    entrada.nextLine();
+                    break;
+                case 4:
+                    crudConductor.eliminarChofer(Conductores);
+                    entrada.nextLine();
+                    break;
+                case 5: 
+                    break;
+                default:
+                    break;
+            }
+        }while(opc_chofer != 5); 
+    }      
 }
