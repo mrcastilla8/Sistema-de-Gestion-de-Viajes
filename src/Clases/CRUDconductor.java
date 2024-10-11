@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CRUDconductor {
+    Archivos archivo = new Archivos();
     Scanner entrada = new Scanner(System.in);
     int ID=0; //Iniciamos un contador de IDs .
     
@@ -28,15 +29,15 @@ public class CRUDconductor {
 
         System.out.println("ID asignada: " + ID);
 
-
+  
         Conductores.add(new Conductor(ID, num_licencia, DNI, nombre, numero, edad));
-        
+        archivo.guardarObjetos("Conductores.txt", Conductores);
         System.out.println("\nNuevo conductor registrado!");
         entrada.nextLine();
         }   
         
        public void verificarChofer(List<Conductor> Conductores){
-
+        
         System.out.print("Ingrese la ID del chofer a buscar: ");
         int ID = entrada.nextInt();
 
@@ -45,7 +46,7 @@ public class CRUDconductor {
         //Recorremos toda la lista buscando lo que se pide
         for(int i=0; i<Conductores.size(); i++){
             
-
+               
             if(Conductores.get(i).getIdConductor() == ID){
 
 
@@ -78,6 +79,8 @@ public class CRUDconductor {
         System.out.print("Conductor a modificar (indice): ");
         int opc = entrada.nextInt();
         
+            if(opc<=Conductores.size() && opc>0){
+                
             //Limpieza buffer
             entrada.nextLine();    
             
@@ -103,6 +106,11 @@ public class CRUDconductor {
             
             System.out.print("\nModificacion exitosa!");
             entrada.nextLine();
+            }
+            else{
+                System.out.println("Conductor no encontrado...");
+                entrada.nextLine();
+            }
         }
             
 
@@ -138,6 +146,7 @@ public class CRUDconductor {
         public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
         int opc_chofer;
         do{
+
            System.out.println("-------------------------------------");
            System.out.println("\t===Gestion de choferes===");
            System.out.println("-------------------------------------");
@@ -163,7 +172,6 @@ public class CRUDconductor {
                 case 3:
                     crudConductor.modificarInfoChofer(Conductores);
                     entrada.nextLine();
-                    entrada.nextLine();
                     break;
                 case 4:
                     crudConductor.eliminarChofer(Conductores);
@@ -171,7 +179,8 @@ public class CRUDconductor {
                     break;
                 case 5: 
                     break;
-                default:
+                default: System.out.println("Opcion no valida...");
+                    entrada.nextLine();
                     break;
             }
         }while(opc_chofer != 5); 

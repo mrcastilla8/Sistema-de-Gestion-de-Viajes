@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
-    
+        Archivos archivo = new Archivos();
         Operador op1 = new Operador("david.aldana","1234","A");
         op1.iniciarSesion();
         
@@ -32,6 +32,8 @@ public class Main {
                     List<Conductor> Conductores = new ArrayList<Conductor> ();
                     //Creamos nuestro objeto de la clase CRUDconductor
                     CRUDconductor crudConductor = new CRUDconductor();
+                    //Leemos el los conductores en el txt
+                    Conductores = archivo.leerObjetos("Conductores.txt");
                     //llamamos a la funcion que muestra el menu del CRUD:
                     crudConductor.menuCrudConductor(Conductores, crudConductor);
                     break;
