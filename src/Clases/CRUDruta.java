@@ -1,22 +1,26 @@
 package Clases;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class CRUDruta {
     private List<Ruta> rutas;
     private Scanner scanner;
+    int ID=1;
+    private final String archivoRutas = "rutas.txt"; // Archivo donde se guardarán las rutas
 
     public CRUDruta() {
-        rutas = new ArrayList<>();
+        // Inicializamos la lista de rutas cargando desde el archivo
+        rutas = Archivos.leerObjetos(archivoRutas);
         scanner = new Scanner(System.in);
     }
 
     // Crear una nueva ruta
     public void addRuta() {
+        
         System.out.println("=== Agregar Nueva Ruta ===");
+        /*
         System.out.print("Ingrese ID de la Ruta: ");
         int id = Integer.parseInt(scanner.nextLine());
 
@@ -27,16 +31,25 @@ public class CRUDruta {
                 return;
             }
         }
-
+           */
+        
+        if(rutas.size() != 0){
+            ID = rutas.get(rutas.size()-1).getIdRuta() + 1;
+        }
+        
         System.out.print("Ingrese Lugar de Inicio: ");
         String inicio = scanner.nextLine();
         System.out.print("Ingrese Lugar de Destino: ");
         String destino = scanner.nextLine();
-        System.out.print("Ingrese Duracion Estimada (en horas): ");
+        System.out.print("Ingrese Duración Estimada (en horas): ");
         int duracion = Integer.parseInt(scanner.nextLine());
 
-        Ruta nuevaRuta = new Ruta(id, inicio, destino, duracion);
+        Ruta nuevaRuta = new Ruta(ID, inicio, destino, duracion);
         rutas.add(nuevaRuta);
+
+        // Guardar la lista actualizada de rutas en el archivo
+        Archivos.guardarObjetos(archivoRutas, rutas);
+
         System.out.println("Ruta agregada exitosamente.");
     }
 
@@ -47,79 +60,68 @@ public class CRUDruta {
             System.out.println("No hay rutas disponibles.");
             return;
         }
-        System.out.println(" ID     Inicio      Destino     Duracion");
+        System.out.println(String.format("%-5s %-10s %-10s %-5s", "ID", "Inicio", "Destino", "Horas"));
         for (Ruta ruta : rutas) {
-            System.out.println( ruta.getIdRuta() + " - " + ruta.getLugarInicio() + " - " + ruta.getLugarDestino() + " - "+ ruta.getDuracionEstimada()+ " hora(s)." );
+            System.out.println(String.format("%-5d %-10s %-10s %-5d",
+            ruta.getIdRuta(),
+            ruta.getLugarInicio(),
+            ruta.getLugarDestino(),
+            ruta.getDuracionEstimada()));
         }
+
     }
 
-    // Actualizar una ruta existente
+    // Modificar una ruta existente
     public void modificarRuta() {
         System.out.println("=== Modificar Ruta ===");
-        System.out.print("Ingrese el ID de la Ruta a modificar: ");
+        System.out.print("Ingrese ID de la Ruta a modificar: ");
         int id = Integer.parseInt(scanner.nextLine());
 
-        Ruta rutaEncontrada = null;
         for (Ruta ruta : rutas) {
             if (ruta.getIdRuta() == id) {
-                rutaEncontrada = ruta;
-                break;
+                System.out.print("Ingrese nuevo Lugar de Inicio: ");
+                String inicio = scanner.nextLine();
+                System.out.print("Ingrese nuevo Lugar de Destino: ");
+                String destino = scanner.nextLine();
+                System.out.print("Ingrese nueva Duración Estimada (en horas): ");
+                int duracion = Integer.parseInt(scanner.nextLine());
+
+                ruta.setLugarInicio(inicio);
+                ruta.setLugarDestino(destino);
+                ruta.setDuracionEstimada(duracion);
+
+                // Guardar la lista actualizada de rutas en el archivo
+                Archivos.guardarObjetos(archivoRutas, rutas);
+
+                System.out.println("Ruta modificada exitosamente.");
+                return;
             }
         }
 
-        if (rutaEncontrada == null) {
-            System.out.println("Ruta no encontrada.");
-            return;
-        }
-
-        System.out.println("Ingrese los nuevos datos (dejar en blanco para mantener el valor actual):");
-
-        System.out.print("Nuevo Lugar de Inicio (" + rutaEncontrada.getLugarInicio() + "): ");
-        String inicio = scanner.nextLine();
-        if (!inicio.trim().isEmpty()) {
-            rutaEncontrada.setLugarInicio(inicio);
-        }
-
-        System.out.print("Nuevo Lugar de Destino (" + rutaEncontrada.getLugarDestino() + "): ");
-        String destino = scanner.nextLine();
-        if (!destino.trim().isEmpty()) {
-            rutaEncontrada.setLugarDestino(destino);
-        }
-
-        System.out.print("Nueva Duracion Estimada (" + rutaEncontrada.getDuracionEstimada() + " horas): ");
-        String duracionInput = scanner.nextLine();
-        if (!duracionInput.trim().isEmpty()) {
-            int duracion = Integer.parseInt(duracionInput);
-            rutaEncontrada.setDuracionEstimada(duracion);
-        }
-
-        System.out.println("Ruta actualizada exitosamente.");
+        System.out.println("Error: No se encontró ninguna ruta con ese ID.");
     }
 
     // Eliminar una ruta
-    public void borrarRuta() {
-        System.out.println("=== Borrar Ruta ===");
-        System.out.print("Ingrese el ID de la Ruta a eliminar: ");
+    public void eliminarRuta() {
+        System.out.println("=== Eliminar Ruta ===");
+        System.out.print("Ingrese ID de la Ruta a eliminar: ");
         int id = Integer.parseInt(scanner.nextLine());
 
-        Iterator<Ruta> iterator = rutas.iterator();
-        boolean encontrado = false;
-        while (iterator.hasNext()) {
-            Ruta ruta = iterator.next();
+        for (Ruta ruta : rutas) {
             if (ruta.getIdRuta() == id) {
-                iterator.remove();
-                encontrado = true;
+                rutas.remove(ruta);
+
+                // Guardar la lista actualizada de rutas en el archivo
+                Archivos.guardarObjetos(archivoRutas, rutas);
+
                 System.out.println("Ruta eliminada exitosamente.");
-                break;
+                return;
             }
         }
 
-        if (!encontrado) {
-            System.out.println("Ruta no encontrada.");
-        }
+        System.out.println("Error: No se encontró ninguna ruta con ese ID.");
     }
-
-    // Menú de opciones
+    
     public void mostrarMenu() {
         int opcion = 0;
         do {
@@ -150,7 +152,7 @@ public class CRUDruta {
                     modificarRuta();
                     break;
                 case 4:
-                    borrarRuta();
+                    eliminarRuta();
                     break;
                 case 5:
                     System.out.println("Saliendo del programa...");
