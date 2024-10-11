@@ -1,12 +1,15 @@
 package Clases;
 
-public class Ruta {
+import java.io.Serializable;
+
+public class Ruta implements Serializable{
     private int idRuta;
     private String lugarInicio;
     private String lugarDestino;
     private int duracionEstimada;
 
     // Constructor
+    
     public Ruta(int idRuta, String lugarInicio, String lugarDestino, int duracionEstimada) {
         this.idRuta = idRuta;
         this.lugarInicio = lugarInicio;
