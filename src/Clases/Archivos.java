@@ -10,7 +10,6 @@ public class Archivos {
         try (FileOutputStream fileOut = new FileOutputStream(archivo);
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(objetos);  // Guarda la LISTA completa en el archivo
-            System.out.println("Objetos guardados exitosamente en " + archivo);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -18,6 +17,13 @@ public class Archivos {
     //Lee tu txt para recuperar los objetos, esta funcion te RETORNA la lista con los objetos leidos, la idea es que la iguales a tu lista.
     public static <T> List<T> leerObjetos(String archivo) {
         List<T> objetos = new ArrayList<>();
+        
+        //Verificar si el archivo existe
+        File file = new File(archivo);
+        if (!file.exists()) {
+        return objetos; 
+        }
+        
         try (FileInputStream fileIn = new FileInputStream(archivo);
              ObjectInputStream in = new ObjectInputStream(fileIn)) {
             objetos = (List<T>) in.readObject();  // Lee la LISTA completa del archivo

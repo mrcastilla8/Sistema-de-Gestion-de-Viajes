@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class CRUDconductor {
     Archivos archivo = new Archivos();
     Scanner entrada = new Scanner(System.in);
-    int ID=0; //Iniciamos un contador de IDs .
+    int ID=1; //Iniciamos un contador de IDs .
     
         public void addChofer(List<Conductor> Conductores){
         System.out.println("Agregar nuevo conductor:");
@@ -25,11 +25,14 @@ public class CRUDconductor {
         System.out.print("Numero de licencia: ");
         String num_licencia = entrada.nextLine();
         
-        ID++;
-
-        System.out.println("ID asignada: " + ID);
-
-  
+        if(Conductores.size() == 0){
+            System.out.println("ID asignada: " + ID);
+        }
+        else{
+            ID = Conductores.get(Conductores.size()-1).getIdConductor() + 1;
+            System.out.println("ID asignada: " + ID);
+        }
+     
         Conductores.add(new Conductor(ID, num_licencia, DNI, nombre, numero, edad));
         archivo.guardarObjetos("Conductores.txt", Conductores);
         System.out.println("\nNuevo conductor registrado!");
@@ -37,18 +40,18 @@ public class CRUDconductor {
         }   
         
        public void verificarChofer(List<Conductor> Conductores){
-        
+        if(Conductores.size() == 0){
+            System.out.println("\nNo hay conductores registrados...");
+        }
+        else{
         System.out.print("Ingrese la ID del chofer a buscar: ");
         int ID = entrada.nextInt();
-
 
         boolean flag = true;
         //Recorremos toda la lista buscando lo que se pide
         for(int i=0; i<Conductores.size(); i++){
-            
-               
+                         
             if(Conductores.get(i).getIdConductor() == ID){
-
 
                 System.out.println("\nConductor encontrado!");
                 System.out.println("Nombre: " + Conductores.get(i).getNombre());
@@ -63,13 +66,20 @@ public class CRUDconductor {
             }
 
         }
-        if(flag){
+        
+            if(flag){
             System.out.println("Conductor no encontrado...");
             entrada.nextLine();
+            }
         }
-        }
+        }//Fin de la funcion
         
         public void modificarInfoChofer(List<Conductor> Conductores) {
+        if(Conductores.size() == 0){
+            System.out.println("\nNo hay conductores registrados...");
+        }
+        else{
+            
         System.out.println("\nModificar o actualizar datos del conductor:");
         //Mostremos una lista de los conductores para modificarlos:
         System.out.print("\n");
@@ -105,16 +115,21 @@ public class CRUDconductor {
             Conductores.get(opc -1).setNumLicencia(numLicencia);   
             
             System.out.print("\nModificacion exitosa!");
-            entrada.nextLine();
+            archivo.guardarObjetos("Conductores.txt", Conductores);
             }
             else{
                 System.out.println("Conductor no encontrado...");
                 entrada.nextLine();
             }
+            }
         }
             
 
         public void eliminarChofer(List<Conductor> Conductores) {
+        if(Conductores.size() == 0){
+            System.out.println("\nNo hay conductores registrados...");
+        }
+        else{
         System.out.print("ID del conductor a eliminar: ");
         int ID = entrada.nextInt();
         boolean flag = true;
@@ -127,6 +142,7 @@ public class CRUDconductor {
             if (opc.equalsIgnoreCase("s")) {
                 Conductores.remove(i);
                 System.out.println("\nConductor eliminado con exito!");
+                archivo.guardarObjetos("Conductores.txt", Conductores);
                 flag = false;
                 break;
             } else {
@@ -137,10 +153,10 @@ public class CRUDconductor {
             }
         }
     
-        if (flag) {
-            System.out.println("Conductor no encontrado...");
+            if (flag) {
+                System.out.println("Conductor no encontrado...");
+            }
         }
-
         }
         
         public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
