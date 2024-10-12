@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Archivos archivo = new Archivos();
-        Operador op1 = new Operador("david.aldana","1234","A");
+        Operador op1 = new Operador();
         op1.iniciarSesion();
         
         int opcionMenu = 0;
