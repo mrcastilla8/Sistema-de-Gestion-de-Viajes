@@ -36,7 +36,7 @@ public class CRUDruta {
         if(rutas.size() != 0){
             ID = rutas.get(rutas.size()-1).getIdRuta() + 1;
         }
-        
+         
         System.out.print("Ingrese Lugar de Inicio: ");
         String inicio = scanner.nextLine();
         System.out.print("Ingrese Lugar de Destino: ");
