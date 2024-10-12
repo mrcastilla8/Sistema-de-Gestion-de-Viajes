@@ -1,39 +1,42 @@
-
 package Clases;
+import java.io.Serializable;
+import java.util.List;
 
-public class Bus {
+public class Bus implements Serializable {
     private static int contadorId = 1; 
     private final int idBus; 
     private String tipo;
     private int capacidad;
     private String estado;
-    private String conductor1;
-     private String conductor2;
+    private Integer conductorId1; // Ahora almacena el ID del conductor
+    private Integer conductorId2; // Ahora almacena el ID del conductor
 
-
-    // Default
-    public Bus() {
-        this.idBus = contadorId++; 
-    }
-
-    // Constructor con parámetros
-    public Bus(String tipo, int capacidad, String estado, String conductor1, String conductor2) {
+    // Constructor
+    public Bus(String tipo, int capacidad, String estado, Integer conductorId1, Integer conductorId2) {
         this.idBus = contadorId++;
         this.tipo = tipo;
         this.capacidad = capacidad;
         this.estado = estado;
-        this.conductor1 = conductor1;
-        this.conductor2 = conductor2;
+        this.conductorId1 = conductorId1;
+        this.conductorId2 = conductorId2;
     }
 
-    // Muestra los atributos del bus
-    public void mostrarBus() {
-        System.out.println("ID: " + this.idBus + ", Tipo: " + this.tipo + ", Capacidad: " + this.capacidad + 
-                           ", Estado: " + this.estado + ", Conductor 1: " + this.conductor1+", Conductor 2: " + this.conductor2);
+    // Método para actualizar el contador de IDs al cargar desde archivo
+    public static void actualizarContadorId(List<Bus> buses) {
+        if (buses.isEmpty()) {
+            contadorId = 1;
+        } else {
+            int maxId = 0;
+            for (Bus bus : buses) {
+                if (bus.getIdBus() > maxId) {
+                    maxId = bus.getIdBus();
+                }
+            }
+            contadorId = maxId + 1;
+        }
     }
 
-    // Getters y Setters 
-    //No hay setter para getIdBus, porque segun los atributos, tiene que ser inmutable, unico y no nulo
+    // Getters y Setters
     public int getIdBus() {
         return idBus;
     }
@@ -62,20 +65,19 @@ public class Bus {
         this.estado = estado;
     }
 
-    public String getConductor1() {
-        return conductor1;
+    public Integer getConductorId1() {
+        return conductorId1;
     }
 
-    public void setConductor1(String conductor) {
-        this.conductor1 = conductor;
+    public void setConductorId1(Integer conductorId1) {
+        this.conductorId1 = conductorId1;
     }
 
-    public String getConductor2() {
-        return conductor2;
+    public Integer getConductorId2() {
+        return conductorId2;
     }
 
-    public void setConductor2(String conductor2) {
-        this.conductor2 = conductor2;
+    public void setConductorId2(Integer conductorId2) {
+        this.conductorId2 = conductorId2;
     }
-    
 }
