@@ -1,19 +1,18 @@
 package Clases;
 
-import static Clases.BusCRUD.limpiarPantalla;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Operador extends Persona {
-    private static int contadorId = 1;
+    private static int contadorId = obtenerUltimoId() + 1;
     private final int idOperador;
     private String usuario;
     private String contrasena;
     private String cargo;
     private static final String ARCHIVO_OPERADORES = "operadores.txt";
 
-    //Default
+    // Default
     public Operador() {
         this.idOperador = contadorId++;
     }
@@ -27,13 +26,14 @@ public class Operador extends Persona {
     }
 
     // Getters y Setters
-    public String getUsuario() {
-        return usuario;
-    }
-    
     public int getIdOperador() {
         return idOperador;
     }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
@@ -79,10 +79,18 @@ public class Operador extends Persona {
 
             if (!inicioExitoso) {
                 System.out.println("Usuario o contraseña incorrectos. Intente nuevamente.");
-                        limpiarPantalla();
-
             }
         } while (!inicioExitoso);
+    }
+
+    // Obtener el último ID guardado
+    private static int obtenerUltimoId() {
+        List<Operador> operadores = leerOperadores();
+        if (operadores.isEmpty()) {
+            return 0;
+        } else {
+            return operadores.get(operadores.size() - 1).getIdOperador();
+        }
     }
 
     // Guardar operadores en archivo
@@ -98,6 +106,7 @@ public class Operador extends Persona {
     // Crear un nuevo operador y agregarlo a la lista
     public static void crearOperador(String usuario, String contrasena, String cargo) {
         List<Operador> operadores = leerOperadores();
+        contadorId = obtenerUltimoId() + 1;
         operadores.add(new Operador(usuario, contrasena, cargo));
         guardarOperadores(operadores);
     }
@@ -108,55 +117,6 @@ public class Operador extends Persona {
         for (Operador operador : operadores) {
             System.out.println("ID: " + operador.idOperador + ", Usuario: " + operador.usuario + ", Cargo: " + operador.cargo);
         }
-    }
-
-    // Menú de CRUD de Operadores
-    public static void menuOperadoresCRUD() {
-        Scanner entrada = new Scanner(System.in);
-        int opcion;
-        do {
-            System.out.println("------------------------------------");
-            System.out.println("\t MENU DE CRUD DE OPERADORES ");
-            System.out.println("------------------------------------");
-            System.out.println("1. Crear Operador");
-            System.out.println("2. Mostrar Operadores");
-            System.out.println("3. Editar Operador");
-            System.out.println("4. Eliminar Operador");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: ");
-            opcion = entrada.nextInt();
-
-            switch (opcion) {
-                case 1:
-                    System.out.print("Ingrese usuario: ");
-                    String usuario = entrada.next();
-                    System.out.print("Ingrese contraseña: ");
-                    String contrasena = entrada.next();
-                    System.out.print("Ingrese cargo: ");
-                    String cargo = entrada.next();
-                    crearOperador(usuario, contrasena, cargo);
-                    break;
-                case 2:
-                    mostrarOperadores();
-                    break;
-                case 3:
-                    System.out.print("Ingrese el usuario del operador a editar: ");
-                    String usuarioEditar = entrada.next();
-                    editarOperador(Integer.valueOf(usuarioEditar), entrada);
-                    break;
-                case 4:
-                    System.out.print("Ingrese el usuario del operador a eliminar: ");
-                    String usuarioEliminar = entrada.next();
-                    eliminarOperador(Integer.getInteger(usuarioEliminar));
-                    break;
-                case 5:
-                    System.out.println("Saliendo del menú de CRUD de operadores...");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Intente nuevamente.");
-                    break;
-            }
-        } while (opcion != 5);
     }
 
     // Editar un operador existente
@@ -195,59 +155,24 @@ public class Operador extends Persona {
         }
     }
 
-
-    // Opciones CRUD para operadores
-    public static void opcionesCRUD(List<Operador> lista, int opcion, Scanner entrada) {
-        switch (opcion) {
-            case 1:
-                System.out.print("Ingrese usuario: ");
-                String usuario = entrada.next();
-                System.out.print("Ingrese contraseña: ");
-                String contrasena = entrada.next();
-                System.out.print("Ingrese cargo: ");
-                String cargo = entrada.next();
-                crearOperador(usuario, contrasena, cargo);
-                break;
-            case 2:
-                mostrarOperadores();
-                break;
-            case 3:
-                System.out.print("Ingrese el usuario del operador a editar: ");
-                String usuarioEditar = entrada.next();
-                editarOperador(Integer.getInteger(usuarioEditar), entrada);
-                break;
-            case 4:
-                System.out.print("Ingrese el usuario del operador a eliminar: ");
-                String usuarioEliminar = entrada.next();
-                eliminarOperador(Integer.getInteger(usuarioEliminar));
-                break;
-            default:
-                System.out.println("Opción no válida.");
-                break;
-        }
-    }
-
-    // Menú de Operador
-    public static void menuOperador() {
+    // Menú de CRUD de Operadores
+    public static void menuOperadoresCRUD() {
         Scanner entrada = new Scanner(System.in);
         int opcion;
         do {
             System.out.println("------------------------------------");
-            System.out.println("\t MENU DE OPERADOR ");
+            System.out.println("\t MENU DE CRUD DE OPERADORES ");
             System.out.println("------------------------------------");
-            System.out.println("1. Iniciar Sesión");
-            System.out.println("2. Crear Operador");
-            System.out.println("3. Mostrar Operadores");
-            System.out.println("4. Salir");
+            System.out.println("1. Crear Operador");
+            System.out.println("2. Mostrar Operadores");
+            System.out.println("3. Editar Operador");
+            System.out.println("4. Eliminar Operador");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = entrada.nextInt();
 
             switch (opcion) {
                 case 1:
-                    Operador operador = new Operador();
-                    operador.iniciarSesion();
-                    break;
-                case 2:
                     System.out.print("Ingrese usuario: ");
                     String usuario = entrada.next();
                     System.out.print("Ingrese contraseña: ");
@@ -256,19 +181,29 @@ public class Operador extends Persona {
                     String cargo = entrada.next();
                     crearOperador(usuario, contrasena, cargo);
                     break;
-                case 3:
+                case 2:
                     mostrarOperadores();
                     break;
+                case 3:
+                    System.out.print("Ingrese el ID del operador a editar: ");
+                    int idEditar = entrada.nextInt();
+                    editarOperador(idEditar, entrada);
+                    break;
                 case 4:
-                    System.out.println("Saliendo del menú de operador...");
+                    System.out.print("Ingrese el ID del operador a eliminar: ");
+                    int idEliminar = entrada.nextInt();
+                    eliminarOperador(idEliminar);
+                    break;
+                case 5:
+                    System.out.println("Saliendo del menú de CRUD de operadores...");
                     break;
                 default:
                     System.out.println("Opción no válida. Intente nuevamente.");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
     }
-    
+
     public static void guardarPrimerOperador() {
         List<Operador> operadores = new ArrayList<>();
         Operador primerOperador = new Operador("david.aldana", "1234", "Administrador");
