@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class ViajeCRUD {
+
     private List<Viaje> viajes;
     private Scanner entrada = new Scanner(System.in, "UTF-8");
 
@@ -169,11 +170,12 @@ public class ViajeCRUD {
             return;
         }
         for (Viaje viaje : viajes) {
-            System.out.println("ID Viaje: " + viaje.getIdViaje() +
-                ", Bus ID: " + viaje.getBusAsignado().getIdBus() +
-                ", Tipo de bus: " + viaje.getBusAsignado().getTipo() +
-                ", Conductores: " + obtenerNombresConductores(viaje.getConductoresAsignados()) +
-                ", Ruta: " + viaje.getRutaAsignada().getLugarInicio() + " - " + viaje.getRutaAsignada().getLugarDestino());
+            System.out.println("ID Viaje: " + viaje.getIdViaje()
+                    + ", Bus ID: " + viaje.getBusAsignado().getIdBus()
+                    + ", Tipo de bus: " + viaje.getBusAsignado().getTipo()
+                    + ", Conductores: " + obtenerNombresConductores(viaje.getConductoresAsignados())
+                    + ", Ruta: " + viaje.getRutaAsignada().getLugarInicio() + " - " + viaje.getRutaAsignada().getLugarDestino()
+                    + ", Precio: S/" + viaje.getPrecio());
         }
         pausar();
     }
@@ -202,7 +204,6 @@ public class ViajeCRUD {
         scanner.nextLine();
     }
 
-   
     // NUEVO MÉTODO: Eliminar un viaje
     public void eliminarViaje() {
         System.out.println("Eliminar Viaje");
