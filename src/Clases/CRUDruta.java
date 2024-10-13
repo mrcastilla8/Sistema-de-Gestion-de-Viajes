@@ -121,6 +121,15 @@ public class CRUDruta {
 
         System.out.println("Error: No se encontró ninguna ruta con ese ID.");
     }
+
+    public int obtenerIdRutaPorSalidayDestino(String salida, String destino){
+        for (Ruta ruta : rutas) {
+            if (ruta.getLugarInicio().equalsIgnoreCase(salida) && ruta.getLugarDestino().equalsIgnoreCase(destino)) {
+                return ruta.getIdRuta();
+            }
+        }
+        return -1;
+    }
     
     public void mostrarMenu() {
         int opcion = 0;
