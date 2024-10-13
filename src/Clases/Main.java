@@ -58,6 +58,9 @@ public class Main {
                     VentaBoleto ventaBoleto = new VentaBoleto();
                     ventaBoleto.menuVentaBoleto();
                     break;
+                case 7:
+                    System.out.println("Saliendo del sistema...");
+                    break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
