@@ -171,13 +171,24 @@ public class ViajeCRUD {
         for (Viaje viaje : viajes) {
             System.out.println("ID Viaje: " + viaje.getIdViaje() +
                 ", Bus ID: " + viaje.getBusAsignado().getIdBus() +
+                ", Tipo de bus: " + viaje.getBusAsignado().getTipo() +
                 ", Conductores: " + obtenerNombresConductores(viaje.getConductoresAsignados()) +
                 ", Ruta: " + viaje.getRutaAsignada().getLugarInicio() + " - " + viaje.getRutaAsignada().getLugarDestino());
         }
         pausar();
     }
 
-    private String obtenerNombresConductores(List<Conductor> conductores) {
+    public List<Viaje> obtenerViajesCoincidentes(int idRuta) {
+        List<Viaje> viajesCoincidentes = new ArrayList<>();
+        for (Viaje viaje : viajes) {
+            if (viaje.getRutaAsignada().getIdRuta() == idRuta) {
+                viajesCoincidentes.add(viaje);
+            }
+        }
+        return viajesCoincidentes;
+    }
+
+    public String obtenerNombresConductores(List<Conductor> conductores) {
         StringBuilder nombres = new StringBuilder();
         for (Conductor conductor : conductores) {
             nombres.append(conductor.getNombre()).append(" ");
