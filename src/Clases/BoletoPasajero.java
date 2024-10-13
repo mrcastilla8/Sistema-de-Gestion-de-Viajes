@@ -1,15 +1,13 @@
-
 package Clases;
 
+import java.io.Serializable;
 
-public class BoletoPasajero extends Comprobante {
+public class BoletoPasajero extends Comprobante implements Serializable {
     private String nombrePasajero;
     private String fechaViaje;
     private String numeroAsiento;
-//Default
-    public BoletoPasajero() {
-    }
-//Constructor
+
+    // Constructor
     public BoletoPasajero(String nombrePasajero, String fechaViaje, String numeroAsiento, int id_comprobante, int idRuta, int idBus, String fechaEmision, double precio, String agencia) {
         super(id_comprobante, idRuta, idBus, fechaEmision, precio, agencia);
         this.nombrePasajero = nombrePasajero;
@@ -17,10 +15,7 @@ public class BoletoPasajero extends Comprobante {
         this.numeroAsiento = numeroAsiento;
     }
 
-    //Getters and Setters
-
-    
-    
+    // Getters and Setters
     public String getNombrePasajero() {
         return nombrePasajero;
     }
@@ -44,6 +39,4 @@ public class BoletoPasajero extends Comprobante {
     public void setNumeroAsiento(String numeroAsiento) {
         this.numeroAsiento = numeroAsiento;
     }
-    
-    
 }
