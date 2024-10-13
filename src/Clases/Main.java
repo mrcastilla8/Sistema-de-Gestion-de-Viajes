@@ -1,7 +1,6 @@
 package Clases;
 import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -23,7 +22,9 @@ public class Main {
             System.out.println("2. Gestionar Buses");
             System.out.println("3. Gestionar Rutas");
             System.out.println("4. Gestionar Operadores");
-            System.out.println("5. Salir");
+            System.out.println("5. Gestionar Viajes");
+            System.out.println("6. Venta de boletos");
+            System.out.println("7. Salir");
             System.out.print("Ingrese su opcion: ");
             opcionMenu = entrada.nextInt();
             switch(opcionMenu) {
@@ -48,13 +49,23 @@ public class Main {
                     Operador.menuOperadoresCRUD();
                     break;
                 case 5:
-                    System.out.println("Saliendo del sistema");
+                    // Gestionar Viajes
+                    ViajeCRUD viajeCRUD = new ViajeCRUD();
+                    viajeCRUD.ejecutarMenu();
+                    break;
+                case 6:
+                    // Venta de boletos
+                    VentaBoleto ventaBoleto = new VentaBoleto();
+                    ventaBoleto.menuVentaBoleto();
+                    break;
+                case 7:
+                    System.out.println("Saliendo del sistema...");
                     break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
-        } while (opcionMenu != 5);  
+        } while (opcionMenu != 7);  
     }
 
     public static void limpiarPantalla() {

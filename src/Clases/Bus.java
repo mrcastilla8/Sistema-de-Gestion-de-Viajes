@@ -11,6 +11,8 @@ public class Bus implements Serializable {
     private Integer conductorId1; // Ahora almacena el ID del conductor
     private Integer conductorId2; // Ahora almacena el ID del conductor
 
+    private List<Asiento> asientos; // Lista de asientos del bus
+
     // Constructor
     public Bus(String tipo, int capacidad, String estado, Integer conductorId1, Integer conductorId2) {
         this.idBus = contadorId++;
