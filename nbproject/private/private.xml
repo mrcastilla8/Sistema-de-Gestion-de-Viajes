@@ -3,8 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Clases/Operador.java</file>
             <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Clases/Viaje.java</file>
+=======
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/Main.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/Comprobante.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/Conductor.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/Asiento.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/BusCRUD.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/BoletoPasajero.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/CRUDconductor.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/Bus.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/Viaje.java</file>
+            <file>file:/C:/Users/user/Desktop/Poryecto%20algo%202%20version%20buena/src/Clases/ViajeCRUD.java</file>
+>>>>>>> 6292b6da7680ba4979ff714f7299e83f16080d80
         </group>
     </open-files>
 </project-private>

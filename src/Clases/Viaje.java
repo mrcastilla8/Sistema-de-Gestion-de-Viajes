@@ -1,30 +1,47 @@
-
 package Clases;
 
-public class Viaje {
-    private int idViaje;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Viaje implements Serializable {
+    private static int contadorId = 1; // Contador para IDs de viajes
+    private final int idViaje;
     private Bus busAsignado;
-    private Conductor conductorAsignado;
+    private List<Conductor> conductoresAsignados; // Lista de conductores asignados
     private Ruta rutaAsignada;
+    private List<String> asientosReservados;
 
     // Constructor
-    public Viaje(int idViaje, Bus busAsignado, Conductor conductorAsignado, Ruta rutaAsignada) {
-        this.idViaje = idViaje;
+    public Viaje(Bus busAsignado, List<Conductor> conductoresAsignados, Ruta rutaAsignada) {
+        this.idViaje = contadorId++;
         this.busAsignado = busAsignado;
-        this.conductorAsignado = conductorAsignado;
+        this.conductoresAsignados = conductoresAsignados;
         this.rutaAsignada = rutaAsignada;
+        this.asientosReservados = new ArrayList<>();
+    }
+
+    // Método para actualizar el contador de IDs al cargar desde archivo
+    public static void actualizarContadorId(List<Viaje> viajes) {
+        if (viajes.isEmpty()) {
+            contadorId = 1;
+        } else {
+            int maxId = 0;
+            for (Viaje viaje : viajes) {
+                if (viaje.getIdViaje() > maxId) {
+                    maxId = viaje.getIdViaje();
+                }
+            }
+            contadorId = maxId + 1;
+        }
     }
 
     // Métodos
-    public void addPreferencias() {
-        // Implementación
+    public void elegirAsientos() {
+        // Implementación como antes, usando la clase Asiento
     }
 
     public void verDetalles() {
-        // Implementación
-    }
-
-    public void elegirAsientos() {
         // Implementación
     }
 
@@ -37,10 +54,6 @@ public class Viaje {
         return idViaje;
     }
 
-    public void setIdViaje(int idViaje) {
-        this.idViaje = idViaje;
-    }
-
     public Bus getBusAsignado() {
         return busAsignado;
     }
@@ -49,12 +62,12 @@ public class Viaje {
         this.busAsignado = busAsignado;
     }
 
-    public Conductor getConductorAsignado() {
-        return conductorAsignado;
+    public List<Conductor> getConductoresAsignados() {
+        return conductoresAsignados;
     }
 
-    public void setConductorAsignado(Conductor conductorAsignado) {
-        this.conductorAsignado = conductorAsignado;
+    public void setConductoresAsignados(List<Conductor> conductoresAsignados) {
+        this.conductoresAsignados = conductoresAsignados;
     }
 
     public Ruta getRutaAsignada() {
@@ -64,5 +77,12 @@ public class Viaje {
     public void setRutaAsignada(Ruta rutaAsignada) {
         this.rutaAsignada = rutaAsignada;
     }
-}
 
+    public List<String> getAsientosReservados() {
+        return asientosReservados;
+    }
+
+    public void setAsientosReservados(List<String> asientosReservados) {
+        this.asientosReservados = asientosReservados;
+    }
+}
