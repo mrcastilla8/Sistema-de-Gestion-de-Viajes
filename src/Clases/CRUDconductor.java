@@ -73,6 +73,21 @@ public class CRUDconductor {
             }
         }
         }//Fin de la funcion
+       
+       //Funcion adicional para que cruds como VIAJES lo usen!!!
+       public void mostrarChoferes(List<Conductor> Conductores){
+           if(Conductores.size() != 0){
+               System.out.println("\n\t.:Conductores registrados:.");
+               System.out.println("ID    Nombre");
+               System.out.println("-------------");
+               for(int i=0; i<Conductores.size(); i++){
+                   System.out.println(Conductores.get(i).getIdConductor() + "  " + Conductores.get(i).getNombre());
+               }
+           }
+           else{
+               System.out.println("\nNo hay conductores registrados...");       
+           }
+       }
         
         public void modificarInfoChofer(List<Conductor> Conductores) {
         if(Conductores.size() == 0){
