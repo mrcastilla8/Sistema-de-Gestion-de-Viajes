@@ -1,20 +1,19 @@
 package Clases;
 import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
-
         Scanner entrada = new Scanner(System.in);
-    
-        Operador op1 = new Operador("david.aldana","1234","A");
+        Operador op1 = new Operador();
         op1.iniciarSesion();
+        Archivos archivo = new Archivos();
         
         int opcionMenu = 0;
         do {
             limpiarPantalla();
-            //Menu de opciones:
+            // Menu de opciones:
             System.out.println("---------------------------------------------------------");
             System.out.println("\t===BIENVENIDO AL SISTEMA DE TRANSPORTE===");
             System.out.println("---------------------------------------------------------");
@@ -23,46 +22,44 @@ public class Main {
             System.out.println("2. Gestionar Buses");
             System.out.println("3. Gestionar Rutas");
             System.out.println("4. Gestionar Operadores");
-            System.out.println("5. Salir");
-            System.out.println("Ingrese su opcion: ");
+            System.out.println("5. Gestionar Viajes");
+            System.out.println("6. Salir");
+            System.out.print("Ingrese su opcion: ");
             opcionMenu = entrada.nextInt();
-            switch(opcionMenu){
+            switch(opcionMenu) {
                 case 1:
-                    //Lista de conductores (dinamico)
-                    List<Conductor> Conductores = new ArrayList<Conductor> ();
-                    //Creamos nuestro objeto de la clase CRUDconductor
+                    // Gestionar Conductores
+                    List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
                     CRUDconductor crudConductor = new CRUDconductor();
-                    //llamamos a la funcion que muestra el menu del CRUD:
-                    crudConductor.menuCrudConductor(Conductores, crudConductor);
+                    crudConductor.menuCrudConductor(conductores, crudConductor);
                     break;
                 case 2:
-                    //Gestionar Buses
+                    // Gestionar Buses
                     BusCRUD busCRUD = new BusCRUD();
                     busCRUD.ejecutarMenu();
                     break;
                 case 3:
-                    //Gestionar Rutas
+                    // Gestionar Rutas
                     CRUDruta rutaManager = new CRUDruta();
                     rutaManager.mostrarMenu();
                     break;
                 case 4:
-                    List<Operador> lista = new ArrayList<Operador> ();
-                    lista.add(op1);
-                    int opcion;
-                    do{
-                        op1.menuOperadoresCRUD();
-                        opcion = entrada.nextInt();
-                        op1.opcionesCRUD(lista,opcion,entrada);
-                    }while(opcion!=5);
+                    // Gestionar Operadores
+                    Operador.menuOperadoresCRUD();
                     break;
                 case 5:
+                    // Gestionar Viajes
+                    ViajeCRUD viajeCRUD = new ViajeCRUD();
+                    viajeCRUD.ejecutarMenu();
+                    break;
+                case 6:
                     System.out.println("Saliendo del sistema");
                     break;
                 default:
                     System.out.println("Opcion no valida");
                     break;
             }
-        } while (opcionMenu != 5);  
+        } while (opcionMenu != 6);  
     }
 
     public static void limpiarPantalla() {

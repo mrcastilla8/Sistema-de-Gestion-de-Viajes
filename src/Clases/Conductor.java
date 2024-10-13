@@ -1,14 +1,13 @@
 
 package Clases;
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Conductor extends Persona {
+public class Conductor extends Persona implements Serializable{
     private int idConductor;
     private String numLicencia;
-    //lista de conductores:
-    Scanner entrada = new Scanner(System.in);
     
     // Constructor
 

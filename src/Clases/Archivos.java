@@ -9,19 +9,24 @@ public class Archivos {
     public static <T> void guardarObjetos(String archivo, List<T> objetos) {
         try (FileOutputStream fileOut = new FileOutputStream(archivo);
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
-            out.writeObject(objetos);  // Guarda la lista completa en el archivo
-            System.out.println("Objetos guardados exitosamente en " + archivo);
+            out.writeObject(objetos);  // Guarda la LISTA completa en el archivo
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    //Lee tu txt para recuperar los objetos, esta funcion te RETORNA la lista con los objetos leidos, la idea es que la iguales a tu lista.
     public static <T> List<T> leerObjetos(String archivo) {
         List<T> objetos = new ArrayList<>();
+        
+        //Verificar si el archivo existe
+        File file = new File(archivo);
+        if (!file.exists()) {
+        return objetos; 
+        }
+        
         try (FileInputStream fileIn = new FileInputStream(archivo);
              ObjectInputStream in = new ObjectInputStream(fileIn)) {
-            objetos = (List<T>) in.readObject();  // Lee la lista completa del archivo
-            System.out.println("Objetos leídos exitosamente de " + archivo);
+            objetos = (List<T>) in.readObject();  // Lee la LISTA completa del archivo
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -29,37 +34,3 @@ public class Archivos {
     }
 }
 
-// Ejemplo de uso
-// Supongamos que tienes una clase llamada "Persona" que implementa Serializable
-/*class Persona implements Serializable {
-    private static final long serialVersionUID = 1L;
-    private String nombre;
-    private int edad;
-
-    public Persona(String nombre, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-
-    @Override
-    public String toString() {
-        return "Nombre: " + nombre + ", Edad: " + edad;
-    }
-}
-
-class Main {
-    public static void main(String[] args) {
-        List<Persona> personas = new ArrayList<>();
-        personas.add(new Persona("Juan", 25));
-        personas.add(new Persona("María", 30));
-
-        // Guardar la lista de personas en un archivo
-        Archivos.guardarObjetos("personas.ser", personas);
-
-        // Leer la lista de personas desde el archivo
-        List<Persona> personasLeidas = Archivos.leerObjetos("personas.ser");
-        for (Persona p : personasLeidas) {
-            System.out.println(p);
-        }
-    }
-}/*

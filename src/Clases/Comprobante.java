@@ -1,42 +1,32 @@
-
 package Clases;
-import java.util.Scanner;
 
-public class Comprobante {
-    private int idComprobante;
+import java.io.Serializable;
+
+public class Comprobante implements Serializable {
+    private int id_comprobante;
     private int idRuta;
     private int idBus;
     private String fechaEmision;
     private double precio;
     private String agencia;
-    //Constructor 
 
-    Scanner entrada = new Scanner(System.in);
-
-    public Comprobante() {
-    }
-    //Constructor con valores
-
+    // Constructor
     public Comprobante(int id_comprobante, int idRuta, int idBus, String fechaEmision, double precio, String agencia) {
-        this.idComprobante = id_comprobante;
+        this.id_comprobante = id_comprobante;
         this.idRuta = idRuta;
         this.idBus = idBus;
         this.fechaEmision = fechaEmision;
         this.precio = precio;
         this.agencia = agencia;
     }
-    
 
-    //Getters and setters
-
-    
-    public int getId_comprobante() 
-    {
-        return idComprobante;
+    // Getters and Setters
+    public int getId_comprobante() {
+        return id_comprobante;
     }
 
     public void setId_comprobante(int id_comprobante) {
-        this.idComprobante = id_comprobante;
+        this.id_comprobante = id_comprobante;
     }
 
     public int getIdRuta() {
@@ -77,6 +67,5 @@ public class Comprobante {
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
-    } 
-    
+    }
 }
