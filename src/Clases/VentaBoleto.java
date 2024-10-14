@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 public class VentaBoleto {
     private Scanner entrada = new Scanner(System.in);
@@ -72,21 +71,27 @@ public class VentaBoleto {
                             ", Bus ID: " + viaje.getBusAsignado().getIdBus() +
                             ", Tipo de bus: " + viaje.getBusAsignado().getTipo() +
                             ", Conductores: " + crudViaje.obtenerNombresConductores(viaje.getConductoresAsignados()) +
-                            ", Ruta: " + viaje.getRutaAsignada().getLugarInicio() + " - " + viaje.getRutaAsignada().getLugarDestino());                   
+                            ", Ruta: " + viaje.getRutaAsignada().getLugarInicio() + " - " + viaje.getRutaAsignada().getLugarDestino() +
+                            ", Precio: S/" + String.format("%.2f", viaje.getPrecio()));                
                 }
                 System.out.println(tamañoListaViajes + 1 + ". Salir");
                 System.out.println("Seleccione un viaje o salir: ");
                 opcionViaje = entrada.nextInt();
                 entrada.nextLine(); 
+            } while (opcionViaje < 1 || opcionViaje > tamañoListaViajes + 1);
 
+            int opcionReserva;
+            Viaje viajeSeleccionado = viajesCoincidentes.get(opcionViaje - 1);
+            do {
                 limpiarPantalla();
-                Viaje viajeSeleccionado = viajesCoincidentes.get(opcionViaje - 1);
+                
                 System.out.println("Viaje seleccionado: ");
                 System.out.println("ID Viaje: " + viajeSeleccionado.getIdViaje() +
                                 ", Bus ID: " + viajeSeleccionado.getBusAsignado().getIdBus() +
                                 ", Tipo de bus: " + viajeSeleccionado.getBusAsignado().getTipo() +
                                 ", Conductores: " + crudViaje.obtenerNombresConductores(viajeSeleccionado.getConductoresAsignados()) +
-                                ", Ruta: " + viajeSeleccionado.getRutaAsignada().getLugarInicio() + " - " + viajeSeleccionado.getRutaAsignada().getLugarDestino());
+                                ", Ruta: " + viajeSeleccionado.getRutaAsignada().getLugarInicio() + " - " + viajeSeleccionado.getRutaAsignada().getLugarDestino() +
+                                ", Precio: S/" + String.format("%.2f", viajeSeleccionado.getPrecio()));
                 
                 System.out.println();
                 asientos = Asiento.generarAsientos(viajeSeleccionado.getBusAsignado().getTipo());
@@ -95,45 +100,45 @@ public class VentaBoleto {
                 System.out.println("\nDesea reservar un asiento?: ");
                 System.out.println("1. Sí");
                 System.out.println("2. No");
-                int opcionReserva = entrada.nextInt();
+                opcionReserva = entrada.nextInt();
                 entrada.nextLine();
-                
-                int opcionAsiento, tamaañoListaAsientos = asientos.size();
-                if (opcionReserva == 2) {
-                    break;
-                } else {
-                    limpiarPantalla();
-                    System.out.println("Lista de asientos disponibles: ");
-                    do {
-                        for (int i = 0; i < tamaañoListaAsientos; i++) {
-                            System.out.println(i + 1 + ". " + asientos.get(i).getNumeroAsiento());
-                        }
-                        System.out.println(tamaañoListaAsientos + 1 + ". Salir"); 
-                        System.out.println("Seleccione un asiento o salir: ");
-                        opcionAsiento = entrada.nextInt();
-                        entrada.nextLine();
-                    } while (opcionAsiento < 1 || opcionAsiento > tamaañoListaAsientos + 1);
+            } while (opcionReserva < 1 || opcionReserva > 2);
+                        
+            int opcionAsiento, tamaañoListaAsientos = asientos.size();
+            if (opcionReserva == 2) {
+                return;
+            } else {
+                limpiarPantalla();
+                System.out.println("Lista de asientos disponibles: ");
+                do {
+                    for (int i = 0; i < tamaañoListaAsientos; i++) {
+                        System.out.println(i + 1 + ". " + asientos.get(i).getNumeroAsiento());
+                    }
+                    System.out.println(tamaañoListaAsientos + 1 + ". Salir"); 
+                    System.out.println("Seleccione un asiento o salir: ");
+                    opcionAsiento = entrada.nextInt();
+                    entrada.nextLine();
+                } while (opcionAsiento < 1 || opcionAsiento > tamaañoListaAsientos + 1);
 
-                    if (opcionAsiento == tamaañoListaAsientos + 1) {
-                        break;
+                if (opcionAsiento == tamaañoListaAsientos + 1) {
+                    return;
+                } else {
+                    Asiento asientoSeleccionado = asientos.get(opcionAsiento - 1);
+                    System.out.println("Asiento disponible.");
+                    System.out.println("Ingrese su nombre completo: ");
+                    String nombrePasajero = entrada.nextLine();
+                    System.out.println("Ingrese su DNI: ");
+                    String dniPasajero = entrada.nextLine();
+                    if (Asiento.reservarAsiento(asientos, asientoSeleccionado.getNumeroAsiento())) {
+                        System.out.println("Asiento reservado exitosamente");
+                        imprimirBoleto(fechaViaje, viajeSeleccionado.getRutaAsignada().getLugarInicio(), viajeSeleccionado.getRutaAsignada().getLugarDestino(), 
+                                        viajeSeleccionado.getConductoresAsignados(), viajeSeleccionado.getBusAsignado().getTipo(), asientoSeleccionado.getNumeroAsiento(),
+                                        nombrePasajero, dniPasajero, viajeSeleccionado.getPrecio());
                     } else {
-                        Asiento asientoSeleccionado = asientos.get(opcionAsiento - 1);
-                        System.out.println("Asiento disponible.");
-                        System.out.println("Ingrese su nombre completo: ");
-                        String nombrePasajero = entrada.nextLine();
-                        System.out.println("Ingrese su DNI: ");
-                        String dniPasajero = entrada.nextLine();
-                        if (Asiento.reservarAsiento(asientos, asientoSeleccionado.getNumeroAsiento())) {
-                            System.out.println("Asiento reservado exitosamente");
-                            imprimirBoleto(fechaViaje, viajeSeleccionado.getRutaAsignada().getLugarInicio(), viajeSeleccionado.getRutaAsignada().getLugarDestino(), 
-                                            viajeSeleccionado.getConductoresAsignados(), viajeSeleccionado.getBusAsignado().getTipo(), asientoSeleccionado.getNumeroAsiento(),
-                                            nombrePasajero, dniPasajero, viajeSeleccionado.getPrecio());
-                        } else {
-                            System.out.println("El asiento no está disponible o no existe");
-                        }
-                    }              
-                }   
-            } while (opcionViaje < 1 || opcionViaje > tamañoListaViajes + 1);       
+                        System.out.println("El asiento no está disponible o no existe");
+                    }
+                }              
+            }        
         }  
         pausar(); 
     }
