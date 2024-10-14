@@ -211,4 +211,6 @@ public class Operador extends Persona {
         guardarOperadores(operadores);
         System.out.println("Primer operador guardado correctamente.");
     }
+
+    
 }
