@@ -39,12 +39,31 @@ public class CRUDconductor {
         entrada.nextLine();
         }   
         
+        public void mostrarChoferes(List<Conductor> Conductores){
+           if(Conductores.size() != 0){
+               System.out.println("\n\t.:Conductores registrados:.");
+               System.out.println("ID    Nombre");
+               System.out.println("-------------");
+               for(int i=0; i<Conductores.size(); i++){
+                   System.out.println(Conductores.get(i).getIdConductor() + "  " + Conductores.get(i).getNombre());
+               }
+           }
+           else{
+               System.out.println("\nNo hay conductores registrados...");       
+           }
+       }
+        
+        
+        
+        
+        
        public void verificarChofer(List<Conductor> Conductores){
         if(Conductores.size() == 0){
             System.out.println("\nNo hay conductores registrados...");
         }
         else{
-        System.out.print("Ingrese la ID del chofer a buscar: ");
+        mostrarChoferes(Conductores);
+        System.out.print("Mostrar informacion de conductor con ID: ");
         int ID = entrada.nextInt();
 
         boolean flag = true;
@@ -74,20 +93,6 @@ public class CRUDconductor {
         }
         }//Fin de la funcion
        
-       //Funcion adicional para que cruds como VIAJES lo usen!!!
-       public void mostrarChoferes(List<Conductor> Conductores){
-           if(Conductores.size() != 0){
-               System.out.println("\n\t.:Conductores registrados:.");
-               System.out.println("ID    Nombre");
-               System.out.println("-------------");
-               for(int i=0; i<Conductores.size(); i++){
-                   System.out.println(Conductores.get(i).getIdConductor() + "  " + Conductores.get(i).getNombre());
-               }
-           }
-           else{
-               System.out.println("\nNo hay conductores registrados...");       
-           }
-       }
         
         public void modificarInfoChofer(List<Conductor> Conductores) {
         if(Conductores.size() == 0){
