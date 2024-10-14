@@ -80,6 +80,7 @@ public class Operador extends Persona {
 
             if (!inicioExitoso) {
                 System.out.println("Usuario o contraseña incorrectos. Intente nuevamente.");
+                BusCRUD.pausar();
             }
         } while (!inicioExitoso);
     }
