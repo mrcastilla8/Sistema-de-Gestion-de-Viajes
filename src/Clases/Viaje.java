@@ -22,7 +22,6 @@ public class Viaje implements Serializable {
         this.rutaAsignada = rutaAsignada;
         this.asientosReservados = new ArrayList<>();
         this.precio = calcularPrecio(); // Calcular y asignar el precio
-
     }
 
     public double calcularPrecio() {
@@ -51,9 +50,11 @@ public class Viaje implements Serializable {
             return 0.0;
         }
     }
-public double getPrecio() {
-    return precio;
-}
+
+    public double getPrecio() {
+        return precio;
+    }
+
     // Método para actualizar el contador de IDs al cargar desde archivo
     public static void actualizarContadorId(List<Viaje> viajes) {
         if (viajes.isEmpty()) {
