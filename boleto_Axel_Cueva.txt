@@ -1,0 +1,19 @@
+----------------------------------------
+            BOLETO DE BUS
+----------------------------------------
+Fecha:          14/10/2024
+----------------------------------------
+Lugar de salida:   Lima
+Lugar de destino:  Cusco
+----------------------------------------
+Conductores asignados:
+  - Miguel Angel
+  - David Aldana
+----------------------------------------
+Tipo de Bus:    Premium
+Número de asiento:  B4
+----------------------------------------
+Nombre del cliente: Axel Cueva
+----------------------------------------
+     ¡Gracias por elegir nuestra empresa!
+----------------------------------------
