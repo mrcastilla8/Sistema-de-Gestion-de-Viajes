@@ -85,6 +85,8 @@ public class ViajeCRUD {
         List<Conductor> conductoresAsignados = new ArrayList<>();
         int numConductores = 2; // Número de conductores a asignar
         for (int i = 1; i <= numConductores; i++) {
+            limpiarPantalla();
+
             System.out.println("Lista de conductores:");
             for (Conductor conductor : conductores) {
                 if (conductoresAsignadosIds.contains(conductor.getIdConductor())) {
@@ -116,6 +118,7 @@ public class ViajeCRUD {
                 }
             }
             conductoresAsignados.add(conductorAsignado);
+            limpiarPantalla();
         }
 
         // Seleccionar ruta

@@ -31,7 +31,7 @@ public class Viaje implements Serializable {
         // Verificar si el bus es de tipo premium
         if (busAsignado != null && busAsignado.getTipo() != null) {
             if (busAsignado.getTipo().equalsIgnoreCase("premium")) {
-                multiplicador = 1.5; // Aumentar el precio para buses premium
+                multiplicador = 1.15; // Aumentar el precio para buses premium
             }
         } else {
             System.out.println("Error: Bus asignado es nulo o no tiene tipo definido.");

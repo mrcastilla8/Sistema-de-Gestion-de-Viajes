@@ -20,23 +20,11 @@ public class CRUDruta {
     public void addRuta() {
         
         System.out.println("=== Agregar Nueva Ruta ===");
-        /*
-        System.out.print("Ingrese ID de la Ruta: ");
-        int id = Integer.parseInt(scanner.nextLine());
-
-        // Verificar si el ID ya existe
-        for (Ruta ruta : rutas) {
-            if (ruta.getIdRuta() == id) {
-                System.out.println("Error: Ya existe una ruta con este ID.");
-                return;
-            }
-        }
-           */
         
         if(rutas.size() != 0){
             ID = rutas.get(rutas.size()-1).getIdRuta() + 1;
         }
-         
+        
         System.out.print("Ingrese Lugar de Inicio: ");
         String inicio = scanner.nextLine();
         System.out.print("Ingrese Lugar de Destino: ");
@@ -51,11 +39,12 @@ public class CRUDruta {
         Archivos.guardarObjetos(archivoRutas, rutas);
 
         System.out.println("Ruta agregada exitosamente.");
+        scanner.nextLine();
     }
 
     // Leer y mostrar todas las rutas
     public void verRutas() {
-        System.out.println("=== Lista de Rutas ===");
+        System.out.println("\n=== Lista de Rutas ===");
         if (rutas.isEmpty()) {
             System.out.println("No hay rutas disponibles.");
             return;
@@ -68,7 +57,6 @@ public class CRUDruta {
             ruta.getLugarDestino(),
             ruta.getDuracionEstimada()));
         }
-
     }
 
     // Modificar una ruta existente
@@ -94,11 +82,12 @@ public class CRUDruta {
                 Archivos.guardarObjetos(archivoRutas, rutas);
 
                 System.out.println("Ruta modificada exitosamente.");
+                scanner.nextLine();
                 return;
             }
         }
-
         System.out.println("Error: No se encontró ninguna ruta con ese ID.");
+        scanner.nextLine();
     }
 
     // Eliminar una ruta
@@ -115,11 +104,13 @@ public class CRUDruta {
                 Archivos.guardarObjetos(archivoRutas, rutas);
 
                 System.out.println("Ruta eliminada exitosamente.");
+                scanner.nextLine();
                 return;
             }
         }
 
         System.out.println("Error: No se encontró ninguna ruta con ese ID.");
+        scanner.nextLine();
     }
 
     public int obtenerIdRutaPorSalidayDestino(String salida, String destino){
@@ -134,15 +125,18 @@ public class CRUDruta {
     public void mostrarMenu() {
         int opcion = 0;
         do {
+            limpiarPantalla();
             System.out.println("---------------------------------------------------");
             System.out.println("\t=== Menu de Gestion de Rutas ===");
             System.out.println("---------------------------------------------------");
+            verRutas();
+            System.out.println("\n=== Opciones ===");
             System.out.println("1. Agregar Ruta");
-            System.out.println("2. Lista de Rutas");
-            System.out.println("3. Modificar Ruta");
-            System.out.println("4. Borrar Ruta");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opcion: ");
+            System.out.println("2. Modificar Ruta");
+            System.out.println("3. Borrar Ruta");
+            System.out.println("4. Salir");
+
+            System.out.print("\nSeleccione una opcion: ");
 
             try {
                 opcion = Integer.parseInt(scanner.nextLine());
@@ -155,20 +149,31 @@ public class CRUDruta {
                     addRuta();
                     break;
                 case 2:
-                    verRutas();
-                    break;
-                case 3:
                     modificarRuta();
                     break;
-                case 4:
+                case 3:
                     eliminarRuta();
                     break;
-                case 5:
+                case 4:
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opcion invalida. Por favor, intente de nuevo.");
             }
-        } while (opcion != 5);
+        } while (opcion != 4);
+    }
+    public static void limpiarPantalla() {
+        try {
+            if (System.getProperty("os.name").contains("Windows")) {
+                // Para Windows
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                // Para sistemas Unix
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            System.out.println("Error al intentar limpiar la consola.");
+        }
     }
 }
