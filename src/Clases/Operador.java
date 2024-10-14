@@ -61,6 +61,7 @@ public class Operador extends Persona {
         List<Operador> operadores = leerOperadores();
         boolean inicioExitoso = false;
         do {
+            Main.limpiarPantalla();
             System.out.println("------------------------------------");
             System.out.println("\t INICIO DE SESION ");
             System.out.println("------------------------------------");
@@ -160,6 +161,7 @@ public class Operador extends Persona {
         Scanner entrada = new Scanner(System.in);
         int opcion;
         do {
+            Main.limpiarPantalla();
             System.out.println("------------------------------------");
             System.out.println("\t MENU DE CRUD DE OPERADORES ");
             System.out.println("------------------------------------");
