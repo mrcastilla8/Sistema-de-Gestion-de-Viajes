@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 
 public class VentaBoleto {
     private Scanner entrada = new Scanner(System.in);
@@ -87,9 +88,11 @@ public class VentaBoleto {
                                 ", Conductores: " + crudViaje.obtenerNombresConductores(viajeSeleccionado.getConductoresAsignados()) +
                                 ", Ruta: " + viajeSeleccionado.getRutaAsignada().getLugarInicio() + " - " + viajeSeleccionado.getRutaAsignada().getLugarDestino());
                 
+                System.out.println();
                 asientos = Asiento.generarAsientos(viajeSeleccionado.getBusAsignado().getTipo());
                 Asiento.mostrarAsientosDisponibles(asientos);
-                System.out.println("Desea reservar un asiento?: ");
+                System.out.println("\nEl precio del boleto es: S/" + String.format("%.2f", viajeSeleccionado.getPrecio()));
+                System.out.println("\nDesea reservar un asiento?: ");
                 System.out.println("1. Sí");
                 System.out.println("2. No");
                 int opcionReserva = entrada.nextInt();
@@ -118,11 +121,13 @@ public class VentaBoleto {
                         System.out.println("Asiento disponible.");
                         System.out.println("Ingrese su nombre completo: ");
                         String nombrePasajero = entrada.nextLine();
+                        System.out.println("Ingrese su DNI: ");
+                        String dniPasajero = entrada.nextLine();
                         if (Asiento.reservarAsiento(asientos, asientoSeleccionado.getNumeroAsiento())) {
                             System.out.println("Asiento reservado exitosamente");
                             imprimirBoleto(fechaViaje, viajeSeleccionado.getRutaAsignada().getLugarInicio(), viajeSeleccionado.getRutaAsignada().getLugarDestino(), 
                                             viajeSeleccionado.getConductoresAsignados(), viajeSeleccionado.getBusAsignado().getTipo(), asientoSeleccionado.getNumeroAsiento(),
-                                             nombrePasajero);
+                                            nombrePasajero, dniPasajero, viajeSeleccionado.getPrecio());
                         } else {
                             System.out.println("El asiento no está disponible o no existe");
                         }
@@ -134,11 +139,11 @@ public class VentaBoleto {
     }
 
     public void imprimirBoleto(String fecha, String lugarSalida, String lugarDestino, List<Conductor> conductores, String tipoBus, 
-                               String numeroAsiento, String nombreCliente) {
-        String archivoNombre = "boleto_" + nombreCliente.replace(" ", "_") + ".txt"; // Crear nombre de archivo basado en el cliente
+                               String numeroAsiento, String nombreCliente, String dniCliente, double precioBoleto) {
+        String archivoNombre = "boleto_" + nombreCliente.replace(" ", "_") + "_" + fecha.replace("/", "") + "_asiento" + numeroAsiento + ".txt"; // Crear nombre de archivo basado en el cliente
         String rutaArchivo = System.getProperty("user.dir") + "/" + archivoNombre;
         
-        try (FileWriter writer = new FileWriter(archivoNombre)) {
+        try (FileWriter writer = new FileWriter(rutaArchivo)) {
             writer.write("----------------------------------------\n");
             writer.write("            BOLETO DE BUS\n");
             writer.write("----------------------------------------\n");
@@ -156,6 +161,9 @@ public class VentaBoleto {
             writer.write("Número de asiento:  " + numeroAsiento + "\n");
             writer.write("----------------------------------------\n");
             writer.write("Nombre del cliente: " + nombreCliente + "\n");
+            writer.write("DNI del cliente: " + dniCliente + "\n");
+            writer.write("----------------------------------------\n");
+            writer.write("Precio: S/" + String.format("%.2f", precioBoleto) + "\n");
             writer.write("----------------------------------------\n");
             writer.write("     ¡Gracias por elegir nuestra empresa!\n");
             writer.write("----------------------------------------\n");
