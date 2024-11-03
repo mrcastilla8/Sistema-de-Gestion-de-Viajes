@@ -85,7 +85,7 @@ public class ViajeCRUD {
         List<Conductor> conductoresAsignados = new ArrayList<>();
         int numConductores = 2; // Número de conductores a asignar
         for (int i = 1; i <= numConductores; i++) {
-            limpiarPantalla();
+            Main.limpiarPantalla();
 
             System.out.println("Lista de conductores:");
             for (Conductor conductor : conductores) {
@@ -118,7 +118,7 @@ public class ViajeCRUD {
                 }
             }
             conductoresAsignados.add(conductorAsignado);
-            limpiarPantalla();
+            Main.limpiarPantalla();
         }
 
         // Seleccionar ruta
@@ -385,7 +385,7 @@ public class ViajeCRUD {
     public void ejecutarMenu() {
         int opcion;
         do {
-            limpiarPantalla();
+            Main.limpiarPantalla();
             System.out.println("-------------------------------------");
             System.out.println("\t=== Gestión de Viajes ===");
             System.out.println("-------------------------------------");
@@ -421,18 +421,5 @@ public class ViajeCRUD {
         } while (opcion != 5);
     }
 
-    public static void limpiarPantalla() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                // Para Windows
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                // Para sistemas Unix
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            System.out.println("Error al intentar limpiar la consola.");
-        }
-    }
+
 }

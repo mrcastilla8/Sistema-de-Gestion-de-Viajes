@@ -125,7 +125,7 @@ public class CRUDruta {
     public void mostrarMenu() {
         int opcion = 0;
         do {
-            limpiarPantalla();
+            Main.limpiarPantalla();
             System.out.println("---------------------------------------------------");
             System.out.println("\t=== Menu de Gestion de Rutas ===");
             System.out.println("---------------------------------------------------");
@@ -162,18 +162,5 @@ public class CRUDruta {
             }
         } while (opcion != 4);
     }
-    public static void limpiarPantalla() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                // Para Windows
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                // Para sistemas Unix
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            System.out.println("Error al intentar limpiar la consola.");
-        }
-    }
+    
 }

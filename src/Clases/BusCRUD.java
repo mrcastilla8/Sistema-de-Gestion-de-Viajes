@@ -19,7 +19,7 @@ public class BusCRUD {
     // Métodos principales
     // Crear
     public void agregarBus() {
-        limpiarPantalla();
+        Main.limpiarPantalla();
         System.out.println("Ingrese los datos del nuevo bus:");
         // Selección de Tipo
         String tipo = seleccionarTipoBus();
@@ -223,7 +223,7 @@ public class BusCRUD {
 
     // Modificar
     public void actualizarBus() {
-        limpiarPantalla();
+        Main.limpiarPantalla();
         System.out.print("Ingrese el ID del bus que desea actualizar: ");
         int idBus = entrada.nextInt();
         entrada.nextLine();
@@ -293,7 +293,7 @@ public class BusCRUD {
 
     // Eliminar
     public void eliminarBus() {
-        limpiarPantalla();
+        Main.limpiarPantalla();
         System.out.print("Ingrese el ID del bus que desea eliminar: ");
         int idBus = entrada.nextInt();
         entrada.nextLine();  // Limpiar el buffer
@@ -320,7 +320,7 @@ public class BusCRUD {
     public void ejecutarMenu() {
         int opcion;
         do {
-            limpiarPantalla();
+            Main.limpiarPantalla();
             System.out.println("-------------------------------------");
             System.out.println("\t=== Gestión de Buses ===");
             System.out.println("-------------------------------------");
@@ -356,23 +356,7 @@ public class BusCRUD {
             }
         } while (opcion != 5);
     }
-
-    // ... [Resto de los métodos auxiliares]
-
-    public static void limpiarPantalla() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                // Para Windows
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                // Para sistemas Unix
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            System.out.println("Error al intentar limpiar la consola.");
-        }
-    }
+    
 
     public static void pausar() {
         System.out.println("\nPresiona Enter para continuar...");

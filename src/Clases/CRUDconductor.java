@@ -182,7 +182,7 @@ public class CRUDconductor {
         public void menuCrudConductor(List<Conductor> Conductores, CRUDconductor crudConductor){
         int opc_chofer;
         do{
-
+           Main.limpiarPantalla();
            System.out.println("-------------------------------------");
            System.out.println("\t===Gestion de choferes===");
            System.out.println("-------------------------------------");
