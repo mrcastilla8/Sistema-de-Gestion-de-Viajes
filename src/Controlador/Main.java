@@ -1,21 +1,12 @@
 package Controlador;
 import java.util.Scanner;
 import java.util.List;
-
+import Modelo.*;
 public class Main {
 
     public static void main(String[] args) {
         
-        Scanner scanner = new Scanner(System.in);  // Instancia de Scanner dentro de main
 
-        System.out.print("Ingrese ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        
-        Conexion conexion = new Conexion();
-        conexion.obtenerRutaPorID(id);  // Aquí puedes cambiar el ID según el dato que quieras consultar
-        conexion.cerrarConexion();
-        
-        /*
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
         op1.iniciarSesion();
@@ -77,7 +68,7 @@ public class Main {
                     break;
             }
         } while (opcionMenu != 7);
-        */
+        
     }
 
     public static void limpiarPantalla() {
