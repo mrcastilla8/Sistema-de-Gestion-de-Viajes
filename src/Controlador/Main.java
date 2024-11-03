@@ -32,7 +32,7 @@ public class Main {
             switch(opcionMenu) {
                 case 1:
                     // Gestionar Conductores
-                    List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
+                    List<Conductor> conductores = Archivos.leerObjetos("Conductores.txt");
                     CRUDconductor crudConductor = new CRUDconductor();
                     crudConductor.menuCrudConductor(conductores, crudConductor);
                     break;
