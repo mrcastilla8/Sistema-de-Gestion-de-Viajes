@@ -79,6 +79,9 @@ public class Asiento implements Serializable {
             if (asiento.isDisponible()) {
                 System.out.print(asiento.getNumeroAsiento() + " ");
             }
+            else{
+                System.out.print("X");
+            }
         }
         System.out.println();
     }

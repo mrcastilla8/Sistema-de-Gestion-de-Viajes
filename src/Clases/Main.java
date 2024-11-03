@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
         op1.iniciarSesion();
@@ -30,8 +30,15 @@ public class Main {
             switch(opcionMenu) {
                 case 1:
                     // Gestionar Conductores
+                    
+                    // NOTAS: 
+                    // 1. YA ESTÁ EL FRAME PARA AGREGAR UN CONDUCTOR
+                    // 2. FALTA EL FRAME PRINCIPAL, DONDE SE MUESTREN LOS CONDUCOTRES Y LAS DEMAS ACCIONES (boceto en paint)
                     List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
+                    Frame_add_chofer pantalla_addConductores = new Frame_add_chofer();
                     CRUDconductor crudConductor = new CRUDconductor();
+                    pantalla_addConductores.setVisible(true);
+                    pantalla_addConductores.setLocationRelativeTo(null);
                     crudConductor.menuCrudConductor(conductores, crudConductor);
                     break;
                 case 2:
