@@ -3,6 +3,7 @@ package Modelo;
 import java.io.*;
 import java.util.List;
 import java.util.ArrayList;
+import Controlador.Main;
 
 public class Archivos {
     // Guarda una lista de objetos en un archivo
