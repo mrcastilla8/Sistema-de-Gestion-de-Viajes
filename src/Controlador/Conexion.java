@@ -12,7 +12,6 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             conexion = DriverManager.getConnection("jdbc:mysql://junction.proxy.rlwy.net:57902/railway", "root", "NtSdYuSEvepsgTzNShRNuCMYXeHlnaIm");
-            System.out.println("Conexión exitosa.");
         } catch(Exception e) {
             System.out.println("Error en la conexión: " + e.getMessage());
         }

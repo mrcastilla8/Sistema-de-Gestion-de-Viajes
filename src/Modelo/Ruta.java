@@ -139,6 +139,99 @@ public class Ruta {
         }    
         return rutas;
     }
+    public static boolean agregarRuta(Ruta ruta) {
+        PreparedStatement ps;
+        Connection con = getConexion();
+        var sql = "INSERT INTO Ruta(LugarInicio,LugarDestino,duracionEstimada) VALUES(?,?,?)";
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setString(1, ruta.getLugarInicio());
+            ps.setString(2, ruta.getLugarDestino());
+            ps.setInt(3, ruta.getDuracionEstimada());
+            ps.execute();
+            return true;
+        }catch(Exception e){
+            System.out.println("Error al agregar ruta : " + e.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(Exception e){
+                System.out.println("Error al cerrar conexion: "+ e.getMessage());
+            }
+        }
+        return false;
+    }
+    public static boolean modificarRuta(Ruta ruta) {
+        PreparedStatement ps;
+        Connection con = getConexion();
+        var sql = "UPDATE Ruta SET LugarInicio=?, LugarDestino=?, DuracionEstimada=? WHERE idRuta=?";
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setString(1, ruta.getLugarInicio());
+            ps.setString(2, ruta.getLugarDestino());
+            ps.setInt(3, ruta.getDuracionEstimada());
+            ps.setInt(4, ruta.getIdRuta());
+            ps.execute();
+            return true;
+        }catch(Exception e){
+            System.out.println("Error al modificar ruta: " + e.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(Exception e){
+                System.out.println("Error al cerrar conexion: "+ e.getMessage());
+            }
+        }
+        return false;
+    }
+    public static boolean eliminarRuta(Ruta ruta) {
+        PreparedStatement ps;
+        Connection con = getConexion();
+        var sql = "DELETE FROM Ruta WHERE idRuta=?";
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ruta.getIdRuta());
+            ps.execute();
+            return true;
+        }catch(SQLException e){
+            System.out.println("Error al eliminar ruta: " + e.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException e){
+                System.out.println("Error al cerrar conexion: "+ e.getMessage());
+            }
+        }
+        return false;  
+    }
+    public static boolean buscarRutaPorId(Ruta ruta) {
+        PreparedStatement ps;
+        ResultSet rs;
+        Connection con = getConexion();
+        var sql = "SELECT * FROM Ruta WHERE idRuta = ?";
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, ruta.getIdRuta());
+            rs = ps.executeQuery();
+            if(rs.next()){
+                ruta.setLugarInicio(rs.getString("LugarInicio"));
+                ruta.setLugarDestino(rs.getString("LugarDestino"));
+                ruta.setDuracionEstimada(rs.getInt("DuracionEstimada"));
+                return true;
+            }
+        }catch(Exception e){
+            System.out.println("Error al recuperar ruta por id: " + e.getMessage());
+        }finally{
+            try{
+                con.close();
+            }catch(Exception e){
+                System.out.println("Error al cerrar conexion: "+ e.getMessage());
+            }
+        }
+        return false;
+    }
+    
+    //MENU RUTA
     public static void menuRuta() {
         //Conexion
         Connection conexion = getConexion();
@@ -164,20 +257,77 @@ public class Ruta {
     }
     public static int menu(Scanner consola){
         System.out.println("\t Menu de opciones");
-        System.out.println("1.- Agregar cliente");
-        System.out.println("2.- Listar clientes");
-        System.out.println("3.- Modificar cliente");
-        System.out.println("4.- Eliminar cliente");
-        System.out.println("5.- Safar");
+        System.out.println("1.- Agregar ruta");
+        System.out.println("2.- Listar rutas");
+        System.out.println("3.- Modificar ruta");
+        System.out.println("4.- Eliminar ruta");
+        System.out.println("5.- Salir");
         System.out.println("\nElige una opcion: ");
         return Integer.parseInt(consola.nextLine());
     }
     public static boolean ejecutarOpciones(int opcion, Scanner consola){
         boolean salir = false;
         switch(opcion){
+            case 1->{
+                System.out.println("\nLugar de inicio: ");
+                var LugarInicio = consola.nextLine();
+                System.out.println("\nLugar de destino: ");
+                var LugarDestino = consola.nextLine();
+                System.out.println("\nDuracion estimada: ");
+                var duracionEstimada = Integer.parseInt(consola.nextLine());
+                var newruta = new Ruta(LugarInicio, LugarDestino, duracionEstimada);
+                var agregao = Ruta.agregarRuta(newruta);
+                if(agregao){
+                    System.out.println("Ruta nuevo agregado: " + newruta);
+                }else{
+                    System.out.println("No se puedo agregar la ruta: " + newruta);
+                }
+            }
             case 2->{
                 var rutas = Ruta.listarRutas();
                 rutas.forEach(System.out::println);
+            }
+            case 3->{
+                System.out.println("ID de ruta a modificar: ");
+                int id = Integer.parseInt(consola.nextLine());
+                Ruta ruta = new Ruta(id);
+                if(Ruta.buscarRutaPorId(ruta)){
+                    System.out.println("Nuevo lugar de inicio ("+ ruta.getLugarInicio()+ "): ");
+                    var lugarInicio = consola.nextLine();
+                    System.out.println("Nuevo lugar de destino ("+ ruta.getLugarDestino()+ "): ");
+                    var lugarDestino = consola.nextLine();
+                    System.out.println("Nueva duracion estimada ("+ ruta.getDuracionEstimada()+ "): ");
+                    var duracionEstimada = Integer.parseInt(consola.nextLine());
+                    var rutamodificada = new Ruta(id, lugarInicio, lugarDestino, duracionEstimada);
+                    if(Ruta.modificarRuta(rutamodificada)){
+                        System.out.println("Ruta modificada: " + rutamodificada);
+                    }else{
+                        System.out.println("Error al modificar ruta: " + rutamodificada);
+                    }
+                }else{
+                    System.out.println("Ruta inexistente.");
+                }
+            }
+            case 4->{
+                System.out.println("ID de ruta a eliminar: ");
+                int id = Integer.parseInt(consola.nextLine());
+                Ruta ruta = new Ruta(id);
+                if(Ruta.buscarRutaPorId(ruta)){
+                    System.out.println("Lugar de inicio: "+ ruta.getLugarInicio());
+                    System.out.println("Lugar de destino: "+ ruta.getLugarDestino());
+                    System.out.println("Duracion Estimada: "+ ruta.getDuracionEstimada());
+                    System.out.println("Confirmar eliminacion?:(S/N)");
+                    if( "S".equals(consola.nextLine()) || "s".equals(consola.nextLine()) ){
+                        var rutaeliminada = new Ruta(id);
+                        if(Ruta.eliminarRuta(rutaeliminada)){
+                            System.out.println("Ruta Eliminada: " + rutaeliminada);
+                        }else{
+                            System.out.println("Error al eliminar ruta: " + rutaeliminada);
+                        }
+                    }
+                }else{
+                    System.out.println("ID de ruta inexistente.");
+                }
             }
             case 5->salir = true;
         }
