@@ -50,8 +50,7 @@ public class Main {
                     break;
                 case 3:
                     // Gestionar Rutas
-                    CRUDruta rutaManager = new CRUDruta();
-                    rutaManager.mostrarMenu();
+                    Ruta.menuRuta();
                     break;
                 case 4:
                     // Gestionar Operadores

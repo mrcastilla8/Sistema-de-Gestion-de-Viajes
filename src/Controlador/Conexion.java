@@ -12,55 +12,21 @@ import java.util.List;
 
 
 public class Conexion {
-    private Connection con;
-
-    public Conexion(){
+    public static Connection getConexion(){
+        Connection conexion = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); 
-            con = DriverManager.getConnection("jdbc:mysql://junction.proxy.rlwy.net:57902/railway", "root", "NtSdYuSEvepsgTzNShRNuCMYXeHlnaIm");
-            System.out.println("Conexión exitosa.");
+            conexion = DriverManager.getConnection("jdbc:mysql://junction.proxy.rlwy.net:57902/railway", "root", "NtSdYuSEvepsgTzNShRNuCMYXeHlnaIm");
         } catch(Exception e) {
-            System.err.println("Error en la conexión: " + e.getMessage());
+            System.out.println("Error en la conexión: " + e.getMessage());
         }
+        return conexion;
     }
-    
-    public <T> List<T> obtenerRegistros(String nombreTabla, Class<T> claseEntidad) {
-        List<T> listaObjetos = new ArrayList<>();
-        String sql = "SELECT * FROM " + nombreTabla;
 
-        try (Statement statement = con.createStatement();
-             ResultSet resultSet = statement.executeQuery(sql)) {
-
-            while (resultSet.next()) {
-                T objeto = claseEntidad.getDeclaredConstructor().newInstance();
-                ResultSetMetaData metaData = resultSet.getMetaData();
-
-                for (int i = 1; i <= metaData.getColumnCount(); i++) {
-                    String nombreColumna = metaData.getColumnName(i);
-                    Object valor = resultSet.getObject(i);
-
-                    try {
-                        var campo = claseEntidad.getDeclaredField(nombreColumna);
-                        campo.setAccessible(true);
-                        campo.set(objeto, valor);
-                    } catch (NoSuchFieldException e) {
-                        System.out.println("La clase " + claseEntidad.getSimpleName() + 
-                                           " no tiene un campo para la columna: " + nombreColumna);
-                    }
-                }
-                listaObjetos.add(objeto);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return listaObjetos;
-    }
     
     public void obtenerRutaPorID(int idRuta) {
         String sql = "SELECT * FROM Ruta WHERE idRuta = ?"; 
-        
+        Connection con = getConexion();
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             statement.setInt(1, idRuta); 
             
@@ -86,6 +52,7 @@ public class Conexion {
     }
 
     public void cerrarConexion() {
+        Connection con = getConexion();
         try {
             if (con != null && !con.isClosed()) {
                 con.close();
