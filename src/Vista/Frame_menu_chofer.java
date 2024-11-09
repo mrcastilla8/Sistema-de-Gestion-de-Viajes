@@ -1,5 +1,7 @@
-package Clases;
+package Vista;
 
+import Modelo.Archivos;
+import Modelo.Conductor;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;

@@ -1,30 +1,25 @@
 package Controlador;
+
+import Vista.Frame_add_chofer;
 import java.util.Scanner;
 import java.util.List;
+import Modelo.*;
+import Controlador.Conexion;
 
 public class Main {
 
     public static void main(String[] args) {
         
-        Scanner scanner = new Scanner(System.in);  // Instancia de Scanner dentro de main
 
-        System.out.print("Ingrese ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
-        
-        Conexion conexion = new Conexion();
-        conexion.obtenerRutaPorID(id);  // Aquí puedes cambiar el ID según el dato que quieras consultar
-        conexion.cerrarConexion();
-        
-        /*
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
-        op1.iniciarSesion();
         Archivos archivo = new Archivos();
+        CRUDconductor crudConductor = new CRUDconductor();
         
         int opcionMenu = 0;
         do {
             limpiarPantalla();
-            // Menu de opciones:
+            // Menu de opciones
             System.out.println("---------------------------------------------------------");
             System.out.println("\t===BIENVENIDO AL SISTEMA DE TRANSPORTE===");
             System.out.println("---------------------------------------------------------");
@@ -41,13 +36,9 @@ public class Main {
             switch(opcionMenu) {
                 case 1:
                     // Gestionar Conductores
-                    
-                    // NOTAS: 
-                    // 1. YA ESTÁ EL FRAME PARA AGREGAR UN CONDUCTOR
-                    // 2. FALTA EL FRAME PRINCIPAL, DONDE SE MUESTREN LOS CONDUCOTRES Y LAS DEMAS ACCIONES (boceto en paint)
                     List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
                     Frame_add_chofer pantalla_addConductores = new Frame_add_chofer();
-                    CRUDconductor crudConductor = new CRUDconductor();
+                    CRUDconductor crudConductora = new CRUDconductor();
                     pantalla_addConductores.setVisible(true);
                     pantalla_addConductores.setLocationRelativeTo(null);
                     crudConductor.menuCrudConductor(conductores, crudConductor);
@@ -84,7 +75,7 @@ public class Main {
                     break;
             }
         } while (opcionMenu != 7);
-        */
+        
     }
 
     public static void limpiarPantalla() {

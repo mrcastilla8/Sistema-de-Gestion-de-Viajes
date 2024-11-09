@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Conexion {
     private Connection con;
@@ -18,7 +23,41 @@ public class Conexion {
             System.err.println("Error en la conexión: " + e.getMessage());
         }
     }
+    
+    public <T> List<T> obtenerRegistros(String nombreTabla, Class<T> claseEntidad) {
+        List<T> listaObjetos = new ArrayList<>();
+        String sql = "SELECT * FROM " + nombreTabla;
 
+        try (Statement statement = con.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+
+            while (resultSet.next()) {
+                T objeto = claseEntidad.getDeclaredConstructor().newInstance();
+                ResultSetMetaData metaData = resultSet.getMetaData();
+
+                for (int i = 1; i <= metaData.getColumnCount(); i++) {
+                    String nombreColumna = metaData.getColumnName(i);
+                    Object valor = resultSet.getObject(i);
+
+                    try {
+                        var campo = claseEntidad.getDeclaredField(nombreColumna);
+                        campo.setAccessible(true);
+                        campo.set(objeto, valor);
+                    } catch (NoSuchFieldException e) {
+                        System.out.println("La clase " + claseEntidad.getSimpleName() + 
+                                           " no tiene un campo para la columna: " + nombreColumna);
+                    }
+                }
+                listaObjetos.add(objeto);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return listaObjetos;
+    }
+    
     public void obtenerRutaPorID(int idRuta) {
         String sql = "SELECT * FROM Ruta WHERE idRuta = ?"; 
         
