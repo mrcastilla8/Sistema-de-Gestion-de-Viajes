@@ -2,12 +2,20 @@ package Controlador;
 import java.util.Scanner;
 import java.util.List;
 import Modelo.*;
+import Vista.CRUDD;
 public class Main {
 
     public static void main(String[] args) {
         
+        CRUDD ventanacrud = new CRUDD();
+        ventanacrud.setVisible(true);
 
-        Scanner entrada = new Scanner(System.in);
+    }
+        
+    
+        
+
+        /*Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
         op1.iniciarSesion();
         Archivos archivo = new Archivos();
@@ -68,7 +76,7 @@ public class Main {
             }
         } while (opcionMenu != 7);
         
-    }
+    }*/
 
     public static void limpiarPantalla() {
         try {
@@ -81,5 +89,4 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error al intentar limpiar la consola.");
         }
-    }
-}
+    }}
