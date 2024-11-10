@@ -34,7 +34,7 @@ public class CRUDconductor {
             System.out.println("ID asignada: " + ID);
         }
      
-        Conductores.add(new Conductor(ID, num_licencia, DNI, nombre, numero, edad));
+       // Conductores.add(new Conductor(ID, num_licencia, DNI, nombre, apellido, numero, edad));
         archivo.guardarObjetos("Conductores.txt", Conductores);
         System.out.println("\nNuevo conductor registrado!");
         entrada.nextLine();

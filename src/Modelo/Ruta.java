@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import static Controlador.Conexion.getConexion;
+import Controlador.Conexion;
 import java.util.Scanner;
 
 public class Ruta {
@@ -115,7 +115,8 @@ public class Ruta {
         List<Ruta> rutas = new ArrayList<>();
         PreparedStatement ps;
         ResultSet rs;
-        Connection con = getConexion();
+        Conexion conexionCrudRutas = new Conexion();
+        Connection con = conexionCrudRutas.obtenerConexion();
         var sql = "SELECT * FROM Ruta ORDER BY idRuta";
         try{
             ps = con.prepareStatement(sql);
@@ -141,7 +142,8 @@ public class Ruta {
     }
     public static boolean agregarRuta(Ruta ruta) {
         PreparedStatement ps;
-        Connection con = getConexion();
+        Conexion conexionCrudRutas = new Conexion();
+        Connection con = conexionCrudRutas.obtenerConexion();
         var sql = "INSERT INTO Ruta(LugarInicio,LugarDestino,duracionEstimada) VALUES(?,?,?)";
         try{
             ps = con.prepareStatement(sql);
@@ -163,7 +165,8 @@ public class Ruta {
     }
     public static boolean modificarRuta(Ruta ruta) {
         PreparedStatement ps;
-        Connection con = getConexion();
+        Conexion conexionCrudRutas = new Conexion();
+        Connection con = conexionCrudRutas.obtenerConexion();
         var sql = "UPDATE Ruta SET LugarInicio=?, LugarDestino=?, DuracionEstimada=? WHERE idRuta=?";
         try{
             ps = con.prepareStatement(sql);
@@ -186,7 +189,8 @@ public class Ruta {
     }
     public static boolean eliminarRuta(Ruta ruta) {
         PreparedStatement ps;
-        Connection con = getConexion();
+        Conexion conexionCrudRutas = new Conexion();
+        Connection con = conexionCrudRutas.obtenerConexion();
         var sql = "DELETE FROM Ruta WHERE idRuta=?";
         try{
             ps = con.prepareStatement(sql);
@@ -207,7 +211,8 @@ public class Ruta {
     public static boolean buscarRutaPorId(Ruta ruta) {
         PreparedStatement ps;
         ResultSet rs;
-        Connection con = getConexion();
+       Conexion conexionCrudRutas = new Conexion();
+        Connection con = conexionCrudRutas.obtenerConexion();
         var sql = "SELECT * FROM Ruta WHERE idRuta = ?";
         try{
             ps = con.prepareStatement(sql);
@@ -234,7 +239,8 @@ public class Ruta {
     //MENU RUTA
     public static void menuRuta() {
         //Conexion
-        Connection conexion = getConexion();
+        Conexion conexionCrudRutas = new Conexion();
+        Connection conexion = conexionCrudRutas.obtenerConexion();
         if(conexion != null){
             System.out.println("Conexion exitosa: " + conexion);
         }else{

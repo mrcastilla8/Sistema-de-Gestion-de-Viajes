@@ -12,21 +12,24 @@ import java.util.List;
 
 
 public class Conexion {
-    public static Connection getConexion(){
-        Connection conexion = null;
+    Connection conexion;
+    public Conexion(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             conexion = DriverManager.getConnection("jdbc:mysql://junction.proxy.rlwy.net:57902/railway", "root", "NtSdYuSEvepsgTzNShRNuCMYXeHlnaIm");
         } catch(Exception e) {
             System.out.println("Error en la conexión: " + e.getMessage());
         }
+    }
+    
+    public Connection obtenerConexion(){
         return conexion;
     }
 
     
     public void obtenerRutaPorID(int idRuta) {
         String sql = "SELECT * FROM Ruta WHERE idRuta = ?"; 
-        Connection con = getConexion();
+        Connection con = obtenerConexion();
         try (PreparedStatement statement = con.prepareStatement(sql)) {
             statement.setInt(1, idRuta); 
             
@@ -52,7 +55,7 @@ public class Conexion {
     }
 
     public void cerrarConexion() {
-        Connection con = getConexion();
+        Connection con = obtenerConexion();
         try {
             if (con != null && !con.isClosed()) {
                 con.close();

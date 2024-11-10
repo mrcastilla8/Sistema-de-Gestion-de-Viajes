@@ -1,16 +1,19 @@
 package Controlador;
 
-import Vista.Frame_add_chofer;
 import java.util.Scanner;
 import java.util.List;
 import Modelo.*;
-import Controlador.Conexion;
-
+import Vista.CRUDD;
+import Vista.IguConductor;
 public class Main {
 
     public static void main(String[] args) {
         
-
+        //CRUDD ventanacrud = new CRUDD();
+        //ventanacrud.setVisible(true);
+        
+        //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
+        IguConductor ventanaConductor = new IguConductor();       
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
         Archivos archivo = new Archivos();
@@ -35,13 +38,12 @@ public class Main {
             opcionMenu = entrada.nextInt();
             switch(opcionMenu) {
                 case 1:
+                    ventanaConductor.setVisible(true);
+                                     
                     // Gestionar Conductores
-                    List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
-                    Frame_add_chofer pantalla_addConductores = new Frame_add_chofer();
-                    CRUDconductor crudConductora = new CRUDconductor();
-                    pantalla_addConductores.setVisible(true);
-                    pantalla_addConductores.setLocationRelativeTo(null);
-                    crudConductor.menuCrudConductor(conductores, crudConductor);
+                    //List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
+                    //CRUDconductor crudConductora = new CRUDconductor();
+                    //crudConductor.menuCrudConductor(conductores, crudConductor);
                     break;
                 case 2:
                     // Gestionar Buses
