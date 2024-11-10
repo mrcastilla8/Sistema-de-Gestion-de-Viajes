@@ -47,9 +47,9 @@ public class VentaBoleto {
         System.out.println("\t=== Solicitud de preferencias ===");
         System.out.println("-------------------------------------");
         System.out.println("Ingrese el lugar de inicio: ");
-        String lugarInicio = entrada.nextLine();
+        String lugarInicio = entrada.nextLine().strip().replace(" ", ""); // strip: "Lima" == "  Lima ", replace: "Lima" == "L i m  a"
         System.out.println("Ingrese el lugar de destino: ");
-        String lugarDestino = entrada.nextLine();   
+        String lugarDestino = entrada.nextLine().strip().replace(" ", "");
         System.out.println("Ingrese la fecha de viaje (dd/mm/aaaa): ");
         String fechaViaje = entrada.nextLine();  
         int idRuta = crudRuta.obtenerIdRutaPorSalidayDestino(lugarInicio, lugarDestino);
@@ -111,6 +111,7 @@ public class VentaBoleto {
                 limpiarPantalla();
                 System.out.println("Lista de asientos disponibles: ");
                 do {
+                    //MOSTRAMOS LOS ASIENTOS
                     for (int i = 0; i < tamaañoListaAsientos; i++) {
                         System.out.println(i + 1 + ". " + asientos.get(i).getNumeroAsiento());
                     }
