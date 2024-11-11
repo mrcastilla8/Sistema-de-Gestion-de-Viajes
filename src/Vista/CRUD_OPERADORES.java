@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Vista;
 
 import Controlador.Conexion;
@@ -9,7 +5,6 @@ import Controlador.Conexion;
 import Modelo.Operador;
 import java.sql.Connection;
 import java.sql.ResultSet;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
@@ -463,9 +458,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-     
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Crear;
     private javax.swing.JButton Eliminar;

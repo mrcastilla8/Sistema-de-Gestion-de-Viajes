@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
-
 import javax.swing.JOptionPane;
 import Vista.CRUD_OPERADORES;
 import Controlador.Conexion;
-
 import javax.swing.table.DefaultTableModel;
 public class Operador {
     

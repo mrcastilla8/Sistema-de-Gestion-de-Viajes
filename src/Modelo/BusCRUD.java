@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class BusCRUD {
+    /*
     private List<Bus> buses;  // Lista para almacenar los buses
     private Scanner entrada = new Scanner(System.in, "UTF-8");
 
@@ -364,4 +365,5 @@ public class BusCRUD {
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
+*/
 }

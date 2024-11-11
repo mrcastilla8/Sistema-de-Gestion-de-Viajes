@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class ViajeCRUD {
-
+/*
     private List<Viaje> viajes;
     private Scanner entrada = new Scanner(System.in, "UTF-8");
 
@@ -421,6 +421,6 @@ public class ViajeCRUD {
             }
         } while (opcion != 5);
     }
-
+*/
 
 }
