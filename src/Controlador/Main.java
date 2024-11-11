@@ -3,7 +3,8 @@ package Controlador;
 import java.util.Scanner;
 import java.util.List;
 import Modelo.*;
-import Vista.CRUDD;
+import Vista.CRUD_OPERADORES;
+import Vista.CRUD_BUSES;
 import Vista.IguConductor;
 import Vista.IguRuta;
 public class Main {
@@ -14,6 +15,8 @@ public class Main {
         //ventanacrud.setVisible(true);
         
         //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
+        CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
+        CRUD_BUSES ventanaBuses = new CRUD_BUSES();
         IguConductor ventanaConductor = new IguConductor();  
         IguRuta ventanaRuta = new IguRuta();
         Scanner entrada = new Scanner(System.in);
@@ -49,8 +52,7 @@ public class Main {
                     break;
                 case 2:
                     // Gestionar Buses
-                    BusCRUD busCRUD = new BusCRUD();
-                    busCRUD.ejecutarMenu();
+                    ventanaBuses.setVisible(true);
                     break;
                 case 3:
                     // Gestionar Rutas
@@ -58,7 +60,7 @@ public class Main {
                     break;
                 case 4:
                     // Gestionar Operadores
-                    Operador.menuOperadoresCRUD();
+                    ventanaOperadores.setVisible(true);
                     break;
                 case 5:
                     // Gestionar Viajes
