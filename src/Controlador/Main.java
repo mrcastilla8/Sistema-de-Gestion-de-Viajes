@@ -19,12 +19,12 @@ public class Main {
         MainMenu menu = new MainMenu();
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
         CRUD_Buses ventanaBuses = new CRUD_Buses();
-        IguConductor ventanaConductor = new IguConductor();  
+        IguConductor ventanaConductores = new IguConductor();
+        Conductor conductor = new Conductor(ventanaConductores);
         IguRuta ventanaRuta = new IguRuta();
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador(ventanaOperadores);
         Archivos archivo = new Archivos();
-        CRUDconductor crudConductor = new CRUDconductor();
         
         menu.setVisible(true);
         
