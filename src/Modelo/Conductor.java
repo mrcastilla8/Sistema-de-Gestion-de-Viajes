@@ -10,12 +10,15 @@ public class Conductor extends Persona implements Serializable{
     private String numLicencia;
     
     // Constructor
-
-    public Conductor(int idConductor, String numLicencia, String dni, String nombre, String numero, int edad) {
-        super(dni, nombre, numero, edad);
+    public Conductor() {
+    }
+    
+    public Conductor(int idConductor, String numLicencia, String dni, String nombre, String apellido, String numero, int edad) {
+        super(dni, nombre, apellido, numero, edad);
         this.idConductor = idConductor;
         this.numLicencia = numLicencia;
     }
+    
 
     // Métodos de Conductor
 

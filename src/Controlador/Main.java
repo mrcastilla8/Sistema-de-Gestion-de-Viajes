@@ -1,29 +1,31 @@
 package Controlador;
+
 import java.util.Scanner;
 import java.util.List;
 import Modelo.*;
-import Vista.CRUDD;
+import Vista.CRUD_OPERADORES;
+import Vista.CRUD_BUSES;
+import Vista.IguConductor;
 public class Main {
 
     public static void main(String[] args) {
         
-        CRUDD ventanacrud = new CRUDD();
-        ventanacrud.setVisible(true);
-
-    }
+        //CRUDD ventanacrud = new CRUDD();
+        //ventanacrud.setVisible(true);
         
-    
-        
-
-        /*Scanner entrada = new Scanner(System.in);
+        //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
+        CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
+        CRUD_BUSES ventanaBuses = new CRUD_BUSES();
+        IguConductor ventanaConductor = new IguConductor();       
+        Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
-        op1.iniciarSesion();
         Archivos archivo = new Archivos();
+        CRUDconductor crudConductor = new CRUDconductor();
         
         int opcionMenu = 0;
         do {
             limpiarPantalla();
-            // Menu de opciones:
+            // Menu de opciones
             System.out.println("---------------------------------------------------------");
             System.out.println("\t===BIENVENIDO AL SISTEMA DE TRANSPORTE===");
             System.out.println("---------------------------------------------------------");
@@ -39,15 +41,16 @@ public class Main {
             opcionMenu = entrada.nextInt();
             switch(opcionMenu) {
                 case 1:
+                    ventanaConductor.setVisible(true);
+                                     
                     // Gestionar Conductores
-                    List<Conductor> conductores = Archivos.leerObjetos("Conductores.txt");
-                    CRUDconductor crudConductor = new CRUDconductor();
-                    crudConductor.menuCrudConductor(conductores, crudConductor);
+                    //List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
+                    //CRUDconductor crudConductora = new CRUDconductor();
+                    //crudConductor.menuCrudConductor(conductores, crudConductor);
                     break;
                 case 2:
                     // Gestionar Buses
-                    BusCRUD busCRUD = new BusCRUD();
-                    busCRUD.ejecutarMenu();
+                    ventanaBuses.setVisible(true);
                     break;
                 case 3:
                     // Gestionar Rutas
@@ -55,7 +58,7 @@ public class Main {
                     break;
                 case 4:
                     // Gestionar Operadores
-                    Operador.menuOperadoresCRUD();
+                    ventanaOperadores.setVisible(true);
                     break;
                 case 5:
                     // Gestionar Viajes
@@ -76,7 +79,7 @@ public class Main {
             }
         } while (opcionMenu != 7);
         
-    }*/
+    }
 
     public static void limpiarPantalla() {
         try {
@@ -89,4 +92,5 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error al intentar limpiar la consola.");
         }
-    }}
+    }
+}

@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
-public class CRUD_OPERADORES extends javax.swing.JFrame {
+public class CRUD_BUSES extends javax.swing.JFrame {
 
     Conexion con1= new Conexion();
     Connection conet;
@@ -17,7 +17,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     int idc;
-    public CRUD_OPERADORES() {
+    public CRUD_BUSES() {
         initComponents();
         setLocationRelativeTo(null);
         consultar();
@@ -50,7 +50,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaOperador = new javax.swing.JTable();
+        TablaBus = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,7 +122,6 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,7 +163,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
@@ -188,31 +187,31 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Base de datos"));
 
-        TablaOperador.setModel(new javax.swing.table.DefaultTableModel(
+        TablaBus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombres", "Apellidos", "Usuario", "Contraseña", "DNI", "Telefono", "Edad"
+                "ID", "Tipo", "Capacidad", "Estado", "ID Conductor", "ID Conductor 2"
             }
         ));
-        jScrollPane1.setViewportView(TablaOperador);
+        jScrollPane1.setViewportView(TablaBus);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -306,14 +305,18 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CRUD_OPERADORES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUD_BUSES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CRUD_OPERADORES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUD_BUSES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CRUD_OPERADORES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUD_BUSES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CRUD_OPERADORES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CRUD_BUSES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -322,36 +325,36 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CRUD_OPERADORES().setVisible(true);
+                new CRUD_BUSES().setVisible(true);
             }
         });
     }
 
       
     void consultar(){
-        String sq2 = "SELECT c.idOperadores, p.nombre, p.apellido, p.edad, p.DNI, p.telefono, c.username, c.password, c.Rol " +
-             "FROM persona p " +
-             "JOIN operadores c ON p.idPersona = c.idPersona";
+         String sq3 = "SELECT b.id_bus, c1.idConductor AS id_conductor1, c2.idConductor AS id_conductor2, " +
+             "b.tipo, b.capacidad, b.estado " +
+             "FROM conductores c1 " +
+             "JOIN buses b ON c1.idConductor = b.id_conductor1 " +
+             "JOIN conductores c2 ON c2.idConductor = b.id_conductor2";
+  
         try {
             conet = con1.obtenerConexion();
             st = conet.createStatement();
-            rs = st.executeQuery(sq2);
-            Object[] operadores = new Object[9];
-            modelo = (DefaultTableModel) TablaOperador.getModel();
+            rs = st.executeQuery(sq3);
+            Object[] operadores = new Object[6];
+            modelo = (DefaultTableModel) TablaBus.getModel();
             while (rs.next()) {
-                operadores[0] = rs.getInt("idOperadores");
-                operadores[1] = rs.getString("nombre");
-                operadores[2] = rs.getString("apellido");
-                operadores[3] = rs.getString("username");
-                operadores[4] = rs.getString("password");
-                operadores[5] = rs.getString("Rol");
-                operadores[6] = rs.getString("DNI");
-                operadores[7] = rs.getString("telefono");
-                operadores[8] = rs.getInt("edad");
+                operadores[0] = rs.getInt("id_bus");
+                operadores[1] = rs.getString("tipo");
+                operadores[2] = rs.getString("capacidad");
+                operadores[3] = rs.getString("estado");
+                operadores[4] = rs.getInt("id_conductor1");
+                operadores[5] = rs.getInt("id_conductor2");
                 modelo.addRow(operadores);
                 
             }
-            TablaOperador.setModel(modelo);
+            TablaBus.setModel(modelo);
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception
@@ -360,7 +363,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaOperador;
+    private javax.swing.JTable TablaBus;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
