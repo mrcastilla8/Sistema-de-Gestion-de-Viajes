@@ -17,11 +17,11 @@ public class Main {
         
         //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
         MainMenu menu = new MainMenu();
-        CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
-        CRUD_Buses ventanaBuses = new CRUD_Buses();
-        IguConductor ventanaConductores = new IguConductor();
+        CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES(menu);
+        CRUD_Buses ventanaBuses = new CRUD_Buses(menu);
+        IguConductor ventanaConductores = new IguConductor(menu);
         Conductor conductor = new Conductor(ventanaConductores);
-        IguRuta ventanaRuta = new IguRuta();
+        IguRuta ventanaRuta = new IguRuta(menu);
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador(ventanaOperadores);
         Archivos archivo = new Archivos();

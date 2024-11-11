@@ -3,6 +3,7 @@ package Vista;
 import Controlador.Conexion;
 
 import Modelo.Operador;
+import Vista.MainMenu;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -10,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
 public class CRUD_OPERADORES extends javax.swing.JFrame {
     
+    MainMenu menu;
     Operador opera;
     Conexion con1= new Conexion();
     Connection conet;
@@ -17,7 +19,8 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     int idc;
-    public CRUD_OPERADORES() {
+    public CRUD_OPERADORES(MainMenu menu) {
+        this.menu=menu;
         initComponents();
         setLocationRelativeTo(null);
         opera = new Operador(this);
@@ -62,6 +65,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaOperador = new javax.swing.JTable();
+        buttonAtras2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -322,6 +326,15 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        buttonAtras2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buttonAtras2.setText("ATRÁS");
+        buttonAtras2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        buttonAtras2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAtras2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -335,14 +348,18 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(233, 233, 233)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(280, 280, 280))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                .addGap(129, 129, 129)
+                .addComponent(buttonAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(buttonAtras2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -453,6 +470,11 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private void optionRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionRolActionPerformed
     }//GEN-LAST:event_optionRolActionPerformed
 
+    private void buttonAtras2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAtras2ActionPerformed
+        menu.setVisible(true);
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonAtras2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -465,6 +487,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JButton Modificar;
     public javax.swing.JTable TablaOperador;
     private javax.swing.JLabel asdfgdh;
+    private javax.swing.JButton buttonAtras2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
