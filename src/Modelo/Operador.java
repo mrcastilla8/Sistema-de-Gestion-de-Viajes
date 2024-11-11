@@ -3,6 +3,7 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import Vista.CRUD_OPERADORES;
 import Controlador.Conexion;
@@ -50,54 +51,79 @@ public class Operador {
             // TODO: handle exception
         }
     }
-    public void Agregar(){
-        
+    public void Agregar() {
+    String user = ventanaOperadores.txtUsuario.getText();
+    String contra = ventanaOperadores.txtContraseña.getText();
+    String rol = (String) ventanaOperadores.optionRol.getSelectedItem();
+    String nombre = ventanaOperadores.txtNombre.getText();
+    String apellido = ventanaOperadores.txtApellido.getText();
+    String dni = ventanaOperadores.txtDNI.getText();
+    String telefono = ventanaOperadores.txtTelefono.getText();
 
-        String user = ventanaOperadores.txtUsuario.getText();
-        String contra = ventanaOperadores.txtContraseña.getText();
-        String rol = ventanaOperadores.txtRol.getText();
-        String nombre = ventanaOperadores.txtNombre.getText();
-        String apellido = ventanaOperadores.txtApellido.getText();
-        String DNI = ventanaOperadores.txtDNI.getText();
-        String telefono = ventanaOperadores.txtTelefono.getText();
-        
-
-        try {
-            if (ventanaOperadores.txtEdad.getText().equals("") || user.equals("") || contra.equals("") || rol.equals("") || nombre.equals("") || apellido.equals("") || DNI.equals("") || telefono.equals("")) {
-                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
+    try {
+        // Validar si los campos requeridos están vacíos
+        if (ventanaOperadores.txtEdad.getText().equals("") || user.equals("") || contra.equals("") ||
+            nombre.equals("") || apellido.equals("") || dni.equals("") || telefono.equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
+            limpiarTabla();
+        } else {
+            // Primero, verificar si existen duplicados
+            if (determinarDuplicados()) {
                 limpiarTabla();
-            }else{
-                int edad = Integer.parseInt(ventanaOperadores.txtEdad.getText());
-                String sq1 = "INSERT INTO persona (nombre, apellido, edad, DNI, telefono) VALUES ('"+nombre+"', '"+apellido+"', '"+edad+"', '"+DNI+"', '"+telefono+"')";
-                conet = con1.obtenerConexion();
-                st = conet.createStatement();
-                st.executeUpdate(sq1,Statement.RETURN_GENERATED_KEYS);
-                rs = st.getGeneratedKeys();
-                int idPersona = -1;
-                if (rs.next()) {
-                    idPersona = rs.getInt(1);
-                }
-                String sq2 = "INSERT INTO operadores (idPersona,username, password, Rol) VALUES ('"+idPersona+"', '"+user+"', '"+contra+"', '"+rol+"')";
-                st.executeUpdate(sq2);
-                JOptionPane.showMessageDialog(null, "Operador agregado");
-                limpiarTabla();
+                return;
             }
-            
-        } catch (Exception e) {
+
+            // Si no hay duplicados, proceder a agregar
+            int edad = Integer.parseInt(ventanaOperadores.txtEdad.getText());
+
+            // Insertar en la tabla persona
+            conet = con1.obtenerConexion();
+            String sq1 = "INSERT INTO persona (nombre, apellido, edad, DNI, telefono) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement pstPersona = conet.prepareStatement(sq1, Statement.RETURN_GENERATED_KEYS);
+            pstPersona.setString(1, nombre);
+            pstPersona.setString(2, apellido);
+            pstPersona.setInt(3, edad);
+            pstPersona.setString(4, dni);
+            pstPersona.setString(5, telefono);
+            pstPersona.executeUpdate();
+            rs = pstPersona.getGeneratedKeys();
+            int idPersona = -1;
+            if (rs.next()) {
+                idPersona = rs.getInt(1);
+            }
+
+            // Insertar en la tabla operadores
+            String sq2 = "INSERT INTO operadores (idPersona, username, password, Rol) VALUES (?, ?, ?, ?)";
+            PreparedStatement pstOperador = conet.prepareStatement(sq2);
+            pstOperador.setInt(1, idPersona);
+            pstOperador.setString(2, user);
+            pstOperador.setString(3, contra);
+            pstOperador.setString(4, rol);
+            pstOperador.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Operador agregado");
+            limpiarTabla();
         }
-    }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al agregar operador.");
+    } 
+}
+
+        
+    
     public void Modificar(){
         String nombre = ventanaOperadores.txtNombre.getText();
         String apellido = ventanaOperadores.txtApellido.getText();
         String edadStr = ventanaOperadores.txtEdad.getText();
         String contra = ventanaOperadores.txtContraseña.getText();
-        String rol = ventanaOperadores.txtRol.getText();
+        String rol = (String)ventanaOperadores.optionRol.getSelectedItem();;
         String usuario = ventanaOperadores.txtUsuario.getText();
         String telefono = ventanaOperadores.txtTelefono.getText();
         String DNI = ventanaOperadores.txtDNI.getText();
 
         try {
-            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") || contra.equals("") || rol.equals("") || usuario.equals("") || telefono.equals("") || ventanaOperadores.txtDNI.getText().equals("")){
+            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") || contra.equals("") || usuario.equals("") || telefono.equals("") || ventanaOperadores.txtDNI.getText().equals("")){
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
                 limpiarTabla();
             }
@@ -189,6 +215,8 @@ public class Operador {
         modelo.removeRow(0);
     }
 }
+    
+    
 
     public void nuevo(){
         ventanaOperadores.txtNombre.setText("");
@@ -198,9 +226,49 @@ public class Operador {
         ventanaOperadores.txtTelefono.setText("");
         ventanaOperadores.txtUsuario.setText("");
         ventanaOperadores.txtContraseña.setText("");
-        ventanaOperadores.txtRol.setText("");
         ventanaOperadores.txtID.setText("");
     }
+    
+    public boolean determinarDuplicados() {
+    // Obtener los datos ingresados desde la interfaz
+    String dni = ventanaOperadores.txtDNI.getText();
+    String username = ventanaOperadores.txtUsuario.getText();
+
+    // Validar que los campos que queremos verificar no estén vacíos
+    if (dni.isEmpty() || username.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos requeridos para verificar duplicados.");
+        return true; // Retornamos true para que no continúe con la operación de agregar
+    }
+
+    try {
+        // Establecer la conexión con la base de datos
+        conet = con1.obtenerConexion();
+        st = conet.createStatement();
+
+        // Crear la consulta para buscar registros que coincidan con el DNI o el username
+        String query = "SELECT * FROM operadores o " +
+                       "JOIN persona p ON o.idPersona = p.idPersona " +
+                       "WHERE p.DNI = ? OR o.username = ?";
+        
+        PreparedStatement pst = conet.prepareStatement(query);
+        pst.setString(1, dni);
+        pst.setString(2, username);
+        
+        rs = pst.executeQuery();
+
+        // Si hay al menos un registro en el resultado, significa que hay duplicados
+        if (rs.next()) {
+            JOptionPane.showMessageDialog(null, "El DNI o el nombre de usuario ya están registrados en la base de datos.");
+            return true;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al verificar duplicados.");
+    } 
+    return false;
+}
+
+    
     
     public int obtenerIdPersonaDesdeidOperador(int idOperador) {
      int idPersona = -1; // Valor por defecto si no se encuentra

@@ -6,6 +6,7 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Controlador.Conexion;
 import Vista.IguConductor;
+import java.sql.PreparedStatement;
 import javax.swing.table.DefaultTableModel;
 
 public class Conductor{
@@ -64,6 +65,11 @@ public class Conductor{
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
             }
             else{
+                // Primero, verificar si existen duplicados
+               if (determinarDuplicados()) {
+                   limpiarTabla();
+                   return;
+               }               
                 
                 // Convertir edad a int después de verificar que no está vacío
                 int edad = Integer.parseInt(edadStr);
@@ -88,7 +94,8 @@ public class Conductor{
             
             limpiarTabla();
         }catch(Exception e){
-            
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al agregar conductor.");    
         }
     }
     
@@ -180,6 +187,43 @@ public class Conductor{
         ventanaConductores.txtfLicencia.setText("");
         ventanaConductores.txtfTelefono.setText("");
     }
+    
+    public boolean determinarDuplicados() {
+        // Obtener los datos ingresados desde la interfaz
+        String dni = ventanaConductores.txtfDNI.getText();
+        String licencia = ventanaConductores.txtfLicencia.getText();
+
+        // Validar que los campos que queremos verificar no estén vacíos
+        if (dni.isEmpty() || licencia.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos requeridos para verificar duplicados.");
+            return true; // Retornamos true para que no continúe con la operación de agregar
+        }
+
+        try {
+            // Establecer la conexión con la base de datos
+            conet = con.obtenerConexion();
+            String query = "SELECT * FROM conductores c " +
+                           "JOIN persona p ON c.idPersona = p.idPersona " +
+                           "WHERE p.DNI = ? OR c.numLicencia = ?";
+
+            PreparedStatement pst = conet.prepareStatement(query);
+            pst.setString(1, dni);
+            pst.setString(2, licencia);
+
+            rs = pst.executeQuery();
+
+            // Si hay al menos un registro en el resultado, significa que hay duplicados
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El DNI o la licencia ya están registrados en la base de datos.");
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al verificar duplicados.");
+        }
+        return false;
+    }
+    
     public void limpiarTabla() {
         // Usa un while para eliminar todas las filas de la tabla
         while (modelo.getRowCount() > 0) {
