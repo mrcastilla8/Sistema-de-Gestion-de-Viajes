@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Conexion {
     Connection conexion;
@@ -21,6 +26,7 @@ public class Conexion {
         return conexion;
     }
 
+    
     public void obtenerRutaPorID(int idRuta) {
         String sql = "SELECT * FROM Ruta WHERE idRuta = ?"; 
         Connection con = obtenerConexion();
