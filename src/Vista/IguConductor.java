@@ -318,15 +318,18 @@ public class IguConductor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfApellidoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtfApellidoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        
+       eliminar();
+       consultar();
+       nuevo();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+      
         modificar();
         consultar();
         nuevo();
@@ -337,10 +340,9 @@ public class IguConductor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+     
         agregar();
-        consultar();
-        
+        consultar();      
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     //Metodo que permite rellenar los txtFields al presionar algun registro (fila)
@@ -505,7 +507,32 @@ public class IguConductor extends javax.swing.JFrame {
         } catch(Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al actualizar los datos del conductor.");
+            limpiarTabla();
         }        
+    }
+    
+    public void eliminar(){
+        int fila = TablaConductor.getSelectedRow();
+        try{
+            if(fila<0){
+                JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
+                limpiarTabla();
+            }
+            else{
+                int idConductor = Integer.parseInt(txtfIdConductor.getText());
+                int idPersona = obtenerIdPersonaDesdeIdConductor(idConductor);
+                String sql = "delete from persona where idPersona = "+idPersona;
+                conet = con.obtenerConexion();
+                st = conet.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Conductor eliminado!"); 
+                limpiarTabla();
+            }
+            
+        }catch(Exception e){
+            
+            limpiarTabla();
+        }
     }
     
     public void nuevo(){
