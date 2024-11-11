@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
-public class CRUD_BUSES extends javax.swing.JFrame {
+public class CRUD_Buses extends javax.swing.JFrame {
 
     Conexion con1= new Conexion();
     Connection conet;
@@ -15,7 +15,7 @@ public class CRUD_BUSES extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     int idc;
-    public CRUD_BUSES() {
+    public CRUD_Buses() {
         initComponents();
         setLocationRelativeTo(null);
         consultar();

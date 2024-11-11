@@ -4,8 +4,9 @@ import java.util.Scanner;
 import java.util.List;
 import Modelo.*;
 import Vista.CRUD_OPERADORES;
-import Vista.CRUD_BUSES;
+import Vista.CRUD_Buses;
 import Vista.IguConductor;
+import Vista.IguRuta;
 public class Main {
 
     public static void main(String[] args) {
@@ -13,14 +14,14 @@ public class Main {
         //CRUDD ventanacrud = new CRUDD();
         //ventanacrud.setVisible(true);
         
-        //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
-        CRUD_BUSES ventanaBuses = new CRUD_BUSES();
-        IguConductor ventanaConductor = new IguConductor();       
+        CRUD_Buses ventanaBuses = new CRUD_Buses();
+        IguConductor ventanaConductores = new IguConductor();
+        Conductor conductor = new Conductor(ventanaConductores);
+        IguRuta ventanaRuta = new IguRuta();
         Scanner entrada = new Scanner(System.in);
-        Operador op1 = new Operador();
+        Operador op1 = new Operador(ventanaOperadores);
         Archivos archivo = new Archivos();
-        CRUDconductor crudConductor = new CRUDconductor();
         
         int opcionMenu = 0;
         do {
@@ -41,12 +42,8 @@ public class Main {
             opcionMenu = entrada.nextInt();
             switch(opcionMenu) {
                 case 1:
-                    ventanaConductor.setVisible(true);
-                                     
-                    // Gestionar Conductores
-                    //List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
-                    //CRUDconductor crudConductora = new CRUDconductor();
-                    //crudConductor.menuCrudConductor(conductores, crudConductor);
+                    ventanaConductores.setVisible(true);
+
                     break;
                 case 2:
                     // Gestionar Buses
@@ -54,7 +51,7 @@ public class Main {
                     break;
                 case 3:
                     // Gestionar Rutas
-                    Ruta.menuRuta();
+                    ventanaRuta.setVisible(true);
                     break;
                 case 4:
                     // Gestionar Operadores
@@ -63,12 +60,12 @@ public class Main {
                 case 5:
                     // Gestionar Viajes
                     ViajeCRUD viajeCRUD = new ViajeCRUD();
-                    viajeCRUD.ejecutarMenu();
+                  //viajeCRUD.ejecutarMenu();
                     break;
                 case 6:
                     // Venta de boletos
                     VentaBoleto ventaBoleto = new VentaBoleto();
-                    ventaBoleto.menuVentaBoleto();
+                  //ventaBoleto.menuVentaBoleto();
                     break;
                 case 7:
                     System.out.println("Saliendo del sistema...");

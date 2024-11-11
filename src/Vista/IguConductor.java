@@ -5,18 +5,19 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
+import Modelo.Conductor;
 public class IguConductor extends javax.swing.JFrame {
-
+    Conductor conductor;
     Conexion con = new Conexion();
     Connection conet;
     DefaultTableModel modelo;
     Statement st;
     ResultSet rs;
-    int idc;
     public IguConductor() {
         initComponents();
         setLocationRelativeTo(null);
-        consultar();
+        conductor = new Conductor(this);
+        conductor.consultar();
     }
 
     /**
@@ -286,7 +287,7 @@ public class IguConductor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -295,7 +296,7 @@ public class IguConductor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 932, Short.MAX_VALUE)
+            .addGap(0, 921, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -312,22 +313,22 @@ public class IguConductor extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         
-       eliminar();
-       consultar();
-       nuevo();
+       conductor.eliminar();
+       conductor.consultar();
+       conductor.nuevo();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
       
-        modificar();
-        consultar();
-        nuevo();
+        conductor.modificar();
+        conductor.consultar();
+        conductor.nuevo();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
      
-        agregar();
-        consultar();      
+        conductor.agregar();
+        conductor.consultar();      
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     //Metodo que permite rellenar los txtFields al presionar algun registro (fila)
@@ -363,200 +364,17 @@ public class IguConductor extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         // TODO add your handling code here:
-        nuevo();
+        conductor.nuevo();
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     /**
      * @param args the command line arguments
      */
     
-    public void consultar(){
-        String sql = "SELECT c.idConductor, p.nombre, p.apellido, p.edad, p.DNI, p.telefono, c.numLicencia " +
-             "FROM persona p " +
-             "JOIN conductores c ON p.idPersona = c.idPersona";
 
-        try {
-            conet = con.obtenerConexion();
-            st = conet.createStatement();
-            rs = st.executeQuery(sql);
-            Object[] conductores = new Object[7];
-            modelo = (DefaultTableModel) TablaConductor.getModel();
-            while (rs.next()) {
-                conductores[0] = rs.getInt("idConductor");
-                conductores[1] = rs.getString("nombre");
-                conductores[2] = rs.getString("apellido");
-                conductores[3] = rs.getInt("edad");
-                conductores[4] = rs.getString("telefono");
-                conductores[5] = rs.getString("DNI");
-                conductores[6] = rs.getString("numLicencia");
-                modelo.addRow(conductores);
-
-            }
-            TablaConductor.setModel(modelo);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void agregar(){
-        String nombre = txtfNombre.getText();
-        String apellido = txtfApellido.getText();
-        String edadStr = txtfEdad.getText();
-        String telefono = txtfTelefono.getText();
-        String DNI = txtfDNI.getText();
-        String licencia = txtfLicencia.getText();
-        
-        try{
-            //Revisamos si algun txtfield está vacío
-            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") 
-                    || telefono.equals("") || DNI.equals("") || licencia.equals("")){
-                JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
-            }
-            else{
-                
-                // Convertir edad a int después de verificar que no está vacío
-                int edad = Integer.parseInt(edadStr);
-                
-                //Agregamos a la persona a la tabla persona
-                String sql1 = "Insert into persona(nombre, apellido, edad, DNI, telefono) values ('"+nombre+"','"+apellido+"','"+edad+"','"+DNI+"','"+telefono+"')";
-                conet = con.obtenerConexion();
-                st = conet.createStatement();
-                st.executeUpdate(sql1, Statement.RETURN_GENERATED_KEYS);
-                
-                //Luego obtenemos el idPersona y ahora agregamos al conductor a la tabla conductores
-                rs = st.getGeneratedKeys();
-                int idPersona = -1;
-                if (rs.next()) {
-                    idPersona = rs.getInt(1); //Aquí obtienes el idPersona generado
-                }             
-                String sql2 = "Insert into conductores(idPersona, numLicencia) values ('"+idPersona+"','"+licencia+"')";
-                st.executeUpdate(sql2);
-                JOptionPane.showMessageDialog(null, "Nuevo conductor agregado!");
-                nuevo();
-            }
-            
-            limpiarTabla();
-        }catch(Exception e){
-            
-        }
-    }
-    
-    public void modificar(){
-        // Recopilar los datos de los campos de texto
-        String nombre = txtfNombre.getText();
-        String apellido = txtfApellido.getText();
-        String edadStr = txtfEdad.getText();
-        String telefono = txtfTelefono.getText();
-        String DNI = txtfDNI.getText();
-        String licencia = txtfLicencia.getText();
-
-        try {
-            // Revisar si algún campo está vacío
-            if(nombre.equals("") || apellido.equals("") || txtfEdad.getText().equals("") 
-                    || telefono.equals("") || DNI.equals("") || licencia.equals("")) {
-                JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
-                limpiarTabla();
-            }
-            else {
-                
-                // Convertir edad a int después de verificar que no está vacío
-                int edad = Integer.parseInt(edadStr);
-                
-                // Obtener el idConductor desde el txtField 
-                int idConductor = Integer.parseInt(txtfIdConductor.getText());
-
-                // Usar el idConductor para obtener el idPersona correspondiente
-                int idPersona = obtenerIdPersonaDesdeIdConductor(idConductor);
-
-                // Verificar que se haya encontrado el idPersona
-                if (idPersona == -1) {
-                    JOptionPane.showMessageDialog(null, "No se encontró el ID de la persona asociado.");
-                    return; // Salir si no se encontró
-                }
-
-                //Nos conectamos a la base de datos
-                conet = con.obtenerConexion();
-                st = conet.createStatement();
-
-                // Actualizar los datos en la tabla `persona`
-                String sql1 = "UPDATE persona SET nombre = '" + nombre + "', apellido = '" + apellido + "', edad = '" + edad + "', telefono = '" + telefono + "', DNI = '" + DNI + "' WHERE idPersona = " + idPersona;
-                st.executeUpdate(sql1);
-
-                // Actualizar los datos en la tabla `conductores`
-                String sql2 = "UPDATE conductores SET numLicencia = '" + licencia + "' WHERE idPersona = " + idPersona;
-                st.executeUpdate(sql2);
-
-                JOptionPane.showMessageDialog(null, "Datos del conductor actualizados!");
-                limpiarTabla();  // Refrescar la tabla
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al actualizar los datos del conductor.");
-            limpiarTabla();
-        }        
-    }
-    
-    public void eliminar(){
-        int fila = TablaConductor.getSelectedRow();
-        try{
-            if(fila<0){
-                JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
-                limpiarTabla();
-            }
-            else{
-                int idConductor = Integer.parseInt(txtfIdConductor.getText());
-                int idPersona = obtenerIdPersonaDesdeIdConductor(idConductor);
-                String sql = "delete from persona where idPersona = "+idPersona;
-                conet = con.obtenerConexion();
-                st = conet.createStatement();
-                st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Conductor eliminado!"); 
-                limpiarTabla();
-            }
-            
-        }catch(Exception e){
-            
-            limpiarTabla();
-        }
-    }
-    
-    public void nuevo(){
-        txtfNombre.setText("");
-        txtfApellido.setText("");
-        txtfEdad.setText("");
-        txtfDNI.setText("");
-        txtfIdConductor.setText("");
-        txtfLicencia.setText("");
-        txtfTelefono.setText("");
-    }
-    public void limpiarTabla() {
-        // Usa un while para eliminar todas las filas de la tabla
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-    }
-    
-    public int obtenerIdPersonaDesdeIdConductor(int idConductor) {
-     int idPersona = -1; // Valor por defecto si no se encuentra
-     try {
-         String sql = "SELECT idPersona FROM conductores WHERE idConductor = " + idConductor;
-
-         conet = con.obtenerConexion();
-         st = conet.createStatement();
-         rs = st.executeQuery(sql);
-
-         if (rs.next()) {
-             idPersona = rs.getInt("idPersona");
-         }
-     } catch (Exception e) {
-         e.printStackTrace();
-         JOptionPane.showMessageDialog(null, "Error al obtener el ID de la persona.");
-     }
-     return idPersona;
- } 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable TablaConductor;
+    public javax.swing.JTable TablaConductor;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
@@ -574,12 +392,12 @@ public class IguConductor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtfApellido;
-    private javax.swing.JTextField txtfDNI;
-    private javax.swing.JTextField txtfEdad;
-    private javax.swing.JTextField txtfIdConductor;
-    private javax.swing.JTextField txtfLicencia;
-    private javax.swing.JTextField txtfNombre;
-    private javax.swing.JTextField txtfTelefono;
+    public javax.swing.JTextField txtfApellido;
+    public javax.swing.JTextField txtfDNI;
+    public javax.swing.JTextField txtfEdad;
+    public javax.swing.JTextField txtfIdConductor;
+    public javax.swing.JTextField txtfLicencia;
+    public javax.swing.JTextField txtfNombre;
+    public javax.swing.JTextField txtfTelefono;
     // End of variables declaration//GEN-END:variables
 }

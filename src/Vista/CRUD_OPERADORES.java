@@ -1,14 +1,16 @@
 package Vista;
 
 import Controlador.Conexion;
+
+import Modelo.Operador;
 import java.sql.Connection;
 import java.sql.ResultSet;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
 public class CRUD_OPERADORES extends javax.swing.JFrame {
-
+    
+    Operador opera;
     Conexion con1= new Conexion();
     Connection conet;
     DefaultTableModel modelo;
@@ -18,7 +20,8 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     public CRUD_OPERADORES() {
         initComponents();
         setLocationRelativeTo(null);
-        consultar();
+        opera = new Operador(this);
+        opera.consultar();
     }
 
     /**
@@ -51,6 +54,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         txtEdad = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        Limpiar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         Crear = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
@@ -63,7 +67,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CRUD DE OPERADORES");
+        jLabel1.setText("GESTIÓN  DE OPERADORES");
         jLabel1.setAlignmentY(0.0F);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -144,6 +148,13 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             }
         });
 
+        Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -180,6 +191,10 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                     .addComponent(txtRol, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap(33, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Limpiar)
+                .addGap(310, 310, 310))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +235,9 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel13)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Limpiar)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -253,11 +270,11 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(Crear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(169, 169, 169)
                 .addComponent(Modificar)
-                .addGap(168, 168, 168)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Eliminar)
-                .addGap(48, 48, 48))
+                .addGap(61, 61, 61))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,16 +326,16 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(242, 242, 242))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +344,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,21 +372,21 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-       eliminar();
-       consultar();
-       nuevo();// TODO add your handling code here:
+       opera.eliminar();
+       opera.consultar();
+       opera.nuevo();// TODO add your handling code here:
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        Modificar();
-        consultar();
-        nuevo();        // TODO add your handling code here:
+        opera.Modificar();
+        opera.consultar();
+        opera.nuevo();        // TODO add your handling code here:
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
 
-        Agregar();
-        consultar();
+        opera.Agregar();
+        opera.consultar();
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
@@ -432,215 +449,21 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        opera.nuevo();        // TODO add your handling code here:
+    }//GEN-LAST:event_LimpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
-      
-    void consultar(){
-        String sq = "SELECT c.idOperadores, p.nombre, p.apellido, p.edad, p.DNI, p.telefono, c.username, c.password, c.Rol " +
-             "FROM persona p " +
-             "JOIN operadores c ON p.idPersona = c.idPersona";
-        try {
-            conet = con1.obtenerConexion();
-            st = conet.createStatement();
-            rs = st.executeQuery(sq);
-            Object[] operadores = new Object[9];
-            modelo = (DefaultTableModel) TablaOperador.getModel();
-            while (rs.next()) {
-                operadores[0] = rs.getInt("idOperadores");
-                operadores[1] = rs.getString("nombre");
-                operadores[2] = rs.getString("apellido");
-                operadores[3] = rs.getString("username");
-                operadores[4] = rs.getString("password");
-                operadores[5] = rs.getString("Rol");
-                operadores[6] = rs.getString("DNI");
-                operadores[7] = rs.getString("telefono");
-                operadores[8] = rs.getInt("edad");
-                modelo.addRow(operadores);
-                
-            }
-            TablaOperador.setModel(modelo);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // TODO: handle exception
-        }
-    }
     
-    void Agregar(){
-        
-
-        String user = txtUsuario.getText();
-        String contra = txtContraseña.getText();
-        String rol = txtRol.getText();
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String DNI = txtDNI.getText();
-        String telefono = txtTelefono.getText();
-        
-
-        try {
-            if (txtEdad.getText().equals("") || user.equals("") || contra.equals("") || rol.equals("") || nombre.equals("") || apellido.equals("") || DNI.equals("") || telefono.equals("")) {
-                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
-                limpiarTabla();
-            }else{
-                int edad = Integer.parseInt(txtEdad.getText());
-                String sq1 = "INSERT INTO persona (nombre, apellido, edad, DNI, telefono) VALUES ('"+nombre+"', '"+apellido+"', '"+edad+"', '"+DNI+"', '"+telefono+"')";
-                conet = con1.obtenerConexion();
-                st = conet.createStatement();
-                st.executeUpdate(sq1,Statement.RETURN_GENERATED_KEYS);
-                rs = st.getGeneratedKeys();
-                int idPersona = -1;
-                if (rs.next()) {
-                    idPersona = rs.getInt(1);
-                }
-                String sq2 = "INSERT INTO operadores (idPersona,username, password, Rol) VALUES ('"+idPersona+"', '"+user+"', '"+contra+"', '"+rol+"')";
-                st.executeUpdate(sq2);
-                JOptionPane.showMessageDialog(null, "Operador agregado");
-                limpiarTabla();
-            }
-            
-        } catch (Exception e) {
-        }
-    }
-
-    void limpiarTabla(){
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-    }
-    
-    void Modificar(){
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String edadStr = txtEdad.getText();
-        String contra = txtContraseña.getText();
-        String rol = txtRol.getText();
-        String usuario = txtUsuario.getText();
-        String telefono = txtTelefono.getText();
-        String DNI = txtDNI.getText();
-
-        try {
-            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") || contra.equals("") || rol.equals("") || usuario.equals("") || telefono.equals("") || txtDNI.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
-                limpiarTabla();
-            }
-            else {
-                
-                // Convertir edad a int después de verificar que no está vacío
-                int edad = Integer.parseInt(edadStr);
-                
-                // Obtener el idConductor desde el txtField 
-                int idOperador = Integer.parseInt(txtID.getText());
-
-                // Usar el idConductor para obtener el idPersona correspondiente
-                int idPersona = obtenerIdPersonaDesdeidOperador(idOperador);
-
-                // Verificar que se haya encontrado el idPersona
-                if (idPersona == -1) {
-                    JOptionPane.showMessageDialog(null, "No se encontró el ID de la persona asociado.");
-                    return; // Salir si no se encontró
-                }
-
-                //Nos conectamos a la base de datos
-                conet = con1.obtenerConexion();
-                st = conet.createStatement();
-
-                // Actualizar los datos en la tabla `persona`
-                String sql5 = "UPDATE persona SET nombre = '" + nombre + "', apellido = '" + apellido + "', edad = '" + edad + "', telefono = '" + telefono + "', DNI = '" + DNI + "' WHERE idPersona = " + idPersona;
-                st.executeUpdate(sql5);
-
-                // Actualizar los datos en la tabla `conductores`
-                String sql6 = "UPDATE operadores SET username = '" + usuario + "', password = '" + contra + "', Rol = '" + rol + "' WHERE idOperadores = " + idOperador;
-                st.executeUpdate(sql6);
-
-                JOptionPane.showMessageDialog(null, "Datos del operador actualizados!");
-                limpiarTabla();  // Refrescar la tabla
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al actualizar los datos del operador.");
-            limpiarTabla();
-        }        
-    }
-    
-    public void eliminar() {
-    int fila = TablaOperador.getSelectedRow();
-    if (fila < 0) {
-        JOptionPane.showMessageDialog(null, "Operador no seleccionado");
-        return; // Salimos del método si no hay fila seleccionada
-    }
-
-    try {
-        // Obtén el idOperador directamente de la tabla seleccionada
-        int idOperador = Integer.parseInt(TablaOperador.getValueAt(fila, 0).toString());
-
-        // Usar el idOperador para obtener el idPersona correspondiente
-        int idPersona = obtenerIdPersonaDesdeidOperador(idOperador);
-
-        // Verificar que se haya encontrado el idPersona
-        if (idPersona == -1) {
-            JOptionPane.showMessageDialog(null, "No se encontró el ID de la persona asociado.");
-            return; // Salir si no se encontró
-        }
-
-        // Nos conectamos a la base de datos
-        conet = con1.obtenerConexion();
-        st = conet.createStatement();
-
-        // Primero eliminamos el registro de la tabla `operadores`
-        String sqlOperador = "DELETE FROM operadores WHERE idOperadores = " + idOperador;
-        st.executeUpdate(sqlOperador);
-
-        // Luego eliminamos el registro de la tabla `persona`
-        String sqlPersona = "DELETE FROM persona WHERE idPersona = " + idPersona;
-        st.executeUpdate(sqlPersona);
-
-        JOptionPane.showMessageDialog(null, "Operador eliminado!");
-        limpiarTabla();
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al eliminar el operador.");
-        limpiarTabla();
-    }
-}
-
-    
-    
-    public void nuevo(){
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtEdad.setText("");
-        txtDNI.setText("");
-        txtTelefono.setText("");
-        txtUsuario.setText("");
-        txtContraseña.setText("");
-        txtRol.setText("");
-        txtID.setText("");
-    }
-    public int obtenerIdPersonaDesdeidOperador(int idOperador) {
-     int idPersona = -1; // Valor por defecto si no se encuentra
-     try {
-         String sq4 = "SELECT idPersona FROM operadores WHERE idOperadores = " + idOperador;
-
-         conet = con1.obtenerConexion();
-         st = conet.createStatement();
-         rs = st.executeQuery(sq4);
-
-         if (rs.next()) {
-             idPersona = rs.getInt("idPersona");
-         }
-     } catch (Exception e) {
-         e.printStackTrace();
-         JOptionPane.showMessageDialog(null, "Error al obtener el ID de la persona.");
-     }
-     return idPersona;
- }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Crear;
     private javax.swing.JButton Eliminar;
+    private javax.swing.JButton Limpiar;
     private javax.swing.JButton Modificar;
-    private javax.swing.JTable TablaOperador;
+    public javax.swing.JTable TablaOperador;
     private javax.swing.JLabel asdfgdh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -656,14 +479,14 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtContraseña;
-    private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtRol;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtUsuario;
+    public javax.swing.JTextField txtApellido;
+    public javax.swing.JTextField txtContraseña;
+    public javax.swing.JTextField txtDNI;
+    public javax.swing.JTextField txtEdad;
+    public javax.swing.JTextField txtID;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtRol;
+    public javax.swing.JTextField txtTelefono;
+    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
