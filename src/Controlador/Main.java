@@ -6,6 +6,7 @@ import Modelo.*;
 import Vista.CRUD_OPERADORES;
 import Vista.CRUD_Buses;
 import Vista.IguConductor;
+import Vista.MainMenu;
 import Vista.IguRuta;
 public class Main {
 
@@ -15,6 +16,7 @@ public class Main {
         //ventanacrud.setVisible(true);
         
         //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
+        MainMenu menu = new MainMenu();
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
         CRUD_Buses ventanaBuses = new CRUD_Buses();
         IguConductor ventanaConductor = new IguConductor();  
@@ -24,75 +26,22 @@ public class Main {
         Archivos archivo = new Archivos();
         CRUDconductor crudConductor = new CRUDconductor();
         
-        int opcionMenu = 0;
-        do {
-            limpiarPantalla();
-            // Menu de opciones
-            System.out.println("---------------------------------------------------------");
-            System.out.println("\t===BIENVENIDO AL SISTEMA DE TRANSPORTE===");
-            System.out.println("---------------------------------------------------------");
-            System.out.println("Seleccione una opcion:");
-            System.out.println("1. Gestionar Conductores");
-            System.out.println("2. Gestionar Buses");
-            System.out.println("3. Gestionar Rutas");
-            System.out.println("4. Gestionar Operadores");
-            System.out.println("5. Gestionar Viajes");
-            System.out.println("6. Venta de boletos");
-            System.out.println("7. Salir");
-            System.out.print("Ingrese su opcion: ");
-            opcionMenu = entrada.nextInt();
-            switch(opcionMenu) {
-                case 1:
-                    ventanaConductor.setVisible(true);
-                                     
-                    // Gestionar Conductores
-                    //List<Conductor> conductores = archivo.leerObjetos("Conductores.txt");
-                    //CRUDconductor crudConductora = new CRUDconductor();
-                    //crudConductor.menuCrudConductor(conductores, crudConductor);
-                    break;
-                case 2:
-                    // Gestionar Buses
-                    ventanaBuses.setVisible(true);
-                    break;
-                case 3:
-                    // Gestionar Rutas
-                    ventanaRuta.setVisible(true);
-                    break;
-                case 4:
-                    // Gestionar Operadores
-                    ventanaOperadores.setVisible(true);
-                    break;
-                case 5:
-                    // Gestionar Viajes
-                    ViajeCRUD viajeCRUD = new ViajeCRUD();
-                    viajeCRUD.ejecutarMenu();
-                    break;
-                case 6:
-                    // Venta de boletos
-                    VentaBoleto ventaBoleto = new VentaBoleto();
-                    ventaBoleto.menuVentaBoleto();
-                    break;
-                case 7:
-                    System.out.println("Saliendo del sistema...");
-                    break;
-                default:
-                    System.out.println("Opcion no valida");
-                    break;
-            }
-        } while (opcionMenu != 7);
+        menu.setVisible(true);
         
-    }
 
-    public static void limpiarPantalla() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            System.out.println("Error al intentar limpiar la consola.");
-        }
     }
+    public static void limpiarPantalla() {
+            try {
+                if (System.getProperty("os.name").contains("Windows")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                }
+            } catch (Exception e) {
+                System.out.println("Error al intentar limpiar la consola.");
+            }
+        }
 }
+
+
