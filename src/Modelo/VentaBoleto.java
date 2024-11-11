@@ -6,9 +6,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class VentaBoleto {
+    /*
     private Scanner entrada = new Scanner(System.in);
 
     public void menuVentaBoleto() {
+        
         int opcion;
         do {
             limpiarPantalla();
@@ -200,4 +202,5 @@ public class VentaBoleto {
             System.out.println("Error al intentar limpiar la consola.");
         }
     }
+*/
 }
