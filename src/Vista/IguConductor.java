@@ -336,7 +336,7 @@ public class IguConductor extends javax.swing.JFrame {
         int fila = TablaConductor.getSelectedRow();
         if(fila == -1){
             //si no se selecciona ninguna fila
-            JOptionPane.showMessageDialog(null, "Ninguna fila seleccionada");
+            JOptionPane.showMessageDialog(null, "Ningun conductor seleccionada");
         }
         else{
             
