@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.List;
 import Modelo.*;
 import Vista.CRUD_OPERADORES;
-import Vista.CRUD_BUSES;
+import Vista.CRUD_Buses;
 import Vista.IguConductor;
 import Vista.IguRuta;
 public class Main {
@@ -16,11 +16,11 @@ public class Main {
         
         //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES();
-        CRUD_BUSES ventanaBuses = new CRUD_BUSES();
+        CRUD_Buses ventanaBuses = new CRUD_Buses();
         IguConductor ventanaConductor = new IguConductor();  
         IguRuta ventanaRuta = new IguRuta();
         Scanner entrada = new Scanner(System.in);
-        Operador op1 = new Operador();
+        Operador op1 = new Operador(ventanaOperadores);
         Archivos archivo = new Archivos();
         CRUDconductor crudConductor = new CRUDconductor();
         
