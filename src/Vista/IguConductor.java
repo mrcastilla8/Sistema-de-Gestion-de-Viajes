@@ -78,7 +78,7 @@ public class IguConductor extends javax.swing.JFrame {
 
         jLabel5.setText("DNI:");
 
-        jLabel6.setText("Nro. de licencia:");
+        jLabel6.setText("Licencia:");
 
         jLabel7.setText("ID:");
 
@@ -103,16 +103,12 @@ public class IguConductor extends javax.swing.JFrame {
                     .addComponent(txtfApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(txtfEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(txtfTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(18, 57, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(66, 66, 66)))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtfIdConductor)
                     .addComponent(txtfLicencia)
@@ -140,8 +136,9 @@ public class IguConductor extends javax.swing.JFrame {
                         .addComponent(txtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtfIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtfIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)))
@@ -343,7 +340,7 @@ public class IguConductor extends javax.swing.JFrame {
         // TODO add your handling code here:
         agregar();
         consultar();
-        nuevo();
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     //Metodo que permite rellenar los txtFields al presionar algun registro (fila)
@@ -417,18 +414,22 @@ public class IguConductor extends javax.swing.JFrame {
     public void agregar(){
         String nombre = txtfNombre.getText();
         String apellido = txtfApellido.getText();
-        int edad = Integer.parseInt(txtfEdad.getText());
+        String edadStr = txtfEdad.getText();
         String telefono = txtfTelefono.getText();
         String DNI = txtfDNI.getText();
         String licencia = txtfLicencia.getText();
         
         try{
             //Revisamos si algun txtfield está vacío
-            if(nombre.equals("") || apellido.equals("") || txtfEdad.getText().equals("") 
+            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") 
                     || telefono.equals("") || DNI.equals("") || licencia.equals("")){
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
             }
             else{
+                
+                // Convertir edad a int después de verificar que no está vacío
+                int edad = Integer.parseInt(edadStr);
+                
                 //Agregamos a la persona a la tabla persona
                 String sql1 = "Insert into persona(nombre, apellido, edad, DNI, telefono) values ('"+nombre+"','"+apellido+"','"+edad+"','"+DNI+"','"+telefono+"')";
                 conet = con.obtenerConexion();
@@ -444,7 +445,9 @@ public class IguConductor extends javax.swing.JFrame {
                 String sql2 = "Insert into conductores(idPersona, numLicencia) values ('"+idPersona+"','"+licencia+"')";
                 st.executeUpdate(sql2);
                 JOptionPane.showMessageDialog(null, "Nuevo conductor agregado!");
+                nuevo();
             }
+            
             limpiarTabla();
         }catch(Exception e){
             
@@ -455,7 +458,7 @@ public class IguConductor extends javax.swing.JFrame {
         // Recopilar los datos de los campos de texto
         String nombre = txtfNombre.getText();
         String apellido = txtfApellido.getText();
-        int edad = Integer.parseInt(txtfEdad.getText());
+        String edadStr = txtfEdad.getText();
         String telefono = txtfTelefono.getText();
         String DNI = txtfDNI.getText();
         String licencia = txtfLicencia.getText();
@@ -465,9 +468,14 @@ public class IguConductor extends javax.swing.JFrame {
             if(nombre.equals("") || apellido.equals("") || txtfEdad.getText().equals("") 
                     || telefono.equals("") || DNI.equals("") || licencia.equals("")) {
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
+                limpiarTabla();
             }
             else {
-                // Obtener el idConductor desde el txtField (asumiendo que tienes un txtfIdConductor)
+                
+                // Convertir edad a int después de verificar que no está vacío
+                int edad = Integer.parseInt(edadStr);
+                
+                // Obtener el idConductor desde el txtField 
                 int idConductor = Integer.parseInt(txtfIdConductor.getText());
 
                 // Usar el idConductor para obtener el idPersona correspondiente
