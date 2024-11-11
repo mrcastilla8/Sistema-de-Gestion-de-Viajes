@@ -54,12 +54,12 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         labelContraseña = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JTextField();
         asdfgdh = new javax.swing.JLabel();
-        txtRol = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         Limpiar = new javax.swing.JButton();
+        optionRol = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         Crear = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
@@ -134,12 +134,6 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         asdfgdh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         asdfgdh.setText("Rol");
 
-        txtRol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRolActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Edad");
 
@@ -157,6 +151,14 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LimpiarActionPerformed(evt);
+            }
+        });
+
+        optionRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Operador" }));
+        optionRol.setToolTipText("");
+        optionRol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optionRolActionPerformed(evt);
             }
         });
 
@@ -193,8 +195,8 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                     .addComponent(txtID)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                    .addComponent(txtRol, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(optionRol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -214,8 +216,8 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                             .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(asdfgdh))
+                            .addComponent(asdfgdh)
+                            .addComponent(optionRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -340,7 +342,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(242, 242, 242))
+                .addGap(280, 280, 280))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,10 +421,6 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
-    private void txtRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRolActionPerformed
-
     private void TablaOperadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaOperadorMouseClicked
         int fila = TablaOperador.getSelectedRow();
         if (fila == -1) {
@@ -443,7 +441,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             txtApellido.setText(apellido);
             txtUsuario.setText(user);
             txtContraseña.setText(contra);
-            txtRol.setText(rol);
+            optionRol.setSelectedItem(rol);
             txtDNI.setText(DNI);
             txtTelefono.setText(telefono);
             txtEdad.setText(""+edad);
@@ -457,6 +455,9 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
         opera.nuevo();        // TODO add your handling code here:
     }//GEN-LAST:event_LimpiarActionPerformed
+
+    private void optionRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionRolActionPerformed
+    }//GEN-LAST:event_optionRolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,13 +487,13 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelContraseña;
     private javax.swing.JLabel labelUsuario;
+    public javax.swing.JComboBox<String> optionRol;
     public javax.swing.JTextField txtApellido;
     public javax.swing.JTextField txtContraseña;
     public javax.swing.JTextField txtDNI;
     public javax.swing.JTextField txtEdad;
     public javax.swing.JTextField txtID;
     public javax.swing.JTextField txtNombre;
-    public javax.swing.JTextField txtRol;
     public javax.swing.JTextField txtTelefono;
     public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
