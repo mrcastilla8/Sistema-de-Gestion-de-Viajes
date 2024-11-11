@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
-public class CRUD_OPERADORES extends javax.swing.JFrame {
+public class CRUD_BUSES extends javax.swing.JFrame {
 
     Conexion con1= new Conexion();
     Connection conet;
@@ -19,7 +19,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     Statement st;
     ResultSet rs;
     int idc;
-    public CRUD_OPERADORES() {
+    public CRUD_BUSES() {
         initComponents();
         setLocationRelativeTo(null);
         consultar();
@@ -61,7 +61,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         Eliminar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaOperador = new javax.swing.JTable();
+        TablaBus = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,7 +73,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel10.setText("Nombres");
+        jLabel10.setText("Tipo");
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +88,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         });
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel11.setText("Apellidos");
+        jLabel11.setText("Capacidad");
 
         txtDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +97,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel12.setText("DNI");
+        jLabel12.setText("Estado");
 
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,7 +183,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                     .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                     .addComponent(txtRol, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,20 +276,20 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Base de datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        TablaOperador.setModel(new javax.swing.table.DefaultTableModel(
+        TablaBus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nombres", "Apellidos", "Usuario", "Contraseña", "Rol", "DNI", "Telefono", "Edad"
+                "ID", "Tipo", "Capacidad", "Estado", "ID conductor", "ID conductor 2"
             }
         ));
-        TablaOperador.addMouseListener(new java.awt.event.MouseAdapter() {
+        TablaBus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaOperadorMouseClicked(evt);
+                TablaBusMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(TablaOperador);
+        jScrollPane1.setViewportView(TablaBus);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -405,21 +405,21 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRolActionPerformed
 
-    private void TablaOperadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaOperadorMouseClicked
-        int fila = TablaOperador.getSelectedRow();
+    private void TablaBusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaBusMouseClicked
+        int fila = TablaBus.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "Operador no seleccionado");
             
         } else{
-            idc = Integer.parseInt((String) TablaOperador.getValueAt(fila, 0).toString());
-            String nombre = (String) TablaOperador.getValueAt(fila, 1);
-            String apellido = (String) TablaOperador.getValueAt(fila, 2);
-            String user = (String) TablaOperador.getValueAt(fila, 3);
-            String contra = (String) TablaOperador.getValueAt(fila, 4);
-            String rol =(String) TablaOperador.getValueAt(fila, 5);
-            String DNI = (String) TablaOperador.getValueAt(fila, 6);
-            String telefono = (String) TablaOperador.getValueAt(fila, 7);
-            int edad = Integer.parseInt((String) TablaOperador.getValueAt(fila, 8).toString());
+            idc = Integer.parseInt((String) TablaBus.getValueAt(fila, 0).toString());
+            String nombre = (String) TablaBus.getValueAt(fila, 1);
+            String apellido = (String) TablaBus.getValueAt(fila, 2);
+            String user = (String) TablaBus.getValueAt(fila, 3);
+            String contra = (String) TablaBus.getValueAt(fila, 4);
+            String rol =(String) TablaBus.getValueAt(fila, 5);
+            String DNI = (String) TablaBus.getValueAt(fila, 6);
+            String telefono = (String) TablaBus.getValueAt(fila, 7);
+            int edad = Integer.parseInt((String) TablaBus.getValueAt(fila, 8).toString());
             txtID.setText(""+idc);
             txtNombre.setText(nombre);
             txtApellido.setText(apellido);
@@ -430,7 +430,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             txtTelefono.setText(telefono);
             txtEdad.setText(""+edad);
         }
-    }//GEN-LAST:event_TablaOperadorMouseClicked
+    }//GEN-LAST:event_TablaBusMouseClicked
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
@@ -450,7 +450,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             st = conet.createStatement();
             rs = st.executeQuery(sq);
             Object[] operadores = new Object[9];
-            modelo = (DefaultTableModel) TablaOperador.getModel();
+            modelo = (DefaultTableModel) TablaBus.getModel();
             while (rs.next()) {
                 operadores[0] = rs.getInt("idOperadores");
                 operadores[1] = rs.getString("nombre");
@@ -464,7 +464,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 modelo.addRow(operadores);
                 
             }
-            TablaOperador.setModel(modelo);
+            TablaBus.setModel(modelo);
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception
@@ -569,7 +569,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     }
     
     public void eliminar() {
-    int fila = TablaOperador.getSelectedRow();
+    int fila = TablaBus.getSelectedRow();
     if (fila < 0) {
         JOptionPane.showMessageDialog(null, "Operador no seleccionado");
         return; // Salimos del método si no hay fila seleccionada
@@ -577,7 +577,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
     try {
         // Obtén el idOperador directamente de la tabla seleccionada
-        int idOperador = Integer.parseInt(TablaOperador.getValueAt(fila, 0).toString());
+        int idOperador = Integer.parseInt(TablaBus.getValueAt(fila, 0).toString());
 
         // Usar el idOperador para obtener el idPersona correspondiente
         int idPersona = obtenerIdPersonaDesdeidOperador(idOperador);
@@ -643,7 +643,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JButton Crear;
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Modificar;
-    private javax.swing.JTable TablaOperador;
+    private javax.swing.JTable TablaBus;
     private javax.swing.JLabel asdfgdh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

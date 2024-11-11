@@ -47,7 +47,6 @@ public class IguConductor extends javax.swing.JFrame {
         txtfTelefono = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btnAgregar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
@@ -78,7 +77,7 @@ public class IguConductor extends javax.swing.JFrame {
 
         jLabel5.setText("DNI:");
 
-        jLabel6.setText("Nro. de licencia:");
+        jLabel6.setText("Licencia:");
 
         jLabel7.setText("ID:");
 
@@ -103,20 +102,16 @@ public class IguConductor extends javax.swing.JFrame {
                     .addComponent(txtfApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(txtfEdad, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(txtfTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(66, 66, 66)))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtfIdConductor)
                     .addComponent(txtfLicencia)
-                    .addComponent(txtfDNI, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                    .addComponent(txtfDNI))
                 .addGap(26, 26, 26))
         );
         jPanel2Layout.setVerticalGroup(
@@ -140,8 +135,9 @@ public class IguConductor extends javax.swing.JFrame {
                         .addComponent(txtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(txtfIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtfIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)))
@@ -159,13 +155,6 @@ public class IguConductor extends javax.swing.JFrame {
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
-            }
-        });
-
-        btnBuscar.setText("BUSCAR");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
             }
         });
 
@@ -194,30 +183,27 @@ public class IguConductor extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
                 .addComponent(btnAgregar)
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
-                .addComponent(btnBuscar)
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addComponent(btnModificar)
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addComponent(btnEliminar)
-                .addGap(40, 40, 40))
+                .addGap(55, 55, 55))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnBuscar)
                     .addComponent(btnModificar)
                     .addComponent(btnEliminar)
                     .addComponent(btnNuevo))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED), "Base de datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP));
@@ -300,7 +286,7 @@ public class IguConductor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 540, Short.MAX_VALUE)
+            .addGap(0, 547, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -321,29 +307,27 @@ public class IguConductor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtfApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfApellidoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_txtfApellidoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        
+       eliminar();
+       consultar();
+       nuevo();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+      
         modificar();
         consultar();
         nuevo();
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+     
         agregar();
-        consultar();
-        nuevo();
+        consultar();      
     }//GEN-LAST:event_btnAgregarActionPerformed
     
     //Metodo que permite rellenar los txtFields al presionar algun registro (fila)
@@ -417,18 +401,22 @@ public class IguConductor extends javax.swing.JFrame {
     public void agregar(){
         String nombre = txtfNombre.getText();
         String apellido = txtfApellido.getText();
-        int edad = Integer.parseInt(txtfEdad.getText());
+        String edadStr = txtfEdad.getText();
         String telefono = txtfTelefono.getText();
         String DNI = txtfDNI.getText();
         String licencia = txtfLicencia.getText();
         
         try{
             //Revisamos si algun txtfield está vacío
-            if(nombre.equals("") || apellido.equals("") || txtfEdad.getText().equals("") 
+            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") 
                     || telefono.equals("") || DNI.equals("") || licencia.equals("")){
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
             }
             else{
+                
+                // Convertir edad a int después de verificar que no está vacío
+                int edad = Integer.parseInt(edadStr);
+                
                 //Agregamos a la persona a la tabla persona
                 String sql1 = "Insert into persona(nombre, apellido, edad, DNI, telefono) values ('"+nombre+"','"+apellido+"','"+edad+"','"+DNI+"','"+telefono+"')";
                 conet = con.obtenerConexion();
@@ -444,7 +432,9 @@ public class IguConductor extends javax.swing.JFrame {
                 String sql2 = "Insert into conductores(idPersona, numLicencia) values ('"+idPersona+"','"+licencia+"')";
                 st.executeUpdate(sql2);
                 JOptionPane.showMessageDialog(null, "Nuevo conductor agregado!");
+                nuevo();
             }
+            
             limpiarTabla();
         }catch(Exception e){
             
@@ -455,7 +445,7 @@ public class IguConductor extends javax.swing.JFrame {
         // Recopilar los datos de los campos de texto
         String nombre = txtfNombre.getText();
         String apellido = txtfApellido.getText();
-        int edad = Integer.parseInt(txtfEdad.getText());
+        String edadStr = txtfEdad.getText();
         String telefono = txtfTelefono.getText();
         String DNI = txtfDNI.getText();
         String licencia = txtfLicencia.getText();
@@ -465,9 +455,14 @@ public class IguConductor extends javax.swing.JFrame {
             if(nombre.equals("") || apellido.equals("") || txtfEdad.getText().equals("") 
                     || telefono.equals("") || DNI.equals("") || licencia.equals("")) {
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
+                limpiarTabla();
             }
             else {
-                // Obtener el idConductor desde el txtField (asumiendo que tienes un txtfIdConductor)
+                
+                // Convertir edad a int después de verificar que no está vacío
+                int edad = Integer.parseInt(edadStr);
+                
+                // Obtener el idConductor desde el txtField 
                 int idConductor = Integer.parseInt(txtfIdConductor.getText());
 
                 // Usar el idConductor para obtener el idPersona correspondiente
@@ -497,7 +492,32 @@ public class IguConductor extends javax.swing.JFrame {
         } catch(Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al actualizar los datos del conductor.");
+            limpiarTabla();
         }        
+    }
+    
+    public void eliminar(){
+        int fila = TablaConductor.getSelectedRow();
+        try{
+            if(fila<0){
+                JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
+                limpiarTabla();
+            }
+            else{
+                int idConductor = Integer.parseInt(txtfIdConductor.getText());
+                int idPersona = obtenerIdPersonaDesdeIdConductor(idConductor);
+                String sql = "delete from persona where idPersona = "+idPersona;
+                conet = con.obtenerConexion();
+                st = conet.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Conductor eliminado!"); 
+                limpiarTabla();
+            }
+            
+        }catch(Exception e){
+            
+            limpiarTabla();
+        }
     }
     
     public void nuevo(){
@@ -538,7 +558,6 @@ public class IguConductor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaConductor;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
