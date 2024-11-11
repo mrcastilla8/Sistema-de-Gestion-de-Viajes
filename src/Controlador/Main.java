@@ -5,6 +5,7 @@ import java.util.List;
 import Modelo.*;
 import Vista.CRUDD;
 import Vista.IguConductor;
+import Vista.IguRuta;
 public class Main {
 
     public static void main(String[] args) {
@@ -13,7 +14,8 @@ public class Main {
         //ventanacrud.setVisible(true);
         
         //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
-        IguConductor ventanaConductor = new IguConductor();       
+        IguConductor ventanaConductor = new IguConductor();  
+        IguRuta ventanaRuta = new IguRuta();
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador();
         Archivos archivo = new Archivos();
@@ -52,7 +54,7 @@ public class Main {
                     break;
                 case 3:
                     // Gestionar Rutas
-                    Ruta.menuRuta();
+                    ventanaRuta.setVisible(true);
                     break;
                 case 4:
                     // Gestionar Operadores
