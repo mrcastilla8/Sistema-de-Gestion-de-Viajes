@@ -18,7 +18,7 @@ public class Main {
         //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
         MainMenu menu = new MainMenu();
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES(menu);
-        CRUD_Buses ventanaBuses = new CRUD_Buses(menu);
+        CRUD_Buses ventanaBuses = new  CRUD_Buses(menu);
         IguConductor ventanaConductores = new IguConductor(menu);
         Conductor conductor = new Conductor(ventanaConductores);
         IguRuta ventanaRuta = new IguRuta(menu);
