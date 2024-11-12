@@ -1,122 +1,139 @@
 package Modelo;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import Vista.CRUD_VIAJES;
+import Controlador.Conexion;
+import javax.swing.table.DefaultTableModel;
 
-public class Viaje implements Serializable {
+public class Viaje {
 
-    private static int contadorId = 1; // Contador para IDs de viajes
-    private final int idViaje;
-    private Bus busAsignado;
-    private List<Conductor> conductoresAsignados; // Lista de conductores asignados
-    private Ruta rutaAsignada;
-    private List<String> asientosReservados;
-    private double precio;
+    Conexion con = new Conexion();
+    Connection conet;
+    CRUD_VIAJES ventanaViajes;
+    PreparedStatement ps;
+    ResultSet rs;
 
-    // Constructor
-    public Viaje(Bus busAsignado, List<Conductor> conductoresAsignados, Ruta rutaAsignada) {
-        this.idViaje = contadorId++;
-        this.busAsignado = busAsignado;
-        this.conductoresAsignados = conductoresAsignados;
-        this.rutaAsignada = rutaAsignada;
-        this.asientosReservados = new ArrayList<>();
-        this.precio = calcularPrecio(); // Calcular y asignar el precio
+    public Viaje(CRUD_VIAJES ventanaViajes) {
+        this.ventanaViajes = ventanaViajes;
     }
 
-    public double calcularPrecio() {
-        double basePrecioPorHora = 10.0; // Precio base por hora
-        double multiplicador = 1.0; // Multiplicador por defecto
+    // Método para agregar un nuevo viaje
+    public void agregar() {
+        String idBus = ventanaViajes.Entrada_Bus.getText();
+        String idRuta = ventanaViajes.Entrada_Ruta.getText();
+        String precio = ventanaViajes.Entrada_Precio.getText();
+        String conductor1 = ventanaViajes.Entrada_Conductor1.getText();
+        String conductor2 = ventanaViajes.Entrada_Conductor2.getText();
+        String fechaSalida = ventanaViajes.Entrada_HoraSalida.getText();
 
-        // Verificar si el bus es de tipo premium
-        if (busAsignado != null && busAsignado.getTipo() != null) {
-            if (busAsignado.getTipo().equalsIgnoreCase("premium")) {
-                multiplicador = 1.15; // Aumentar el precio para buses premium
-            }
-        } else {
-            System.out.println("Error: Bus asignado es nulo o no tiene tipo definido.");
-        }
+        String sql = "INSERT INTO viajes (id_bus, id_ruta, precio, conductor_id_1, conductor_id_2, fecha_salida) VALUES (?, ?, ?, ?, ?, ?)";
 
-        // Calcular el precio basado en la duración estimada de la ruta
-        if (rutaAsignada != null) {
-            int duracion = rutaAsignada.getDuracionEstimada(); // Duración en horas
-            if (duracion < 0) {
-                System.out.println("Error: La duración estimada de la ruta es negativa.");
-                duracion = 0;
-            }
-            return duracion * basePrecioPorHora * multiplicador;
-        } else {
-            System.out.println("Error: Ruta asignada es nula.");
-            return 0.0;
+        try {
+            conet = con.obtenerConexion();
+            ps = conet.prepareStatement(sql);
+            ps.setString(1, idBus);
+            ps.setString(2, idRuta);
+            ps.setString(3, precio);
+            ps.setString(4, conductor1);
+            ps.setString(5, conductor2);
+            ps.setString(6, fechaSalida);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Viaje agregado con éxito");
+            consultar(); // Actualizar la tabla en la interfaz
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar viaje: " + e.getMessage());
         }
     }
 
-    public double getPrecio() {
-        return precio;
-    }
-
-    // Método para actualizar el contador de IDs al cargar desde archivo
-    public static void actualizarContadorId(List<Viaje> viajes) {
-        if (viajes.isEmpty()) {
-            contadorId = 1;
-        } else {
-            int maxId = 0;
-            for (Viaje viaje : viajes) {
-                if (viaje.getIdViaje() > maxId) {
-                    maxId = viaje.getIdViaje();
-                }
-            }
-            contadorId = maxId + 1;
+    // Método para eliminar un viaje
+    public void eliminar() {
+        int fila = ventanaViajes.Tabla_Viajes.getSelectedRow();
+        if (fila < 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione un viaje para eliminar");
+            return;
+        }
+        
+        String idViaje = ventanaViajes.Tabla_Viajes.getValueAt(fila, 0).toString();
+        String sql = "DELETE FROM viajes WHERE id_viaje = ?";
+        
+        try {
+            conet = con.obtenerConexion();
+            ps = conet.prepareStatement(sql);
+            ps.setString(1, idViaje);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Viaje eliminado con éxito");
+            consultar(); // Actualizar la tabla en la interfaz
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar viaje: " + e.getMessage());
         }
     }
 
-    // Métodos
-    public void elegirAsientos() {
-        // Implementación como antes, usando la clase Asiento
+    // Método para modificar un viaje
+    public void modificar() {
+        int fila = ventanaViajes.Tabla_Viajes.getSelectedRow();
+        if (fila < 0) {
+            JOptionPane.showMessageDialog(null, "Seleccione un viaje para modificar");
+            return;
+        }
+
+        String idViaje = ventanaViajes.Tabla_Viajes.getValueAt(fila, 0).toString();
+        String idBus = ventanaViajes.Entrada_Bus.getText();
+        String idRuta = ventanaViajes.Entrada_Ruta.getText();
+        String precio = ventanaViajes.Entrada_Precio.getText();
+        String conductor1 = ventanaViajes.Entrada_Conductor1.getText();
+        String conductor2 = ventanaViajes.Entrada_Conductor2.getText();
+        String fechaSalida = ventanaViajes.Entrada_HoraSalida.getText();
+
+        String sql = "UPDATE viajes SET id_bus = ?, id_ruta = ?, precio = ?, conductor_id_1 = ?, conductor_id_2 = ?, fecha_salida = ? WHERE id_viaje = ?";
+
+        try {
+            conet = con.obtenerConexion();
+            ps = conet.prepareStatement(sql);
+            ps.setString(1, idBus);
+            ps.setString(2, idRuta);
+            ps.setString(3, precio);
+            ps.setString(4, conductor1);
+            ps.setString(5, conductor2);
+            ps.setString(6, fechaSalida);
+            ps.setString(7, idViaje);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Viaje modificado con éxito");
+            consultar(); // Actualizar la tabla en la interfaz
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al modificar viaje: " + e.getMessage());
+        }
     }
 
-    public void verDetalles() {
-        // Implementación
-    }
+    // Método para consultar y mostrar los viajes en la tabla
+    public void consultar() {
+        String sql = "SELECT * FROM viajes";
+        try {
+            conet = con.obtenerConexion();
+            ps = conet.prepareStatement(sql);
+            rs = ps.executeQuery();
+            DefaultTableModel modelo = (DefaultTableModel) ventanaViajes.Tabla_Viajes.getModel();
+            modelo.setRowCount(0); // Limpiar la tabla
 
-    public void borrarViaje() {
-        // Implementación
-    }
+            while (rs.next()) {
+                Object[] viaje = new Object[7];
+                viaje[0] = rs.getString("id_viaje");
+                viaje[1] = rs.getString("id_bus");
+                viaje[2] = rs.getString("id_ruta");
+                viaje[3] = rs.getString("precio");
+                viaje[4] = rs.getString("conductor_id_1");
+                viaje[5] = rs.getString("conductor_id_2");
+                viaje[6] = rs.getString("fecha_salida");
+                modelo.addRow(viaje);
+            }
 
-    // Getters y Setters
-    public int getIdViaje() {
-        return idViaje;
-    }
+            ventanaViajes.Tabla_Viajes.setModel(modelo);
 
-    public Bus getBusAsignado() {
-        return busAsignado;
-    }
-
-    public void setBusAsignado(Bus busAsignado) {
-        this.busAsignado = busAsignado;
-    }
-
-    public List<Conductor> getConductoresAsignados() {
-        return conductoresAsignados;
-    }
-
-    public void setConductoresAsignados(List<Conductor> conductoresAsignados) {
-        this.conductoresAsignados = conductoresAsignados;
-    }
-
-    public Ruta getRutaAsignada() {
-        return rutaAsignada;
-    }
-
-    public void setRutaAsignada(Ruta rutaAsignada) {
-        this.rutaAsignada = rutaAsignada;
-    }
-
-    public List<String> getAsientosReservados() {
-        return asientosReservados;
-    }
-
-    public void setAsientosReservados(List<String> asientosReservados) {
-        this.asientosReservados = asientosReservados;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al consultar viajes: " + e.getMessage());
+        }
     }
 }

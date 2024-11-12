@@ -1,6 +1,6 @@
-package modelo;
+package Modelo;
 
-public class Bus {
+public class Bus{
     private int id;
     private String tipo;
     private int capacidad;

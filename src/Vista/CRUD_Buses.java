@@ -2,8 +2,8 @@
 package Vista;
 
 import Vista.MainMenu;
-import modelo.Bus;
-import modelo.BusCRUD;
+import Modelo.Bus;
+import Modelo.BusCRUD;
 import java.util.List;
 
 import javax.swing.JOptionPane;
