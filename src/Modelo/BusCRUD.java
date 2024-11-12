@@ -1,4 +1,4 @@
-package modelo;
+package Modelo;
 
 import Controlador.Conexion;
 import java.sql.Connection;
