@@ -8,9 +8,11 @@ import Vista.CRUD_OPERADORES;
 import Vista.CRUD_Buses;
 import Vista.IguConductor;
 import Vista.IguRuta;
+import Vista.CRUD_VIAJES;
+
 
 public class MainMenu extends javax.swing.JFrame {
-    
+        CRUD_VIAJES ventanaViajes;
         CRUD_OPERADORES ventanaOperador;
         CRUD_Buses ventanaBuses;
         IguConductor ventanaConductor;
@@ -23,6 +25,8 @@ public class MainMenu extends javax.swing.JFrame {
         ventanaBuses = new CRUD_Buses(this);
         ventanaConductor = new IguConductor(this);
         ventanaRuta = new IguRuta(this);
+        ventanaViajes = new CRUD_VIAJES(this);
+
     }
 
     /**
@@ -38,6 +42,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,6 +77,13 @@ public class MainMenu extends javax.swing.JFrame {
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Gestión de Viajes");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -146,6 +158,10 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        ventanaViajes.setVisible(true);
+        this.setVisible(false);    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -186,6 +202,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
