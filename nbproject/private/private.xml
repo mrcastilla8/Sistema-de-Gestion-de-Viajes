@@ -3,12 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Modelo/Bus.java</file>
             <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Vista/CRUD_VIAJES.java</file>
             <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Modelo/Viaje.java</file>
             <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Controlador/Conexion.java</file>
             <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Controlador/Main.java</file>
             <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Modelo/Conductor.java</file>
+=======
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Vista/CRUD_Buses.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Modelo/Conductor.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Modelo/Bus.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Vista/IguConductor.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Vista/IguRuta.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Controlador/Main.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Vista/MainMenu.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Modelo/BusCRUD.java</file>
+            <file>file:/C:/Users/user/Desktop/Proyecto%20Algo%202/src/Vista/CRUD_OPERADORES.java</file>
+>>>>>>> adf5a154e3a6b0671fdd3df4f442d4a4341f9a37
         </group>
     </open-files>
 </project-private>
