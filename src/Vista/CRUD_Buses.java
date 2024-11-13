@@ -1,26 +1,42 @@
+
 package Vista;
 
-import Controlador.Conexion;
-import java.sql.Connection;
-import java.sql.ResultSet;
-
 import Vista.MainMenu;
+import Modelo.Bus;
+import Modelo.BusCRUD;
+import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import java.sql.Statement;
 public class CRUD_Buses extends javax.swing.JFrame {
+
     MainMenu menu;
-    Conexion con1= new Conexion();
-    Connection conet;
-    DefaultTableModel modelo;
-    Statement st;
-    ResultSet rs;
-    int idc;
+    private BusCRUD busCRUD = new BusCRUD();
+    private DefaultTableModel modelo;
+
     public CRUD_Buses(MainMenu menu) {
         this.menu=menu;
         initComponents();
         setLocationRelativeTo(null);
+        configurarTipoBus();
         consultar();
+    }
+        // Configura la capacidad según el tipo de bus seleccionado
+    private void configurarTipoBus() {
+        Tipos.addActionListener(evt -> {
+            String tipoSeleccionado = Tipos.getSelectedItem().toString();
+            switch (tipoSeleccionado) {
+                case "Estándar":
+                    Capacidad.setText("60");
+                    break;
+                case "Premium":
+                    Capacidad.setText("50");
+                    break;
+                case "Vip":
+                    Capacidad.setText("40");
+                    break;
+            }
+        });
     }
 
     /**
@@ -36,114 +52,66 @@ public class CRUD_Buses extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        txtDNI = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        labelUsuario = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        labelContraseña = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
-        asdfgdh = new javax.swing.JLabel();
-        txtRol = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        Capacidad = new javax.swing.JTextField();
+        Estado = new javax.swing.JComboBox<>();
+        Tipos = new javax.swing.JComboBox<>();
+        ID = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         Crear = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaBus = new javax.swing.JTable();
-        buttonAtras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CRUD DE OPERADORES");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bus1.png"))); // NOI18N
+        jLabel1.setText("Buses");
         jLabel1.setAlignmentY(0.0F);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        jPanel2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel10.setText("Tipo");
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel11.setText("Capacidad");
 
-        txtDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDNIActionPerformed(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel12.setText("Estado");
 
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel13.setText("Telefono");
-
-        labelUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelUsuario.setText("Usuario");
-
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
-            }
-        });
-
-        labelContraseña.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        labelContraseña.setText("Contraseña");
-
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
-            }
-        });
-
-        asdfgdh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        asdfgdh.setText("Rol");
-
-        txtRol.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRolActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Edad");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel3.setText("ID");
 
-        txtID.setEditable(false);
-        txtID.addActionListener(new java.awt.event.ActionListener() {
+        Capacidad.setEditable(false);
+        Capacidad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Capacidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
+                CapacidadActionPerformed(evt);
+            }
+        });
+
+        Estado.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible", "Viaje", "Mantenimiento" }));
+
+        Tipos.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Tipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Estándar", "Premium", "Vip" }));
+
+        ID.setEditable(false);
+        ID.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        ID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDActionPerformed(evt);
             }
         });
 
@@ -153,81 +121,52 @@ public class CRUD_Buses extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(38, 38, 38)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTelefono)
-                            .addComponent(txtDNI)
-                            .addComponent(txtApellido))))
-                .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelUsuario)
-                    .addComponent(labelContraseña)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(asdfgdh))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtID)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                    .addComponent(txtRol, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEdad, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(60, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel12))
+                            .addGap(38, 38, 38))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel10)
+                            .addGap(69, 69, 69)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(80, 80, 80)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Tipos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Estado, 0, 144, Short.MAX_VALUE)
+                    .addComponent(Capacidad)
+                    .addComponent(ID, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelContraseña)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(asdfgdh))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelUsuario))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
-                        .addGap(14, 14, 14)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(Tipos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(Capacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel13)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
 
+        Crear.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
         Crear.setText("Crear");
         Crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +174,8 @@ public class CRUD_Buses extends javax.swing.JFrame {
             }
         });
 
+        Modificar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,6 +183,8 @@ public class CRUD_Buses extends javax.swing.JFrame {
             }
         });
 
+        Eliminar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
         Eliminar.setText("Eliminar");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,46 +192,94 @@ public class CRUD_Buses extends javax.swing.JFrame {
             }
         });
 
+        Buscar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
+        jButton1.setText("Regresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(Crear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Modificar)
-                .addGap(168, 168, 168)
-                .addComponent(Eliminar)
-                .addGap(48, 48, 48))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Crear)
-                    .addComponent(Modificar)
-                    .addComponent(Eliminar))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addComponent(Crear)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Eliminar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Buscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Modificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Base de datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Base de datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
 
+        TablaBus.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
         TablaBus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Tipo", "Capacidad", "Estado", "ID conductor", "ID conductor 2"
+                "ID", "Tipo", "Capacidad", "Estado"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         TablaBus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaBusMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(TablaBus);
+        if (TablaBus.getColumnModel().getColumnCount() > 0) {
+            TablaBus.getColumnModel().getColumn(0).setPreferredWidth(30);
+            TablaBus.getColumnModel().getColumn(2).setPreferredWidth(30);
+        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -303,68 +294,54 @@ public class CRUD_Buses extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        buttonAtras.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buttonAtras.setText("ATRÁS");
-        buttonAtras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        buttonAtras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAtrasActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(buttonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(buttonAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -373,320 +350,139 @@ public class CRUD_Buses extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-       eliminar();
-       consultar();
-       nuevo();// TODO add your handling code here:
+        if (ID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Selecciona un bus para eliminar.");
+            return;
+        }
+
+        int id = Integer.parseInt(ID.getText());
+        if (busCRUD.eliminarBus(id)) {
+            JOptionPane.showMessageDialog(this, "Bus eliminado exitosamente.");
+            consultar();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al eliminar el bus.");
+        }
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        Modificar();
-        consultar();
-        nuevo();        // TODO add your handling code here:
+        if (ID.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Selecciona un bus para modificar.");
+            return;
+        }
+
+        int id = Integer.parseInt(ID.getText());
+        String tipo = Tipos.getSelectedItem().toString();
+        String estado = Estado.getSelectedItem().toString();
+        int capacidad = Integer.parseInt(Capacidad.getText());
+
+        Bus bus = new Bus(id, tipo, capacidad, estado);
+        if (busCRUD.modificarBus(bus)) {
+            JOptionPane.showMessageDialog(this, "Bus modificado exitosamente.");
+            consultar();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al modificar el bus.");
+        }
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        String tipo = Tipos.getSelectedItem().toString();
+        String estado = Estado.getSelectedItem().toString();
+        int capacidad;
+        try {
+            capacidad = Integer.parseInt(Capacidad.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Capacidad no válida.");
+            return;
+        }
 
-        Agregar();
-        consultar();
-        // TODO add your handling code here:
+        Bus bus = new Bus(0, tipo, capacidad, estado);
+        if (busCRUD.crearBus(bus)) {
+            JOptionPane.showMessageDialog(this, "Bus creado exitosamente.");
+            consultar();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al crear el bus.");
+        }
     }//GEN-LAST:event_CrearActionPerformed
-
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoActionPerformed
-
-    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDNIActionPerformed
-
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
-
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
-
-    private void txtRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRolActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRolActionPerformed
 
     private void TablaBusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaBusMouseClicked
         int fila = TablaBus.getSelectedRow();
-        if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "Operador no seleccionado");
-            
-        } else{
-            idc = Integer.parseInt((String) TablaBus.getValueAt(fila, 0).toString());
-            String nombre = (String) TablaBus.getValueAt(fila, 1);
-            String apellido = (String) TablaBus.getValueAt(fila, 2);
-            String user = (String) TablaBus.getValueAt(fila, 3);
-            String contra = (String) TablaBus.getValueAt(fila, 4);
-            String rol =(String) TablaBus.getValueAt(fila, 5);
-            String DNI = (String) TablaBus.getValueAt(fila, 6);
-            String telefono = (String) TablaBus.getValueAt(fila, 7);
-            int edad = Integer.parseInt((String) TablaBus.getValueAt(fila, 8).toString());
-            txtID.setText(""+idc);
-            txtNombre.setText(nombre);
-            txtApellido.setText(apellido);
-            txtUsuario.setText(user);
-            txtContraseña.setText(contra);
-            txtRol.setText(rol);
-            txtDNI.setText(DNI);
-            txtTelefono.setText(telefono);
-            txtEdad.setText(""+edad);
+        if (fila != -1) {
+            ID.setText(TablaBus.getValueAt(fila, 0).toString());
+            Tipos.setSelectedItem(TablaBus.getValueAt(fila, 1).toString());
+            Capacidad.setText(TablaBus.getValueAt(fila, 2).toString());
+            Estado.setSelectedItem(TablaBus.getValueAt(fila, 3).toString());
         }
     }//GEN-LAST:event_TablaBusMouseClicked
 
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+    private void CapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapacidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
+    }//GEN-LAST:event_CapacidadActionPerformed
 
-    private void buttonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAtrasActionPerformed
+    private void IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        String tipo = Tipos.getSelectedItem().toString();
+        String estado = Estado.getSelectedItem().toString();
+
+        List<Bus> buses = busCRUD.buscarBus(tipo, estado);
+        limpiarTabla();
+        for (Bus bus : buses) {
+            modelo.addRow(new Object[]{bus.getId(), bus.getTipo(), bus.getCapacidad(), bus.getEstado()});
+        }
+    }//GEN-LAST:event_BuscarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         menu.setVisible(true);
-        this.setVisible(false);        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonAtrasActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ID.setText("");
+        Capacidad.setText("");
+        Tipos.setSelectedIndex(0); // Selecciona el primer elemento (por ejemplo, "Estándar")
+        Estado.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
       
-    void consultar(){
-        String sq = "SELECT c.idOperadores, p.nombre, p.apellido, p.edad, p.DNI, p.telefono, c.username, c.password, c.Rol " +
-             "FROM persona p " +
-             "JOIN operadores c ON p.idPersona = c.idPersona";
-        try {
-            conet = con1.obtenerConexion();
-            st = conet.createStatement();
-            rs = st.executeQuery(sq);
-            Object[] operadores = new Object[9];
-            modelo = (DefaultTableModel) TablaBus.getModel();
-            while (rs.next()) {
-                operadores[0] = rs.getInt("idOperadores");
-                operadores[1] = rs.getString("nombre");
-                operadores[2] = rs.getString("apellido");
-                operadores[3] = rs.getString("username");
-                operadores[4] = rs.getString("password");
-                operadores[5] = rs.getString("Rol");
-                operadores[6] = rs.getString("DNI");
-                operadores[7] = rs.getString("telefono");
-                operadores[8] = rs.getInt("edad");
-                modelo.addRow(operadores);
-                
-            }
-            TablaBus.setModel(modelo);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // TODO: handle exception
+    private void consultar() {
+        List<Bus> buses = busCRUD.buscarBus("", ""); // Traer todos los buses sin filtro
+        modelo = (DefaultTableModel) TablaBus.getModel();
+        limpiarTabla(); // Limpiar la tabla antes de añadir nuevos datos
+
+        for (Bus bus : buses) {
+            modelo.addRow(new Object[]{bus.getId(), bus.getTipo(), bus.getCapacidad(), bus.getEstado()});
         }
     }
-    
-    void Agregar(){
-        
-
-        String user = txtUsuario.getText();
-        String contra = txtContraseña.getText();
-        String rol = txtRol.getText();
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String DNI = txtDNI.getText();
-        String telefono = txtTelefono.getText();
-        
-
-        try {
-            if (txtEdad.getText().equals("") || user.equals("") || contra.equals("") || rol.equals("") || nombre.equals("") || apellido.equals("") || DNI.equals("") || telefono.equals("")) {
-                JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
-                limpiarTabla();
-            }else{
-                int edad = Integer.parseInt(txtEdad.getText());
-                String sq1 = "INSERT INTO persona (nombre, apellido, edad, DNI, telefono) VALUES ('"+nombre+"', '"+apellido+"', '"+edad+"', '"+DNI+"', '"+telefono+"')";
-                conet = con1.obtenerConexion();
-                st = conet.createStatement();
-                st.executeUpdate(sq1,Statement.RETURN_GENERATED_KEYS);
-                rs = st.getGeneratedKeys();
-                int idPersona = -1;
-                if (rs.next()) {
-                    idPersona = rs.getInt(1);
-                }
-                String sq2 = "INSERT INTO operadores (idPersona,username, password, Rol) VALUES ('"+idPersona+"', '"+user+"', '"+contra+"', '"+rol+"')";
-                st.executeUpdate(sq2);
-                JOptionPane.showMessageDialog(null, "Operador agregado");
-                limpiarTabla();
-            }
-            
-        } catch (Exception e) {
-        }
+    private void limpiarTabla() {
+        modelo.setRowCount(0);
     }
-
-    void limpiarTabla(){
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
-        }
-    }
-    
-    void Modificar(){
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String edadStr = txtEdad.getText();
-        String contra = txtContraseña.getText();
-        String rol = txtRol.getText();
-        String usuario = txtUsuario.getText();
-        String telefono = txtTelefono.getText();
-        String DNI = txtDNI.getText();
-
-        try {
-            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") || contra.equals("") || rol.equals("") || usuario.equals("") || telefono.equals("") || txtDNI.getText().equals("")){
-                JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
-                limpiarTabla();
-            }
-            else {
-                
-                // Convertir edad a int después de verificar que no está vacío
-                int edad = Integer.parseInt(edadStr);
-                
-                // Obtener el idConductor desde el txtField 
-                int idOperador = Integer.parseInt(txtID.getText());
-
-                // Usar el idConductor para obtener el idPersona correspondiente
-                int idPersona = obtenerIdPersonaDesdeidOperador(idOperador);
-
-                // Verificar que se haya encontrado el idPersona
-                if (idPersona == -1) {
-                    JOptionPane.showMessageDialog(null, "No se encontró el ID de la persona asociado.");
-                    return; // Salir si no se encontró
-                }
-
-                //Nos conectamos a la base de datos
-                conet = con1.obtenerConexion();
-                st = conet.createStatement();
-
-                // Actualizar los datos en la tabla `persona`
-                String sql5 = "UPDATE persona SET nombre = '" + nombre + "', apellido = '" + apellido + "', edad = '" + edad + "', telefono = '" + telefono + "', DNI = '" + DNI + "' WHERE idPersona = " + idPersona;
-                st.executeUpdate(sql5);
-
-                // Actualizar los datos en la tabla `conductores`
-                String sql6 = "UPDATE operadores SET username = '" + usuario + "', password = '" + contra + "', Rol = '" + rol + "' WHERE idOperadores = " + idOperador;
-                st.executeUpdate(sql6);
-
-                JOptionPane.showMessageDialog(null, "Datos del operador actualizados!");
-                limpiarTabla();  // Refrescar la tabla
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error al actualizar los datos del operador.");
-            limpiarTabla();
-        }        
-    }
-    
-    public void eliminar() {
-    int fila = TablaBus.getSelectedRow();
-    if (fila < 0) {
-        JOptionPane.showMessageDialog(null, "Operador no seleccionado");
-        return; // Salimos del método si no hay fila seleccionada
-    }
-
-    try {
-        // Obtén el idOperador directamente de la tabla seleccionada
-        int idOperador = Integer.parseInt(TablaBus.getValueAt(fila, 0).toString());
-
-        // Usar el idOperador para obtener el idPersona correspondiente
-        int idPersona = obtenerIdPersonaDesdeidOperador(idOperador);
-
-        // Verificar que se haya encontrado el idPersona
-        if (idPersona == -1) {
-            JOptionPane.showMessageDialog(null, "No se encontró el ID de la persona asociado.");
-            return; // Salir si no se encontró
-        }
-
-        // Nos conectamos a la base de datos
-        conet = con1.obtenerConexion();
-        st = conet.createStatement();
-
-        // Primero eliminamos el registro de la tabla `operadores`
-        String sqlOperador = "DELETE FROM operadores WHERE idOperadores = " + idOperador;
-        st.executeUpdate(sqlOperador);
-
-        // Luego eliminamos el registro de la tabla `persona`
-        String sqlPersona = "DELETE FROM persona WHERE idPersona = " + idPersona;
-        st.executeUpdate(sqlPersona);
-
-        JOptionPane.showMessageDialog(null, "Operador eliminado!");
-        limpiarTabla();
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al eliminar el operador.");
-    }
-}
-
-    
-    
-    public void nuevo(){
-        txtNombre.setText("");
-        txtApellido.setText("");
-        txtEdad.setText("");
-        txtDNI.setText("");
-        txtTelefono.setText("");
-        txtUsuario.setText("");
-        txtContraseña.setText("");
-        txtRol.setText("");
-        txtID.setText("");
-    }
-    public int obtenerIdPersonaDesdeidOperador(int idOperador) {
-     int idPersona = -1; // Valor por defecto si no se encuentra
-     try {
-         String sq4 = "SELECT idPersona FROM operadores WHERE idOperadores = " + idOperador;
-
-         conet = con1.obtenerConexion();
-         st = conet.createStatement();
-         rs = st.executeQuery(sq4);
-
-         if (rs.next()) {
-             idPersona = rs.getInt("idPersona");
-         }
-     } catch (Exception e) {
-         e.printStackTrace();
-         JOptionPane.showMessageDialog(null, "Error al obtener el ID de la persona.");
-     }
-     return idPersona;
- }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
+    private javax.swing.JTextField Capacidad;
     private javax.swing.JButton Crear;
     private javax.swing.JButton Eliminar;
+    private javax.swing.JComboBox<String> Estado;
+    private javax.swing.JTextField ID;
     private javax.swing.JButton Modificar;
     private javax.swing.JTable TablaBus;
-    private javax.swing.JLabel asdfgdh;
-    private javax.swing.JButton buttonAtras;
+    private javax.swing.JComboBox<String> Tipos;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelContraseña;
-    private javax.swing.JLabel labelUsuario;
-    private javax.swing.JTextField txtApellido;
-    private javax.swing.JTextField txtContraseña;
-    private javax.swing.JTextField txtDNI;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtRol;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
