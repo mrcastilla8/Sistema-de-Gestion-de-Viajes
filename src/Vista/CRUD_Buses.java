@@ -27,13 +27,13 @@ public class CRUD_Buses extends javax.swing.JFrame {
             String tipoSeleccionado = Tipos.getSelectedItem().toString();
             switch (tipoSeleccionado) {
                 case "Estándar":
-                    Capacidad.setText("80");
+                    Capacidad.setText("50");
                     break;
                 case "Premium":
-                    Capacidad.setText("60");
+                    Capacidad.setText("40");
                     break;
                 case "Vip":
-                    Capacidad.setText("50");
+                    Capacidad.setText("30");
                     break;
             }
         });
