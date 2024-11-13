@@ -1,9 +1,56 @@
 package Modelo;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Asiento implements Serializable {
+import Controlador.Conexion;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import Vista.IguAsientos;
+
+public class Asiento{
+    
+    Conexion con = new Conexion();
+    Connection conet;
+    DefaultTableModel modelo;
+    Statement st;
+    ResultSet rs;
+    private IguAsientos ventanaAsientos;
+    
+    public Asiento(IguAsientos ventanaAsientos){
+        this.ventanaAsientos = ventanaAsientos;
+    }
+        public void consultar(){
+        String sql = "select * From asientos";
+
+        try {
+            conet = con.obtenerConexion();
+            st = conet.createStatement();
+            rs = st.executeQuery(sql);
+            Object[] asientos = new Object[4];
+            modelo = (DefaultTableModel) ventanaAsientos.TablaAsiento.getModel();
+            while (rs.next()) {
+                asientos[0] = rs.getInt("id_asiento");
+                asientos[1] = rs.getString("numero_asiento");
+                asientos[2] = rs.getInt("disponible");
+                asientos[3] = rs.getInt("id_bus");
+                modelo.addRow(asientos);
+
+            }
+            ventanaAsientos.TablaAsiento.setModel(modelo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void limpiarTabla(){
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+    
+    
+    
+    /*
     private String numeroAsiento;
     private boolean disponible;
 
@@ -110,4 +157,5 @@ public class Asiento implements Serializable {
             }
         }
     }
+*/
 }
