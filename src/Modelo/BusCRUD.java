@@ -45,13 +45,13 @@ public class BusCRUD {
                     int cantidadAsientos;
                     switch (bus.getTipo()) {
                         case "Estándar":
-                            cantidadAsientos = 50;
+                            cantidadAsientos = 60;
                             break;
                         case "Premium":
-                            cantidadAsientos = 40;
+                            cantidadAsientos = 50;
                             break;
                         case "Vip":
-                            cantidadAsientos = 30;
+                            cantidadAsientos = 40;
                             break;
                         default:
                             throw new IllegalArgumentException("Tipo de bus no reconocido");
