@@ -328,19 +328,13 @@ public class VentaBoleto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        menu.setVisible(true);
-        this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-
-        opera.Agregar();
-        opera.consultar();
-        // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        opera.nuevo();        // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_LimpiarActionPerformed
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed

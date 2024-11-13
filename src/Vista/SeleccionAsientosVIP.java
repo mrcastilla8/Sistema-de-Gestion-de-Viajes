@@ -798,9 +798,9 @@ public class SeleccionAsientosVIP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
+    private javax.swing.JFrame menu; // Add this line to declare the menu variable
+
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        menu.setVisible(true);
-        this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
