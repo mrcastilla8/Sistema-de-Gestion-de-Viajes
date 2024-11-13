@@ -45,13 +45,13 @@ public class BusCRUD {
                     int cantidadAsientos;
                     switch (bus.getTipo()) {
                         case "Estándar":
-                            cantidadAsientos = 80;
-                            break;
-                        case "Premium":
                             cantidadAsientos = 60;
                             break;
-                        case "Vip":
+                        case "Premium":
                             cantidadAsientos = 50;
+                            break;
+                        case "Vip":
+                            cantidadAsientos = 40;
                             break;
                         default:
                             throw new IllegalArgumentException("Tipo de bus no reconocido");
@@ -59,8 +59,13 @@ public class BusCRUD {
 
                     // Inserta los registros de asientos en la tabla `asientos`
                     for (int i = 1; i <= cantidadAsientos; i++) {
-                        stmtAsiento.setString(1, "A" + i); // Ejemplo: A1, A2, etc.
-                        stmtAsiento.setInt(2, 1);          // 1 = disponible, 0 = no disponible
+                        if(i<=12){
+                            stmtAsiento.setString(1, "A" + i);
+                        }
+                        else{
+                            stmtAsiento.setString(1, "B" + i);
+                        }
+                        stmtAsiento.setInt(2, 1); // 1 = disponible, 0 = no disponible
                         stmtAsiento.setInt(3, idBus);
                         stmtAsiento.addBatch(); // Añade a batch para ejecutar en lote
                     }

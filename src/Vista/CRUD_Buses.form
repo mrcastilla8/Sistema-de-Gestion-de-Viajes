@@ -139,7 +139,7 @@
                           <Component id="Capacidad" alignment="0" max="32767" attributes="0"/>
                           <Component id="ID" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
