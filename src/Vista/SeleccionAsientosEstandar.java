@@ -1107,8 +1107,6 @@ public class SeleccionAsientosEstandar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private javax.swing.JFrame menu;
-
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
