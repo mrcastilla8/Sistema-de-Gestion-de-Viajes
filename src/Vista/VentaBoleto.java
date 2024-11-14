@@ -344,6 +344,9 @@ public class VentaBoleto extends javax.swing.JFrame {
     }//GEN-LAST:event_CrearActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        jComboBox1.setSelectedIndex(0);
+        jComboBox2.setSelectedIndex(0);
+        fechaTextField.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_LimpiarActionPerformed
 
