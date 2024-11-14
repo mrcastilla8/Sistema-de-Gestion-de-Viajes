@@ -49,7 +49,7 @@ public class VentaBoletoModelo {
         }
     }
 
-    public List<Viaje> obtenerViajesCoincidentes(String origen, String destino, String fecha) {
+    /*public List<Viaje> obtenerViajesCoincidentes(String origen, String destino, String fecha) {
         String query = "SELECT * FROM viajes";
         List<String> condiciones = new ArrayList<>();
         List<Viaje> viajes = new ArrayList<>();
@@ -96,5 +96,5 @@ public class VentaBoletoModelo {
             System.err.println("Error al buscar viajes: " + e.getMessage());
         }
 
-    }
+    }*/
 }
