@@ -1,7 +1,6 @@
 package Vista;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import Vista.MainMenu;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,8 +14,11 @@ public class VentaBoleto extends javax.swing.JFrame {
     private List<String> origenes = modeloVB.obtenerOrigenes();
     private List<String> destinos = modeloVB.obtenerDestinos();
 
-    public VentaBoleto() {
+    public VentaBoleto(MainMenu menu) {
+        this.menu = menu;
         initComponents();
+        setLocationRelativeTo(null);
+        iniciarTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -29,13 +31,13 @@ public class VentaBoleto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        fechaTextField = new javax.swing.JTextField();
         labelUsuario = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         Limpiar = new javax.swing.JButton();
-        Crear = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -43,10 +45,10 @@ public class VentaBoleto extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        Regresar = new javax.swing.JButton();
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        Continuar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,8 +66,8 @@ public class VentaBoleto extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel11.setText("Destino");
 
-        txtUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
+        fechaTextField.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        fechaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
             }
@@ -100,7 +102,7 @@ public class VentaBoleto extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(labelUsuario)
                         .addGap(18, 18, 18)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(fechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -114,7 +116,7 @@ public class VentaBoleto extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labelUsuario)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fechaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -132,12 +134,12 @@ public class VentaBoleto extends javax.swing.JFrame {
             }
         });
 
-        Crear.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
-        Crear.setText("Buscar");
-        Crear.addActionListener(new java.awt.event.ActionListener() {
+        Buscar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
+        Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearActionPerformed(evt);
+                BuscarActionPerformed(evt);
             }
         });
 
@@ -153,7 +155,7 @@ public class VentaBoleto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -165,7 +167,7 @@ public class VentaBoleto extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Crear)
+                    .addComponent(Buscar)
                     .addComponent(Limpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -175,13 +177,10 @@ public class VentaBoleto extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "ID del bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -210,12 +209,12 @@ public class VentaBoleto extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel5.setText("Seleccion de Viaje");
 
-        jToggleButton1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
-        jToggleButton1.setText("Regresar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        Regresar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                RegresarActionPerformed(evt);
             }
         });
 
@@ -224,12 +223,12 @@ public class VentaBoleto extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel6.setText("ID de Viaje Deseado");
 
-        jToggleButton2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/continuar.png"))); // NOI18N
-        jToggleButton2.setText("Continuar");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        Continuar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Continuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/continuar.png"))); // NOI18N
+        Continuar.setText("Continuar");
+        Continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                ContinuarActionPerformed(evt);
             }
         });
 
@@ -242,7 +241,7 @@ public class VentaBoleto extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -251,7 +250,7 @@ public class VentaBoleto extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Continuar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -263,9 +262,9 @@ public class VentaBoleto extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2))
+                    .addComponent(Continuar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
+                .addComponent(Regresar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -326,10 +325,22 @@ public class VentaBoleto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        menu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        String origen = jComboBox1.getSelectedItem().toString();
+        String destino = jComboBox2.getSelectedItem().toString();
+        String fecha = fechaTextField.getText();
+        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes(origen, destino, fecha);
+        modeloTabla = (DefaultTableModel) jTable1.getModel();
+        modeloTabla.setRowCount(0);
+        limpiarTabla();
+        for (Object[] viaje : viajes) {
+            modeloTabla.addRow(viaje);
+        }
     }//GEN-LAST:event_CrearActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
@@ -340,47 +351,28 @@ public class VentaBoleto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentaBoleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentaBoleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentaBoleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentaBoleto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void iniciarTabla() {
+        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes("-", "-", "");
+        modeloTabla = (DefaultTableModel) jTable1.getModel();
+        modeloTabla.setRowCount(0);
+        for (Object[] viaje : viajes) {
+            modeloTabla.addRow(viaje);
         }
-        //</editor-fold>
+    }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentaBoleto().setVisible(true);
-            }
-        });
+    private void limpiarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Crear;
+    private javax.swing.JButton Buscar;
     private javax.swing.JButton Limpiar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -400,9 +392,9 @@ public class VentaBoleto extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JButton Regresar;
+    private javax.swing.JButton Continuar;
     private javax.swing.JLabel labelUsuario;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField fechaTextField;
     // End of variables declaration//GEN-END:variables
 }

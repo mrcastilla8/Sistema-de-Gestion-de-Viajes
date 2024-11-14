@@ -311,7 +311,7 @@ public CRUD_VIAJES(MainMenu menu) {
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-viaje.png")));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoViaje.png")));
         jLabel4.setText("Viajes");
         jLabel4.setAlignmentY(0.0F);
 

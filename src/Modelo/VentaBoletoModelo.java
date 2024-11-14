@@ -49,19 +49,28 @@ public class VentaBoletoModelo {
         }
     }
 
-    /*public List<Viaje> obtenerViajesCoincidentes(String origen, String destino, String fecha) {
-        String query = "SELECT * FROM viajes";
+    public List<Object[]> obtenerViajesCoincidentes(String origen, String destino, String fecha) {
+        String query = "SELECT v.id_viaje, v.id_bus, r.LugarInicio, r.LugarDestino, v.precio, " +
+               "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, " +
+               "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, " +
+               "v.fecha_salida " +
+               "FROM viajes v " +
+               "JOIN Ruta r ON v.id_ruta = r.idRuta " +
+               "JOIN conductores c1 ON v.conductor_id_1 = c1.idConductor " +
+               "JOIN persona p1 ON c1.idPersona = p1.idPersona " +
+               "JOIN conductores c2 ON v.conductor_id_2 = c2.idConductor " +
+               "JOIN persona p2 ON c2.idPersona = p2.idPersona";
         List<String> condiciones = new ArrayList<>();
-        List<Viaje> viajes = new ArrayList<>();
+        List<Object[]> viajes = new ArrayList<>();
 
         if (!origen.equals("-")) {
-            condiciones.add("origen = ?");
+            condiciones.add("r.LugarInicio = ?");
         }
         if (!destino.equals("-")) {
-            condiciones.add("destino = ?");
+            condiciones.add("r.LugarDestino = ?");
         }
         if (!fecha.isEmpty()) {
-            condiciones.add("fecha = ?");
+            condiciones.add("v.fecha_salida = ?");
         }
         if (!condiciones.isEmpty()) {
             query += " WHERE " + String.join(" AND ", condiciones);
@@ -81,20 +90,22 @@ public class VentaBoletoModelo {
 
             ResultSet rs = statm.executeQuery();
             while (rs.next()) {
-                Viaje viaje = new Viaje(
-                    rs.getInt("id_viaje"),
-                    rs.getString("origen"),
-                    rs.getString("destino"),
-                    rs.getString("fecha"),
-                    rs.getString("hora"),
-                    rs.getInt("id_ruta"),
-                    rs.getInt("id_bus")
-                );
+                Object[] viaje = new Object[8];
+                viaje[0] = rs.getString("id_viaje");
+                viaje[1] = rs.getString("id_bus");
+                viaje[2] = rs.getString("LugarInicio");
+                viaje[3] = rs.getString("LugarDestino");
+                viaje[4] = rs.getString("precio");
+                viaje[5] = rs.getString("conductor1_nombre") + " " + rs.getString("conductor1_apellido");
+                viaje[6] = rs.getString("conductor2_nombre") + " " + rs.getString("conductor2_apellido");
+                viaje[7] = rs.getString("fecha_salida");
                 viajes.add(viaje);
             }
+            return viajes;
+
         } catch (SQLException e) {
             System.err.println("Error al buscar viajes: " + e.getMessage());
+            return null;
         }
-
-    }*/
+    }
 }
