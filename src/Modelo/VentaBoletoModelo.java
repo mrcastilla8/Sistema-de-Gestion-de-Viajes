@@ -33,8 +33,8 @@ public class VentaBoletoModelo {
     }
 
     public List<String> obtenerDestinos() {
-        String sql = "SELECT DISTINCT LugarDestino FROM Ruta;";
-        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(sql)) {
+        String query = "SELECT DISTINCT LugarDestino FROM Ruta;";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
             try (ResultSet rs = statm.executeQuery()) {
                 ArrayList<String> destinos = new ArrayList<>();
                 destinos.add("-");
