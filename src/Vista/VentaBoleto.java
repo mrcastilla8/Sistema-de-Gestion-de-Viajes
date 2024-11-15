@@ -20,7 +20,6 @@ public class VentaBoleto extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         actualizarTabla();
-        actualizarComboBox();
     }
 
     @SuppressWarnings("unchecked")
@@ -54,6 +53,7 @@ public class VentaBoleto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boleto.png")));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Venta de Boletos");
         jLabel1.setAlignmentY(0.0F);
@@ -182,7 +182,7 @@ public class VentaBoleto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Tipo de bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida"
+                "ID", "Tipo de bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida", "Hora de salida"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -190,11 +190,12 @@ public class VentaBoleto extends javax.swing.JFrame {
         modeloColumna.getColumn(0).setPreferredWidth(40);
         modeloColumna.getColumn(1).setPreferredWidth(80);
         modeloColumna.getColumn(2).setPreferredWidth(60);
-        modeloColumna.getColumn(3).setPreferredWidth(60);
+        modeloColumna.getColumn(3).setPreferredWidth(70);
         modeloColumna.getColumn(4).setPreferredWidth(50);
         modeloColumna.getColumn(5).setPreferredWidth(200);
         modeloColumna.getColumn(6).setPreferredWidth(200);
         modeloColumna.getColumn(7).setPreferredWidth(100);
+        modeloColumna.getColumn(8).setPreferredWidth(100);
 
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
 
@@ -205,7 +206,7 @@ public class VentaBoleto extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -331,7 +332,7 @@ public class VentaBoleto extends javax.swing.JFrame {
         );
 
         pack();
-        setSize(840, 650); // Adjust the size of the JFrame
+        setSize(950, 650); // Adjust the size of the JFrame
     }// </editor-fold>//GEN
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
