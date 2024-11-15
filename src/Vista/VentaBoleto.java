@@ -3,6 +3,7 @@ package Vista;
 import Vista.MainMenu;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 import Modelo.VentaBoletoModelo;
 
@@ -13,12 +14,14 @@ public class VentaBoleto extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private List<String> origenes = modeloVB.obtenerOrigenes();
     private List<String> destinos = modeloVB.obtenerDestinos();
+    private List<Integer> ids;
 
     public VentaBoleto(MainMenu menu) {
         this.menu = menu;
         initComponents();
         setLocationRelativeTo(null);
-        iniciarTabla();
+        actualizarTabla();
+        actualizarComboBox();
     }
 
     @SuppressWarnings("unchecked")
@@ -331,16 +334,9 @@ public class VentaBoleto extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        String origen = jComboBox1.getSelectedItem().toString();
-        String destino = jComboBox2.getSelectedItem().toString();
-        String fecha = fechaTextField.getText();
-        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes(origen, destino, fecha);
-        modeloTabla = (DefaultTableModel) jTable1.getModel();
-        modeloTabla.setRowCount(0);
         limpiarTabla();
-        for (Object[] viaje : viajes) {
-            modeloTabla.addRow(viaje);
-        }
+        actualizarTabla();
+        actualizarComboBox();
     }//GEN-LAST:event_CrearActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
@@ -358,19 +354,37 @@ public class VentaBoleto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void iniciarTabla() {
-        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes("-", "-", "");
+    private void actualizarTabla() {
+        String origen = jComboBox1.getSelectedItem().toString();
+        String destino = jComboBox2.getSelectedItem().toString();
+        String fecha = fechaTextField.getText();
+        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes(origen, destino, fecha);
         modeloTabla = (DefaultTableModel) jTable1.getModel();
-        modeloTabla.setRowCount(0);
+        limpiarTabla();
         for (Object[] viaje : viajes) {
             modeloTabla.addRow(viaje);
         }
+        actualizarComboBox();
     }
 
     private void limpiarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
+        while (modeloTabla.getRowCount() > 0) {
+            modeloTabla.removeRow(0);
+        }
+    }
+
+    private void actualizarComboBox() {
+        List<Object> ids = new ArrayList<>();
+        int index = 0;
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            Object id = jTable1.getValueAt(i, index);
+            ids.add(id);
+        }
+
+        jComboBox3.removeAllItems();
+        for (Object id : ids) {
+            jComboBox3.addItem(id.toString());
         }
     }
 
