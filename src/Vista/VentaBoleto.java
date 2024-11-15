@@ -14,7 +14,6 @@ public class VentaBoleto extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private List<String> origenes = modeloVB.obtenerOrigenes();
     private List<String> destinos = modeloVB.obtenerDestinos();
-    private List<Integer> ids;
 
     public VentaBoleto(MainMenu menu) {
         this.menu = menu;
