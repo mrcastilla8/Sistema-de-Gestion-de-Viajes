@@ -3,7 +3,8 @@ package Vista;
 import Vista.MainMenu;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
+import javax.swing.table.TableColumnModel;
+import java.util.ArrayList;
 import Modelo.VentaBoletoModelo;
 
 public class VentaBoleto extends javax.swing.JFrame {
@@ -18,11 +19,11 @@ public class VentaBoleto extends javax.swing.JFrame {
         this.menu = menu;
         initComponents();
         setLocationRelativeTo(null);
-        iniciarTabla();
+        actualizarTabla();
+        actualizarComboBox();
     }
 
     @SuppressWarnings("unchecked")
-
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -76,10 +77,10 @@ public class VentaBoleto extends javax.swing.JFrame {
         labelUsuario.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         labelUsuario.setText("Fecha");
 
-        jComboBox1.setFont(new java.awt.Font("Serif", 1, 14));
+        jComboBox1.setFont(new java.awt.Font("Serif", 0, 14));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(origenes.toArray(new String[0])));
 
-        jComboBox2.setFont(new java.awt.Font("Serif", 1, 14));
+        jComboBox2.setFont(new java.awt.Font("Serif", 0, 14));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(destinos.toArray(new String[0])));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -175,15 +176,27 @@ public class VentaBoleto extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel4.setText("Viaje Coincidentes");
 
+        jTable1.setFont(new java.awt.Font("Serif", 0, 14));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "ID del bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida"
+                "ID", "Tipo de bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+        TableColumnModel modeloColumna = jTable1.getColumnModel();
+        modeloColumna.getColumn(0).setPreferredWidth(40);
+        modeloColumna.getColumn(1).setPreferredWidth(80);
+        modeloColumna.getColumn(2).setPreferredWidth(60);
+        modeloColumna.getColumn(3).setPreferredWidth(60);
+        modeloColumna.getColumn(4).setPreferredWidth(50);
+        modeloColumna.getColumn(5).setPreferredWidth(200);
+        modeloColumna.getColumn(6).setPreferredWidth(200);
+        modeloColumna.getColumn(7).setPreferredWidth(100);
+
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -192,7 +205,7 @@ public class VentaBoleto extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -218,6 +231,7 @@ public class VentaBoleto extends javax.swing.JFrame {
             }
         });
 
+        jComboBox3.setFont(new java.awt.Font("Serif", 0, 14));
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel6.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
@@ -273,34 +287,28 @@ public class VentaBoleto extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 6, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +331,8 @@ public class VentaBoleto extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+        setSize(840, 650); // Adjust the size of the JFrame
+    }// </editor-fold>//GEN
 
     private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         menu.setVisible(true);
@@ -331,16 +340,9 @@ public class VentaBoleto extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        String origen = jComboBox1.getSelectedItem().toString();
-        String destino = jComboBox2.getSelectedItem().toString();
-        String fecha = fechaTextField.getText();
-        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes(origen, destino, fecha);
-        modeloTabla = (DefaultTableModel) jTable1.getModel();
-        modeloTabla.setRowCount(0);
         limpiarTabla();
-        for (Object[] viaje : viajes) {
-            modeloTabla.addRow(viaje);
-        }
+        actualizarTabla();
+        actualizarComboBox();
     }//GEN-LAST:event_CrearActionPerformed
 
     private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
@@ -358,19 +360,37 @@ public class VentaBoleto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void iniciarTabla() {
-        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes("-", "-", "");
+    private void actualizarTabla() {
+        String origen = jComboBox1.getSelectedItem().toString();
+        String destino = jComboBox2.getSelectedItem().toString();
+        String fecha = fechaTextField.getText();
+        List<Object[]> viajes = modeloVB.obtenerViajesCoincidentes(origen, destino, fecha);
         modeloTabla = (DefaultTableModel) jTable1.getModel();
-        modeloTabla.setRowCount(0);
+        limpiarTabla();
         for (Object[] viaje : viajes) {
             modeloTabla.addRow(viaje);
         }
+        actualizarComboBox();
     }
 
     private void limpiarTabla() {
-        DefaultTableModel modelo = (DefaultTableModel) jTable1.getModel();
-        while (modelo.getRowCount() > 0) {
-            modelo.removeRow(0);
+        while (modeloTabla.getRowCount() > 0) {
+            modeloTabla.removeRow(0);
+        }
+    }
+
+    private void actualizarComboBox() {
+        List<Object> ids = new ArrayList<>();
+        int index = 0;
+
+        for (int i = 0; i < jTable1.getRowCount(); i++) {
+            Object id = jTable1.getValueAt(i, index);
+            ids.add(id);
+        }
+
+        jComboBox3.removeAllItems();
+        for (Object id : ids) {
+            jComboBox3.addItem(id.toString());
         }
     }
 

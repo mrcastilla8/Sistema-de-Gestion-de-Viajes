@@ -33,8 +33,8 @@ public class VentaBoletoModelo {
     }
 
     public List<String> obtenerDestinos() {
-        String sql = "SELECT DISTINCT LugarDestino FROM Ruta;";
-        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(sql)) {
+        String query = "SELECT DISTINCT LugarDestino FROM Ruta;";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
             try (ResultSet rs = statm.executeQuery()) {
                 ArrayList<String> destinos = new ArrayList<>();
                 destinos.add("-");
@@ -50,11 +50,12 @@ public class VentaBoletoModelo {
     }
 
     public List<Object[]> obtenerViajesCoincidentes(String origen, String destino, String fecha) {
-        String query = "SELECT v.id_viaje, v.id_bus, r.LugarInicio, r.LugarDestino, v.precio, " +
+        String query = "SELECT v.id_viaje, b.tipo, r.LugarInicio, r.LugarDestino, v.precio, " +
                "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, " +
                "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, " +
                "v.fecha_salida " +
                "FROM viajes v " +
+               "JOIN buses b ON v.id_bus = b.id_bus " +
                "JOIN Ruta r ON v.id_ruta = r.idRuta " +
                "JOIN conductores c1 ON v.conductor_id_1 = c1.idConductor " +
                "JOIN persona p1 ON c1.idPersona = p1.idPersona " +
@@ -92,7 +93,7 @@ public class VentaBoletoModelo {
             while (rs.next()) {
                 Object[] viaje = new Object[8];
                 viaje[0] = rs.getString("id_viaje");
-                viaje[1] = rs.getString("id_bus");
+                viaje[1] = rs.getString("tipo");
                 viaje[2] = rs.getString("LugarInicio");
                 viaje[3] = rs.getString("LugarDestino");
                 viaje[4] = rs.getString("precio");
