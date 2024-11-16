@@ -49,13 +49,13 @@ public CRUD_VIAJES(MainMenu menu) {
         Label_Ruta1 = new javax.swing.JLabel();
         Label_Ruta2 = new javax.swing.JLabel();
         Entrada_Precio = new javax.swing.JTextField();
-        Entrada_FechaSalida = new javax.swing.JTextField();
         Entrada_Bus = new javax.swing.JComboBox<>();
         Entrada_Primer_Conductor = new javax.swing.JComboBox<>();
         Entrada_Segundo_Conductor = new javax.swing.JComboBox<>();
         Entrada_Ruta = new javax.swing.JComboBox<>();
         Entrada_HoraSalida = new javax.swing.JTextField();
         Label_Ruta3 = new javax.swing.JLabel();
+        Entrada_Fecha = new com.toedter.calendar.JDateChooser();
         jPanel3 = new javax.swing.JPanel();
         Crear = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
@@ -95,12 +95,6 @@ public CRUD_VIAJES(MainMenu menu) {
         Entrada_Precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Entrada_PrecioActionPerformed(evt);
-            }
-        });
-
-        Entrada_FechaSalida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Entrada_FechaSalidaActionPerformed(evt);
             }
         });
 
@@ -155,15 +149,14 @@ public CRUD_VIAJES(MainMenu menu) {
                     .addComponent(Label_Bus)
                     .addComponent(Label_Ruta3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Entrada_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Entrada_FechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(Entrada_Bus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Entrada_Primer_Conductor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Entrada_Segundo_Conductor, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Entrada_Ruta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(Entrada_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                    .addComponent(Entrada_Bus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Entrada_Primer_Conductor, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Entrada_Segundo_Conductor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Entrada_Ruta, 0, 165, Short.MAX_VALUE)
+                    .addComponent(Entrada_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -191,10 +184,10 @@ public CRUD_VIAJES(MainMenu menu) {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(Entrada_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Entrada_FechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Label_Ruta2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_Ruta2)
+                            .addComponent(Entrada_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Label_Ruta3))
@@ -286,8 +279,7 @@ public CRUD_VIAJES(MainMenu menu) {
         );
 
         jLabel1.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ruta.png"))); // NOI18N
-        jLabel1.setText("Rutas");
+        jLabel1.setText("Viajes");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Base de datos"));
 
@@ -329,8 +321,7 @@ public CRUD_VIAJES(MainMenu menu) {
 
         jLabel4.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo-viaje.png")));
-        jLabel4.setText("Viajes");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoViaje.png")));
         jLabel4.setAlignmentY(0.0F);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -350,12 +341,9 @@ public CRUD_VIAJES(MainMenu menu) {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(348, 348, 348))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(360, 360, 360)
-                    .addComponent(jLabel1)
-                    .addContainerGap(361, Short.MAX_VALUE)))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(407, 407, 407))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(335, 335, 335)
@@ -366,7 +354,9 @@ public CRUD_VIAJES(MainMenu menu) {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -374,11 +364,6 @@ public CRUD_VIAJES(MainMenu menu) {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(472, 472, 472)
-                    .addComponent(jLabel1)
-                    .addContainerGap(472, Short.MAX_VALUE)))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(466, 466, 466)
@@ -402,7 +387,7 @@ public CRUD_VIAJES(MainMenu menu) {
             .addGap(0, 1008, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 2, Short.MAX_VALUE)
+                    .addGap(0, 4, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 3, Short.MAX_VALUE)))
         );
@@ -425,10 +410,6 @@ public CRUD_VIAJES(MainMenu menu) {
     private void Entrada_RutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_RutaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Entrada_RutaActionPerformed
-
-    private void Entrada_FechaSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_FechaSalidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Entrada_FechaSalidaActionPerformed
 
     private void Entrada_PrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_PrecioActionPerformed
         // TODO add your handling code here:
@@ -465,7 +446,7 @@ public CRUD_VIAJES(MainMenu menu) {
         Entrada_Segundo_Conductor.setSelectedIndex(0);
         Entrada_Ruta.setSelectedIndex(0);
         Entrada_Precio.setText("");
-        Entrada_FechaSalida.setText("");
+        Entrada_Fecha.setDate(null);
         Entrada_HoraSalida.setText(""); // Limpiar el campo de la hora de salida
     }
 
@@ -478,7 +459,7 @@ public CRUD_VIAJES(MainMenu menu) {
     private javax.swing.JButton Crear;
     private javax.swing.JButton Eliminar;
     public javax.swing.JComboBox<String> Entrada_Bus;
-    public javax.swing.JTextField Entrada_FechaSalida;
+    public com.toedter.calendar.JDateChooser Entrada_Fecha;
     public javax.swing.JTextField Entrada_HoraSalida;
     public javax.swing.JTextField Entrada_Precio;
     public javax.swing.JComboBox<String> Entrada_Primer_Conductor;
