@@ -110,4 +110,48 @@ public class VentaBoletoModelo {
             return null;
         }
     }
+
+    public boolean asientoDisponible(int idViaje, String numAsiento) {
+        String query = "SELECT disponible FROM asientos WHERE id_bus = (SELECT id_bus FROM viajes WHERE id_viaje = ?) AND numero_asiento = ?;";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setInt(1, idViaje);
+            statm.setString(2, numAsiento);
+            try (ResultSet rs = statm.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBoolean("disponible");
+                }
+                return false;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al verificar si el asiento está disponible: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public String obtenerTipoDeBus(int idViaje) {
+        String query = "SELECT tipo FROM buses WHERE id_bus = (SELECT id_bus FROM viajes WHERE id_viaje = ?);";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setInt(1, idViaje);
+            try (ResultSet rs = statm.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getString("tipo");
+                }
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el tipo de bus: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public void actualizarAsiento(int idViaje, String numAsiento) {
+        String query = "UPDATE asientos SET disponible = 0 WHERE id_bus = (SELECT id_bus FROM viajes WHERE id_viaje = ?) AND numero_asiento = ?;";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setInt(1, idViaje);
+            statm.setString(2, numAsiento);
+            statm.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar el asiento: " + e.getMessage());
+        }
+    }
 }
