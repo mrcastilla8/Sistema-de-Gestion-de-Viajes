@@ -463,7 +463,7 @@ public class SeleccionAsientosVIP extends javax.swing.JFrame {
         jLabel9.setText("Asiento seleccionado: ");
 
         jTextField1.setFont(new java.awt.Font("Serif", 0, 12)); // NOI18N
-        jTextField1.setText("jTextField1");
+        jTextField1.setText("Ninguno");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

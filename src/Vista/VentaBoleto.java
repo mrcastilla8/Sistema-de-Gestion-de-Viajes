@@ -367,10 +367,10 @@ public class VentaBoleto extends javax.swing.JFrame {
             new SeleccionAsientosEstandar(this, idViaje).setVisible(true);
             this.setVisible(false);
         } else if (modeloVB.obtenerTipoDeBus(idViaje).equals("Premium")) {
-            new SeleccionAsientosPremium(this, idViaje);
+            new SeleccionAsientosPremium(this, idViaje).setVisible(true);
             this.setVisible(false);
         } else {
-            new SeleccionAsientosVIP(this, idViaje);
+            new SeleccionAsientosVIP(this, idViaje).setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
