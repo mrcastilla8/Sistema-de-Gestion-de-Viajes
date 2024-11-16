@@ -6,6 +6,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.util.ArrayList;
 import Modelo.VentaBoletoModelo;
+import Vista.SeleccionAsientosEstandar;
+import Vista.SeleccionAsientosPremium;
+import Vista.SeleccionAsientosVIP;
+
 
 public class VentaBoleto extends javax.swing.JFrame {
 
@@ -358,7 +362,17 @@ public class VentaBoleto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void ContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        // TODO add your handling code here:
+        int idViaje = Integer.parseInt(jComboBox3.getSelectedItem().toString());
+        if (modeloVB.obtenerTipoDeBus(idViaje).equals("Estándar")) {
+            new SeleccionAsientosEstandar(this, idViaje).setVisible(true);
+            this.setVisible(false);
+        } else if (modeloVB.obtenerTipoDeBus(idViaje).equals("Premium")) {
+            new SeleccionAsientosPremium(this, idViaje).setVisible(true);
+            this.setVisible(false);
+        } else {
+            new SeleccionAsientosVIP(this, idViaje).setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void actualizarTabla() {
