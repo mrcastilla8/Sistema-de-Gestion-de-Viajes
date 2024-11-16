@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import Vista.CRUD_VIAJES;
 import Controlador.Conexion;
+import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
 public class Viaje {
@@ -24,18 +25,26 @@ public class Viaje {
     // Método para agregar un nuevo viaje
     public void agregar() {
         String idBus = ventanaViajes.Entrada_Bus.getSelectedItem().toString();
+        idBus = idBus.split(" - ")[0].trim();
         String rutaSeleccionada = ventanaViajes.Entrada_Ruta.getSelectedItem().toString();
         // Extraer el idRuta de la cadena seleccionada
-        String idRuta = rutaSeleccionada.split(" - ")[0].trim(); 
+        String idRuta = rutaSeleccionada.split(" - ")[0].trim();
         String precio = ventanaViajes.Entrada_Precio.getText();
         String conductor1 = ventanaViajes.Entrada_Primer_Conductor.getSelectedItem().toString().split(" - ")[0].trim();
         String conductor2 = ventanaViajes.Entrada_Segundo_Conductor.getSelectedItem().toString().split(" - ")[0].trim();
-        String fechaSalida = ventanaViajes.Entrada_FechaSalida.getText(); // Fecha en formato 'YYYY-MM-DD'
         String horaEntrada = ventanaViajes.Entrada_HoraSalida.getText(); // Hora en formato 'HH:MM'
 
-        // Agregar los segundos como '00'
-        String horaSalida = horaEntrada + ":00"; // Hora en formato 'HH:MM:SS'
+        // Obtener la fecha del JDateChooser
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaSalida = sdf.format(ventanaViajes.Entrada_Fecha.getDate());
 
+// Agregar los segundos como '00'
+        String horaSalida = horaEntrada + ":00"; // Hora en formato 'HH:MM:SS'
+// Verificar que los conductores no sean iguales
+        if (conductor1.equals(conductor2)) {
+            JOptionPane.showMessageDialog(null, "El conductor 1 y el conductor 2 no pueden ser la misma persona.");
+            return; // No proceder si los conductores son iguales
+        }
         String sql = "INSERT INTO viajes (id_bus, id_ruta, precio, conductor_id_1, conductor_id_2, fecha_salida, hora_salida) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
@@ -55,8 +64,6 @@ public class Viaje {
             JOptionPane.showMessageDialog(null, "Error al agregar viaje: " + e.getMessage());
         }
     }
-
-
 
     // Método para eliminar un viaje
     public void eliminar() {
@@ -96,9 +103,11 @@ public class Viaje {
         String precio = ventanaViajes.Entrada_Precio.getText();
         String conductor1 = ventanaViajes.Entrada_Primer_Conductor.getSelectedItem().toString().split(" - ")[0].trim();
         String conductor2 = ventanaViajes.Entrada_Segundo_Conductor.getSelectedItem().toString().split(" - ")[0].trim();
-        String fechaSalida = ventanaViajes.Entrada_FechaSalida.getText(); // Fecha en formato 'YYYY-MM-DD'
         String horaSalida = ventanaViajes.Entrada_HoraSalida.getText(); // Hora en formato 'HH:MM:SS'
 
+        // Obtener la nueva fecha del JDateChooser
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaSalida = sdf.format(ventanaViajes.Entrada_Fecha.getDate());
         String sql = "UPDATE viajes SET id_bus = ?, id_ruta = ?, precio = ?, conductor_id_1 = ?, conductor_id_2 = ?, fecha_salida = ?, hora_salida = ? WHERE id_viaje = ?";
 
         try {
@@ -120,19 +129,18 @@ public class Viaje {
         }
     }
 
-
     // Método para consultar y mostrar los viajes en la tabla
     public void consultar() {
         String sql = "SELECT v.id_viaje, v.id_bus, r.LugarInicio, r.LugarDestino, v.precio, "
-               + "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, "
-               + "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, "
-               + "v.fecha_salida, v.hora_salida "
-               + "FROM viajes v "
-               + "JOIN Ruta r ON v.id_ruta = r.idRuta "
-               + "JOIN conductores c1 ON v.conductor_id_1 = c1.idConductor "
-               + "JOIN persona p1 ON c1.idPersona = p1.idPersona "
-               + "JOIN conductores c2 ON v.conductor_id_2 = c2.idConductor "
-               + "JOIN persona p2 ON c2.idPersona = p2.idPersona";
+                + "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, "
+                + "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, "
+                + "v.fecha_salida, v.hora_salida "
+                + "FROM viajes v "
+                + "JOIN Ruta r ON v.id_ruta = r.idRuta "
+                + "JOIN conductores c1 ON v.conductor_id_1 = c1.idConductor "
+                + "JOIN persona p1 ON c1.idPersona = p1.idPersona "
+                + "JOIN conductores c2 ON v.conductor_id_2 = c2.idConductor "
+                + "JOIN persona p2 ON c2.idPersona = p2.idPersona";
 
         try {
             conet = con.obtenerConexion();
@@ -163,20 +171,20 @@ public class Viaje {
     }
 
     public void cargarIdsBuses() {
-        String sql = "SELECT id_bus FROM buses";
+        String sql = "SELECT id_bus,tipo FROM buses";
         try {
             conet = con.obtenerConexion();
             ps = conet.prepareStatement(sql);
             rs = ps.executeQuery();
             ventanaViajes.Entrada_Bus.removeAllItems(); // Limpiar items actuales
             while (rs.next()) {
-                ventanaViajes.Entrada_Bus.addItem(rs.getString("id_bus"));
+                ventanaViajes.Entrada_Bus.addItem(rs.getString("id_bus") + " - "+ rs.getString("tipo"));
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar IDs de buses: " + e.getMessage());
         }
     }
-    
+
     public void cargarIdsRutas() {
         String sql = "SELECT idRuta, LugarInicio, LugarDestino FROM Ruta";
         try {
@@ -220,7 +228,7 @@ public class Viaje {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al cargar conductores: " + e.getMessage());
-       }
-}
+        }
+    }
 
 }
