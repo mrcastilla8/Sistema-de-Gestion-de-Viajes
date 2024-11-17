@@ -195,7 +195,7 @@ public class VentaBoletoModelo {
             ResultSet rs = statm.executeQuery();
             while (rs.next()) {
                 fechaSalida = rs.getString("fecha_salida");
-                horaSalida = rs.getString("hora_salida").replace(":", "");
+                horaSalida = rs.getString("hora_salida");
                 lugarInicio = rs.getString("LugarInicio");
                 lugarDestino = rs.getString("LugarDestino");
                 precio = rs.getString("precio");
@@ -212,36 +212,36 @@ public class VentaBoletoModelo {
             if (!directorio.exists()) {
                 directorio.mkdirs();
             }
-            String nombreArchivo = ruta + "boleto_" + dniPasajero + "_" + fechaSalida + "_" + horaSalida+ "_asiento" + numeroAsiento + ".pdf";
+            String nombreArchivo = ruta + "boleto_" + dniPasajero + "_" + fechaSalida + "_" + horaSalida.replace(":", "") + "_asiento" + numeroAsiento + ".pdf";
             Document documento = new Document();
             PdfWriter.getInstance(documento, new FileOutputStream(nombreArchivo));
             documento.open();
 
             // Agregar contenido al PDF
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("            BOLETO DE BUS              ", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("Fecha:          " + fechaSalida));
             documento.add(new Paragraph("Hora:           " + horaSalida));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("Lugar de salida:   " + lugarInicio));
             documento.add(new Paragraph("Lugar de destino:  " + lugarDestino));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("Conductores asignados:"));
             documento.add(new Paragraph("  - " + conductor1));
             documento.add(new Paragraph("  - " + conductor2));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("Tipo de Bus:    " + tipoBus));
             documento.add(new Paragraph("Número de asiento:  " + numeroAsiento));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("Nombres del cliente: " + nombrePasajero));
             documento.add(new Paragraph("Apellidos del cliente: " + apellidoPasajero));
             documento.add(new Paragraph("DNI del cliente: " + dniPasajero));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
             documento.add(new Paragraph("Precio: " + precio));
             documento.add(new Paragraph("----------------------------------------"));
             documento.add(new Paragraph("     ¡Gracias por elegir nuestra empresa!", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
-            documento.add(new Paragraph("-----------------------------------------------"));
+            documento.add(new Paragraph("--------------------------------------------------"));
 
             documento.close();
         } catch (Exception e) {
