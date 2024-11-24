@@ -421,7 +421,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         TabsOperadores.addTab("Cesados", ScrollRegulares);
 
-        jPanel1.add(TabsOperadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 1300, 240));
+        jPanel1.add(TabsOperadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 1320, 250));
         TabsOperadores.getAccessibleContext().setAccessibleName("asfasf");
 
         jScrollPane6.setViewportView(jPanel1);
@@ -434,7 +434,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6)
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
         );
 
         pack();

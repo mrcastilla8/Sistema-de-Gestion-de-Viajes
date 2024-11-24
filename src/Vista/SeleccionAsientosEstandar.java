@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import Modelo.VentaBoletoModelo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SeleccionAsientosEstandar extends javax.swing.JFrame {
 
     VentaBoleto venta;
@@ -745,7 +748,7 @@ public class SeleccionAsientosEstandar extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     private void colorearBotones() {
-        for (int i = 1; i <= 60; i++) {
+        for (int i = 1; i <= 50; i++) {
             String numAsiento;
             if (i <= 12) {
                 numAsiento = "A" + i;
@@ -759,6 +762,7 @@ public class SeleccionAsientosEstandar extends javax.swing.JFrame {
             }
         }
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
