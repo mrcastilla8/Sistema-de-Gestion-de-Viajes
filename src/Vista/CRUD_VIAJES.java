@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
 import Modelo.Viaje;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 public class CRUD_VIAJES extends javax.swing.JFrame {
     MainMenu menu;
     Conexion con1= new Conexion();
@@ -294,6 +296,11 @@ public CRUD_VIAJES(MainMenu menu) {
                 "Id Viaje", "Id Bus", "Origen", "Destino", "Precio", "Primer Conductor", "Segundo Conductor", "Fecha de Salida", "Hora de salida"
             }
         ));
+        Tabla_Viajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_ViajesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla_Viajes);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -354,9 +361,9 @@ public CRUD_VIAJES(MainMenu menu) {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -416,7 +423,10 @@ public CRUD_VIAJES(MainMenu menu) {
     }//GEN-LAST:event_Entrada_PrecioActionPerformed
 
     private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        if (validarCamposLlenos()){
+           
         viaje.agregar();
+        }
     }//GEN-LAST:event_CrearActionPerformed
 
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
@@ -424,7 +434,10 @@ public CRUD_VIAJES(MainMenu menu) {
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        viaje.modificar();
+        if (validarCamposLlenos()){
+        viaje.modificar();     
+        }
+        
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -433,12 +446,92 @@ public CRUD_VIAJES(MainMenu menu) {
 
     private void Boton_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegresarActionPerformed
         menu.setVisible(true);
+        limpiarCampos();
         this.setVisible(false);
     }//GEN-LAST:event_Boton_RegresarActionPerformed
 
     private void Entrada_HoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_HoraSalidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Entrada_HoraSalidaActionPerformed
+
+    private void Tabla_ViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ViajesMouseClicked
+        int fila = Tabla_Viajes.getSelectedRow(); // Obtener la fila seleccionada
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(null, "Seleccione un viaje para cargar los datos");
+    } else {
+        // Obtener los valores de la fila seleccionada
+        String idBus = Tabla_Viajes.getValueAt(fila, 1).toString();
+        String conductor1Nombre = Tabla_Viajes.getValueAt(fila, 5).toString();
+        String conductor2Nombre = Tabla_Viajes.getValueAt(fila, 6).toString();
+        String rutaOrigen = Tabla_Viajes.getValueAt(fila, 2).toString();
+        String rutaDestino = Tabla_Viajes.getValueAt(fila, 3).toString();
+        String precio = Tabla_Viajes.getValueAt(fila, 4).toString();
+        String fechaSalida = Tabla_Viajes.getValueAt(fila, 7).toString();
+        String horaSalida = Tabla_Viajes.getValueAt(fila, 8).toString().substring(0, 5); // Obtener HH:MM
+
+        // Buscar y seleccionar los IDs correspondientes en los comboBox
+        seleccionarItemPorTexto(Entrada_Bus, idBus);
+        seleccionarItemPorTexto(Entrada_Primer_Conductor, conductor1Nombre);
+        seleccionarItemPorTexto(Entrada_Segundo_Conductor, conductor2Nombre);
+        seleccionarItemPorTexto(Entrada_Ruta, rutaOrigen + " - " + rutaDestino);
+
+        // Cargar los demás valores en los campos correspondientes
+        Entrada_Precio.setText(precio);
+
+        try {
+            // Convertir la fecha a un objeto Date para el JDateChooser
+            java.util.Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaSalida);
+            Entrada_Fecha.setDate(fecha);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar la fecha: " + e.getMessage());
+        }
+
+        Entrada_HoraSalida.setText(horaSalida); // Cargar la hora de salida
+    }
+    }//GEN-LAST:event_Tabla_ViajesMouseClicked
+
+    
+private void seleccionarItemPorTexto(javax.swing.JComboBox<String> comboBox, String texto) {
+    for (int i = 0; i < comboBox.getItemCount(); i++) {
+        String item = comboBox.getItemAt(i);
+        if (item.contains(texto)) { // Buscar coincidencias parciales o exactas
+            comboBox.setSelectedIndex(i);
+            break;
+        }
+    }
+}
+
+private boolean validarCamposLlenos() {
+    if (Entrada_Bus.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un bus.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Primer_Conductor.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un primer conductor.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Segundo_Conductor.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un segundo conductor.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Ruta.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Precio.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un precio.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Fecha.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha de salida.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_HoraSalida.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar una hora de salida.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
 
     private void limpiarCampos() {
         Entrada_Bus.setSelectedIndex(0);

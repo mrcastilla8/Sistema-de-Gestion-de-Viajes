@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.util.List;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import java.sql.SQLException;
 
@@ -153,5 +158,94 @@ public class VentaBoletoModelo {
         } catch (SQLException e) {
             System.err.println("Error al actualizar el asiento: " + e.getMessage());
         }
+    }
+
+    public void imprimirBoleto(int idViaje, String numAsiento, String nombres, String apellidos, String dni) {
+        String numeroAsiento = numAsiento;
+        String nombrePasajero = nombres;
+        String apellidoPasajero = apellidos;
+        String dniPasajero = dni;
+        String tipoBus = obtenerTipoDeBus(idViaje);
+        String fechaSalida = "";
+        String horaSalida = "";
+        String lugarInicio = "";
+        String lugarDestino = "";
+        String precio = "";
+        String conductor1 = "";
+        String conductor2 = "";
+
+        String query = "SELECT v.id_viaje, v.fecha_salida, v.hora_salida, r.LugarInicio, r.LugarDestino, " +
+                "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, " +
+                "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, " +
+                "a.numero_asiento, v.precio " +
+                "FROM viajes v " +
+                "JOIN Ruta r ON v.id_ruta = r.idRuta " +
+                "JOIN conductores c1 ON v.conductor_id_1 = c1.idConductor " +
+                "JOIN persona p1 ON c1.idPersona = p1.idPersona " +
+                "JOIN conductores c2 ON v.conductor_id_2 = c2.idConductor " +
+                "JOIN persona p2 ON c2.idPersona = p2.idPersona " +
+                "JOIN asientos a ON v.id_bus = a.id_bus " +
+                "WHERE v.id_viaje = ? AND a.numero_asiento = ?;";
+    
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            int index = 1;
+            statm.setInt(index++, idViaje);
+            statm.setString(index, numAsiento);
+
+            ResultSet rs = statm.executeQuery();
+            while (rs.next()) {
+                fechaSalida = rs.getString("fecha_salida");
+                horaSalida = rs.getString("hora_salida");
+                lugarInicio = rs.getString("LugarInicio");
+                lugarDestino = rs.getString("LugarDestino");
+                precio = rs.getString("precio");
+                conductor1 = rs.getString("conductor1_nombre") + " " + rs.getString("conductor1_apellido");
+                conductor2 = rs.getString("conductor2_nombre") + " " + rs.getString("conductor2_apellido");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener los datos del boleto: " + e.getMessage());
+        }
+
+        try {
+            String ruta = "./boletos/";
+            File directorio = new File(ruta);
+            if (!directorio.exists()) {
+                directorio.mkdirs();
+            }
+            String nombreArchivo = ruta + "boleto_" + dniPasajero + "_" + fechaSalida + "_" + horaSalida.replace(":", "") + "_asiento" + numeroAsiento + ".pdf";
+            Document documento = new Document();
+            PdfWriter.getInstance(documento, new FileOutputStream(nombreArchivo));
+            documento.open();
+
+            // Agregar contenido al PDF
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("            BOLETO DE BUS              ", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 14)));
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("Fecha:          " + fechaSalida));
+            documento.add(new Paragraph("Hora:           " + horaSalida));
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("Lugar de salida:   " + lugarInicio));
+            documento.add(new Paragraph("Lugar de destino:  " + lugarDestino));
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("Conductores asignados:"));
+            documento.add(new Paragraph("  - " + conductor1));
+            documento.add(new Paragraph("  - " + conductor2));
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("Tipo de Bus:    " + tipoBus));
+            documento.add(new Paragraph("Número de asiento:  " + numeroAsiento));
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("Nombres del cliente: " + nombrePasajero));
+            documento.add(new Paragraph("Apellidos del cliente: " + apellidoPasajero));
+            documento.add(new Paragraph("DNI del cliente: " + dniPasajero));
+            documento.add(new Paragraph("--------------------------------------------------"));
+            documento.add(new Paragraph("Precio: " + precio));
+            documento.add(new Paragraph("----------------------------------------"));
+            documento.add(new Paragraph("     ¡Gracias por elegir nuestra empresa!", FontFactory.getFont(FontFactory.HELVETICA_BOLD)));
+            documento.add(new Paragraph("--------------------------------------------------"));
+
+            documento.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }   
     }
 }

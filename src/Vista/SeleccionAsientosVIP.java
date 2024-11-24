@@ -583,7 +583,8 @@ public class SeleccionAsientosVIP extends javax.swing.JFrame {
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         if (!jTextField1.getText().equals("Ninguno")) {
-            modeloVB.actualizarAsiento(idViaje, jTextField1.getText());
+            new ingresoDatosPersonales(null, null, this, idViaje, jTextField1.getText()).setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
