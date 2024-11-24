@@ -19,7 +19,7 @@ public class MainMenu extends javax.swing.JFrame {
         IguConductor ventanaConductor;
         IguRuta ventanaRuta;
         IguAsientos ventanaAsiento;
-        VentaBoleto ventanaBoleto;
+        VentaBoletoNuevo ventanaBoleto;
     public MainMenu() {
         initComponents();
         setLocationRelativeTo(null);
@@ -30,7 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
         ventanaRuta = new IguRuta(this);
         ventanaViajes = new CRUD_VIAJES(this);
         ventanaAsiento = new IguAsientos(this);
-        ventanaBoleto = new VentaBoleto(this);
+        ventanaBoleto = new VentaBoletoNuevo(this);
     }
 
     /**

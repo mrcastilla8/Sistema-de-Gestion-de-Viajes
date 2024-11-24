@@ -3,8 +3,11 @@ package Modelo;
 import Controlador.Conexion;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Map;
+
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -116,21 +119,25 @@ public class VentaBoletoModelo {
         }
     }
 
-    public boolean asientoDisponible(int idViaje, String numAsiento) {
-        String query = "SELECT disponible FROM asientos WHERE id_bus = (SELECT id_bus FROM viajes WHERE id_viaje = ?) AND numero_asiento = ?;";
+    public Map<String, Boolean> obtenerEstadosAsientos(int idViaje) {
+        String query = "SELECT numero_asiento, disponible FROM asientos " +
+                       "WHERE id_bus = (SELECT id_bus FROM viajes WHERE id_viaje = ?);";
+        Map<String, Boolean> estadosAsientos = new HashMap<>();
+
         try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
             statm.setInt(1, idViaje);
-            statm.setString(2, numAsiento);
             try (ResultSet rs = statm.executeQuery()) {
-                if (rs.next()) {
-                    return rs.getBoolean("disponible");
+                while (rs.next()) {
+                    String numeroAsiento = rs.getString("numero_asiento");
+                    boolean disponible = rs.getBoolean("disponible");
+                    estadosAsientos.put(numeroAsiento, disponible);
                 }
-                return false;
             }
         } catch (SQLException e) {
-            System.err.println("Error al verificar si el asiento está disponible: " + e.getMessage());
-            return false;
+            System.err.println("Error al obtener los estados de los asientos: " + e.getMessage());
         }
+
+        return estadosAsientos;
     }
 
     public String obtenerTipoDeBus(int idViaje) {
