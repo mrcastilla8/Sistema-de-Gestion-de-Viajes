@@ -68,16 +68,15 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         Limpiar = new javax.swing.JButton();
         Regresar = new javax.swing.JToggleButton();
         jLabel3 = new javax.swing.JLabel();
-        RegularOperadores = new javax.swing.JTabbedPane();
+        TabsOperadores = new javax.swing.JTabbedPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         TablaOperadorRegular = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        ScrollRegulares = new javax.swing.JScrollPane();
         TablaOperadorDespedidos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(46, 138, 153));
-        jPanel1.setForeground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
@@ -86,28 +85,39 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(31, 110, 140));
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.setToolTipText("");
 
         jLabel4.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombres");
 
         jLabel5.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Apellidos");
 
         jLabel6.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DNI");
 
         jLabel7.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Teléfono");
 
         jLabel8.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ID");
 
         txtNombre.setBackground(new java.awt.Color(132, 167, 161));
         txtNombre.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombre.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
         txtApellido.setBackground(new java.awt.Color(132, 167, 161));
         txtApellido.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtApellido.setForeground(new java.awt.Color(255, 255, 255));
+        txtApellido.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
@@ -116,31 +126,45 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         txtDNI.setBackground(new java.awt.Color(132, 167, 161));
         txtDNI.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtDNI.setForeground(new java.awt.Color(255, 255, 255));
+        txtDNI.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
         txtTelefono.setBackground(new java.awt.Color(132, 167, 161));
         txtTelefono.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
         txtID.setEditable(false);
         txtID.setBackground(new java.awt.Color(132, 167, 161));
         txtID.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtID.setForeground(new java.awt.Color(255, 255, 255));
+        txtID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
         jLabel9.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Usuario");
 
         jLabel10.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Edad");
 
         jLabel11.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Contraseña");
 
         jLabel12.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Rol");
 
         txtUsuario.setBackground(new java.awt.Color(132, 167, 161));
         txtUsuario.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
 
         txtContraseña.setBackground(new java.awt.Color(132, 167, 161));
         txtContraseña.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtContraseña.setForeground(new java.awt.Color(255, 255, 255));
+        txtContraseña.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaActionPerformed(evt);
@@ -149,6 +173,8 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         txtEdad.setBackground(new java.awt.Color(132, 167, 161));
         txtEdad.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(255, 255, 255));
+        txtEdad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEdadActionPerformed(evt);
@@ -159,6 +185,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         optionRol.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
         optionRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Operador" }));
         optionRol.setToolTipText("");
+        optionRol.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         optionRol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 optionRolActionPerformed(evt);
@@ -195,7 +222,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                     .addComponent(txtUsuario)
                     .addComponent(txtContraseña)
                     .addComponent(txtEdad)
-                    .addComponent(optionRol, 0, 491, Short.MAX_VALUE))
+                    .addComponent(optionRol, 0, 487, Short.MAX_VALUE))
                 .addGap(51, 51, 51))
         );
         jPanel2Layout.setVerticalGroup(
@@ -246,7 +273,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Base de Datos");
+        jLabel2.setText("BASE DE DATOS");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
 
         Crear.setBackground(new java.awt.Color(14, 41, 84));
@@ -254,36 +281,40 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         Crear.setForeground(new java.awt.Color(255, 255, 255));
         Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
         Crear.setText("Crear");
+        Crear.setBorder(null);
         Crear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CrearActionPerformed(evt);
             }
         });
-        jPanel1.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, -1));
+        jPanel1.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 130, 40));
 
         Modificar.setBackground(new java.awt.Color(14, 41, 84));
         Modificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         Modificar.setText("Modificar");
+        Modificar.setBorder(null);
         Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
+        jPanel1.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 140, 40));
 
         Eliminar.setBackground(new java.awt.Color(14, 41, 84));
         Eliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Eliminar.setForeground(new java.awt.Color(255, 255, 255));
         Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
+        Eliminar.setBorder(null);
+        Eliminar.setBorderPainted(false);
         Eliminar.setLabel("Dar de baja");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
+        jPanel1.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 150, 40));
         Eliminar.getAccessibleContext().setAccessibleDescription("");
 
         Limpiar.setBackground(new java.awt.Color(14, 41, 84));
@@ -291,31 +322,45 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         Limpiar.setForeground(new java.awt.Color(255, 255, 255));
         Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         Limpiar.setText("Limpiar");
+        Limpiar.setBorder(null);
         Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
+        jPanel1.add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 360, 110, 40));
 
         Regresar.setBackground(new java.awt.Color(14, 41, 84));
         Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Regresar.setForeground(new java.awt.Color(255, 255, 255));
         Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         Regresar.setText("Regresar");
+        Regresar.setBorder(null);
         Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 360, -1, -1));
+        jPanel1.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 360, 130, 40));
 
         jLabel3.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Datos");
+        jLabel3.setText("DATOS");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
+        TabsOperadores.setBackground(new java.awt.Color(14, 41, 84));
+        TabsOperadores.setForeground(new java.awt.Color(255, 255, 255));
+        TabsOperadores.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        TabsOperadores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabsOperadoresMouseClicked(evt);
+            }
+        });
+
+        TablaOperadorRegular.setBackground(new java.awt.Color(132, 167, 161));
+        TablaOperadorRegular.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TablaOperadorRegular.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        TablaOperadorRegular.setForeground(new java.awt.Color(255, 255, 255));
         TablaOperadorRegular.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -325,7 +370,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true, true
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -339,9 +384,18 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(TablaOperadorRegular);
 
-        RegularOperadores.addTab("tab2", jScrollPane4);
+        TabsOperadores.addTab("Regulares", jScrollPane4);
 
+        ScrollRegulares.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
+        ScrollRegulares.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ScrollRegularesMouseClicked(evt);
+            }
+        });
+
+        TablaOperadorDespedidos.setBackground(new java.awt.Color(132, 167, 161));
         TablaOperadorDespedidos.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        TablaOperadorDespedidos.setForeground(new java.awt.Color(255, 255, 255));
         TablaOperadorDespedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -351,7 +405,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -363,12 +417,12 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 TablaOperadorDespedidosMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(TablaOperadorDespedidos);
+        ScrollRegulares.setViewportView(TablaOperadorDespedidos);
 
-        RegularOperadores.addTab("tab1", jScrollPane3);
+        TabsOperadores.addTab("Cesados", ScrollRegulares);
 
-        jPanel1.add(RegularOperadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 1300, 260));
-        RegularOperadores.getAccessibleContext().setAccessibleName("asfasf");
+        jPanel1.add(TabsOperadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 1300, 240));
+        TabsOperadores.getAccessibleContext().setAccessibleName("asfasf");
 
         jScrollPane6.setViewportView(jPanel1);
 
@@ -484,6 +538,14 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_TablaOperadorRegularMouseClicked
 
+    private void TabsOperadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabsOperadoresMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TabsOperadoresMouseClicked
+
+    private void ScrollRegularesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ScrollRegularesMouseClicked
+        opera.limpiarTabla_cesados();        // TODO add your handling code here:
+    }//GEN-LAST:event_ScrollRegularesMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -495,9 +557,10 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JButton Limpiar;
     private javax.swing.JButton Modificar;
     private javax.swing.JToggleButton Regresar;
-    private javax.swing.JTabbedPane RegularOperadores;
+    private javax.swing.JScrollPane ScrollRegulares;
     public javax.swing.JTable TablaOperadorDespedidos;
     public javax.swing.JTable TablaOperadorRegular;
+    private javax.swing.JTabbedPane TabsOperadores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -512,7 +575,6 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
     public javax.swing.JComboBox<String> optionRol;
