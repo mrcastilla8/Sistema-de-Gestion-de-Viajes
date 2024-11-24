@@ -10,7 +10,7 @@ import Vista.IguConductor;
 import Vista.IguRuta;
 import Vista.CRUD_VIAJES;
 import Vista.IguAsientos;
-import Vista.VentaBoleto;
+import Vista.VentaBoletoNuevo;
 
 public class MainMenu extends javax.swing.JFrame {
         CRUD_VIAJES ventanaViajes;

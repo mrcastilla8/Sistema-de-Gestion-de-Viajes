@@ -6,9 +6,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import java.util.ArrayList;
 import Modelo.VentaBoletoModelo;
-import Vista.SeleccionAsientosEstandar;
-import Vista.SeleccionAsientosPremium;
-import Vista.SeleccionAsientosVIP;
+import Vista.SeleccionAsientosEstandarNuevo;
+import Vista.SeleccionAsientosPremiumNuevo;
+import Vista.SeleccionAsientosVIPNuevo;
 
 public class VentaBoletoNuevo extends javax.swing.JFrame {
 
