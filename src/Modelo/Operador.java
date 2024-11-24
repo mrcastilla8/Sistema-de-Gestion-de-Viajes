@@ -31,7 +31,7 @@ public class Operador {
             st = conet.createStatement();
             rs = st.executeQuery(sq);
             Object[] operadores = new Object[9];
-            modelo = (DefaultTableModel) ventanaOperadores.TablaOperador.getModel();
+            modelo = (DefaultTableModel) ventanaOperadores.TablaOperadorRegular.getModel();
             while (rs.next()) {
                 operadores[0] = rs.getInt("idOperadores");
                 operadores[1] = rs.getString("nombre");
@@ -45,7 +45,7 @@ public class Operador {
                 modelo.addRow(operadores);
                 
             }
-            ventanaOperadores.TablaOperador.setModel(modelo);
+            ventanaOperadores.TablaOperadorRegular.setModel(modelo);
         } catch (Exception e) {
             e.printStackTrace();
             // TODO: handle exception
@@ -167,7 +167,7 @@ public class Operador {
     }
     
     public void eliminar() {
-        int fila = ventanaOperadores.TablaOperador.getSelectedRow();
+        int fila = ventanaOperadores.TablaOperadorRegular.getSelectedRow();
         if (fila < 0) {
             JOptionPane.showMessageDialog(null, "Operador no seleccionado");
             return; // Salimos del método si no hay fila seleccionada
@@ -175,7 +175,7 @@ public class Operador {
 
         try {
             // Obtén el idOperador directamente de la tabla seleccionada
-            int idOperador = Integer.parseInt(ventanaOperadores.TablaOperador.getValueAt(fila, 0).toString());
+            int idOperador = Integer.parseInt(ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 0).toString());
 
             // Usar el idOperador para obtener el idPersona correspondiente
             int idPersona = obtenerIdPersonaDesdeidOperador(idOperador);
@@ -208,7 +208,7 @@ public class Operador {
 
     public void limpiarTabla() {
     if (modelo == null) {
-        modelo = (DefaultTableModel) ventanaOperadores.TablaOperador.getModel();
+        modelo = (DefaultTableModel) ventanaOperadores.TablaOperadorRegular.getModel();
     }
     
     while (modelo.getRowCount() > 0) {

@@ -32,7 +32,7 @@ public class Conductor{
             st = conet.createStatement();
             rs = st.executeQuery(sql);
             Object[] conductores = new Object[7];
-            modelo = (DefaultTableModel) ventanaConductores.TablaConductor.getModel();
+            modelo = (DefaultTableModel) ventanaConductores.TablaConductoresRegulares.getModel();
             while (rs.next()) {
                 conductores[0] = rs.getInt("idConductor");
                 conductores[1] = rs.getString("nombre");
@@ -44,7 +44,7 @@ public class Conductor{
                 modelo.addRow(conductores);
 
             }
-            ventanaConductores.TablaConductor.setModel(modelo);
+            ventanaConductores.TablaConductoresRegulares.setModel(modelo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -155,7 +155,7 @@ public class Conductor{
     }
     
     public void eliminar(){
-        int fila = ventanaConductores.TablaConductor.getSelectedRow();
+        int fila = ventanaConductores.TablaConductoresRegulares.getSelectedRow();
         try{
             if(fila<0){
                 JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
