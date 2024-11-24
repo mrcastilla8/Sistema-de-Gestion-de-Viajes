@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
 import Modelo.Viaje;
+import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 public class CRUD_VIAJES extends javax.swing.JFrame {
     MainMenu menu;
     Conexion con1= new Conexion();
@@ -56,48 +58,53 @@ public CRUD_VIAJES(MainMenu menu) {
         Entrada_HoraSalida = new javax.swing.JTextField();
         Label_Ruta3 = new javax.swing.JLabel();
         Entrada_Fecha = new com.toedter.calendar.JDateChooser();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_Viajes = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
         Crear = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Boton_Regresar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Viajes = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-
-        jLabel3.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bus1.png"))); // NOI18N
-        jLabel3.setText("Buses");
-        jLabel3.setAlignmentY(0.0F);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(46, 138, 153));
+
+        jPanel2.setBackground(new java.awt.Color(31, 110, 140));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        Label_Bus.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Bus.setText("ID del bus");
 
+        Label_Conductor1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Conductor1.setText("ID del primer conductor");
 
+        Label_Conductor2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Conductor2.setText("ID del segundo conductor");
 
+        Label_Ruta.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Ruta.setText("ID de la ruta");
 
+        Label_Ruta1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Ruta1.setText("Precio");
 
+        Label_Ruta2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Ruta2.setText("Fecha de salida");
 
+        Entrada_Precio.setBackground(new java.awt.Color(132, 167, 161));
         Entrada_Precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Entrada_PrecioActionPerformed(evt);
             }
         });
 
+        Entrada_Bus.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Bus.setEditable(true);
         Entrada_Bus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Bus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +112,7 @@ public CRUD_VIAJES(MainMenu menu) {
             }
         });
 
+        Entrada_Primer_Conductor.setBackground(new java.awt.Color(132, 167, 161));
         Entrada_Primer_Conductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Primer_Conductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +120,7 @@ public CRUD_VIAJES(MainMenu menu) {
             }
         });
 
+        Entrada_Segundo_Conductor.setBackground(new java.awt.Color(132, 167, 161));
         Entrada_Segundo_Conductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Segundo_Conductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +128,7 @@ public CRUD_VIAJES(MainMenu menu) {
             }
         });
 
+        Entrada_Ruta.setBackground(new java.awt.Color(132, 167, 161));
         Entrada_Ruta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,160 +136,88 @@ public CRUD_VIAJES(MainMenu menu) {
             }
         });
 
+        Entrada_HoraSalida.setBackground(new java.awt.Color(132, 167, 161));
         Entrada_HoraSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Entrada_HoraSalidaActionPerformed(evt);
             }
         });
 
+        Label_Ruta3.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         Label_Ruta3.setText("Hora de salida");
+
+        Entrada_Fecha.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Fecha.setToolTipText("");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Label_Bus)
                     .addComponent(Label_Conductor1)
                     .addComponent(Label_Conductor2)
-                    .addComponent(Label_Ruta)
-                    .addComponent(Label_Ruta1)
-                    .addComponent(Label_Ruta2)
-                    .addComponent(Label_Bus)
-                    .addComponent(Label_Ruta3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addComponent(Entrada_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addComponent(Entrada_Bus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Entrada_Primer_Conductor, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Entrada_Segundo_Conductor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Entrada_Ruta, 0, 165, Short.MAX_VALUE)
-                    .addComponent(Entrada_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addComponent(Label_Ruta))
+                .addGap(58, 58, 58)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Entrada_Primer_Conductor, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Entrada_Bus, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(Entrada_Ruta, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Entrada_Segundo_Conductor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(Label_Ruta1)
+                        .addGap(49, 49, 49))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Label_Ruta3)
+                            .addComponent(Label_Ruta2))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Entrada_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Entrada_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Entrada_Bus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_Bus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Conductor1)
-                    .addComponent(Entrada_Primer_Conductor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Conductor2)
-                    .addComponent(Entrada_Segundo_Conductor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Label_Ruta)
-                    .addComponent(Entrada_Ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Label_Ruta1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Entrada_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Entrada_Bus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Bus))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Entrada_Primer_Conductor, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Label_Conductor1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Entrada_Segundo_Conductor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Label_Conductor2)
+                                .addComponent(Label_Ruta3)
+                                .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Label_Ruta1)
+                            .addComponent(Entrada_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Label_Ruta2)
-                            .addComponent(Entrada_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Entrada_HoraSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Label_Ruta3))
-                .addContainerGap())
+                            .addComponent(Entrada_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 26, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Entrada_Ruta, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Label_Ruta))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
-
-        Crear.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
-        Crear.setText("Crear");
-        Crear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrearActionPerformed(evt);
-            }
-        });
-
-        Eliminar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
-        Eliminar.setText("Eliminar");
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
-            }
-        });
-
-        Modificar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
-        Modificar.setText("Modificar");
-        Modificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModificarActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
-        jButton2.setText("Limpiar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        Boton_Regresar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        Boton_Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
-        Boton_Regresar.setText("Regresar");
-        Boton_Regresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_RegresarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Boton_Regresar)
-                    .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Modificar))
-                .addContainerGap(80, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(24, 24, 24)
-                    .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(85, Short.MAX_VALUE)))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(Eliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Modificar)
-                .addGap(12, 12, 12)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Boton_Regresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(24, 24, 24)
-                    .addComponent(Crear)
-                    .addContainerGap(217, Short.MAX_VALUE)))
-        );
-
-        jLabel1.setFont(new java.awt.Font("Serif", 0, 24)); // NOI18N
-        jLabel1.setText("Viajes");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Base de datos"));
 
@@ -294,6 +232,11 @@ public CRUD_VIAJES(MainMenu menu) {
                 "Id Viaje", "Id Bus", "Origen", "Destino", "Precio", "Primer Conductor", "Segundo Conductor", "Fecha de Salida", "Hora de salida"
             }
         ));
+        Tabla_Viajes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_ViajesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla_Viajes);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -302,27 +245,75 @@ public CRUD_VIAJES(MainMenu menu) {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 777, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bus1.png"))); // NOI18N
-        jLabel2.setText("Buses");
-        jLabel2.setAlignmentY(0.0F);
+        Crear.setBackground(new java.awt.Color(14, 41, 84));
+        Crear.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Crear.setForeground(new java.awt.Color(255, 255, 255));
+        Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
+        Crear.setText("Crear");
+        Crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrearActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoViaje.png")));
-        jLabel4.setAlignmentY(0.0F);
+        Eliminar.setBackground(new java.awt.Color(14, 41, 84));
+        Eliminar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Eliminar.setForeground(new java.awt.Color(255, 255, 255));
+        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+
+        Modificar.setBackground(new java.awt.Color(14, 41, 84));
+        Modificar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Modificar.setForeground(new java.awt.Color(255, 255, 255));
+        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
+        Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(14, 41, 84));
+        jButton2.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        Boton_Regresar.setBackground(new java.awt.Color(14, 41, 84));
+        Boton_Regresar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Boton_Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        Boton_Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
+        Boton_Regresar.setText("Regresar");
+        Boton_Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Boton_RegresarActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
+        jLabel5.setText("GESTIÓN DE VIAJES");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -333,112 +324,212 @@ public CRUD_VIAJES(MainMenu menu) {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(489, 489, 489))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(Boton_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(407, 407, 407))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(335, 335, 335)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(335, Short.MAX_VALUE)))
+                .addComponent(jLabel5)
+                .addGap(525, 525, 525))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel5)
+                        .addGap(52, 52, 52)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Boton_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(466, 466, 466)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(467, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(760, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(593, 593, 593))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 6, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 6, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addContainerGap(801, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1008, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 4, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 3, Short.MAX_VALUE)))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Entrada_BusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_BusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Entrada_BusActionPerformed
-
-    private void Entrada_Primer_ConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_Primer_ConductorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Entrada_Primer_ConductorActionPerformed
-
-    private void Entrada_Segundo_ConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_Segundo_ConductorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Entrada_Segundo_ConductorActionPerformed
-
-    private void Entrada_RutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_RutaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Entrada_RutaActionPerformed
-
-    private void Entrada_PrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_PrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Entrada_PrecioActionPerformed
-
-    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
-        viaje.agregar();
-    }//GEN-LAST:event_CrearActionPerformed
-
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-        viaje.eliminar();
-    }//GEN-LAST:event_EliminarActionPerformed
-
-    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-        viaje.modificar();
-    }//GEN-LAST:event_ModificarActionPerformed
+    private void Boton_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegresarActionPerformed
+        menu.setVisible(true);
+        limpiarCampos();
+        this.setVisible(false);
+    }//GEN-LAST:event_Boton_RegresarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         limpiarCampos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void Boton_RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_RegresarActionPerformed
-        menu.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_Boton_RegresarActionPerformed
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        if (validarCamposLlenos()){
+            viaje.modificar();
+        }
+
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        viaje.eliminar();
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void CrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearActionPerformed
+        if (validarCamposLlenos()){
+
+            viaje.agregar();
+        }
+    }//GEN-LAST:event_CrearActionPerformed
+
+    private void Tabla_ViajesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ViajesMouseClicked
+        int fila = Tabla_Viajes.getSelectedRow(); // Obtener la fila seleccionada
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un viaje para cargar los datos");
+        } else {
+            // Obtener los valores de la fila seleccionada
+            String idBus = Tabla_Viajes.getValueAt(fila, 1).toString();
+            String conductor1Nombre = Tabla_Viajes.getValueAt(fila, 5).toString();
+            String conductor2Nombre = Tabla_Viajes.getValueAt(fila, 6).toString();
+            String rutaOrigen = Tabla_Viajes.getValueAt(fila, 2).toString();
+            String rutaDestino = Tabla_Viajes.getValueAt(fila, 3).toString();
+            String precio = Tabla_Viajes.getValueAt(fila, 4).toString();
+            String fechaSalida = Tabla_Viajes.getValueAt(fila, 7).toString();
+            String horaSalida = Tabla_Viajes.getValueAt(fila, 8).toString().substring(0, 5); // Obtener HH:MM
+
+            // Buscar y seleccionar los IDs correspondientes en los comboBox
+            seleccionarItemPorTexto(Entrada_Bus, idBus);
+            seleccionarItemPorTexto(Entrada_Primer_Conductor, conductor1Nombre);
+            seleccionarItemPorTexto(Entrada_Segundo_Conductor, conductor2Nombre);
+            seleccionarItemPorTexto(Entrada_Ruta, rutaOrigen + " - " + rutaDestino);
+
+            // Cargar los demás valores en los campos correspondientes
+            Entrada_Precio.setText(precio);
+
+            try {
+                // Convertir la fecha a un objeto Date para el JDateChooser
+                java.util.Date fecha = new SimpleDateFormat("yyyy-MM-dd").parse(fechaSalida);
+                Entrada_Fecha.setDate(fecha);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al cargar la fecha: " + e.getMessage());
+            }
+
+            Entrada_HoraSalida.setText(horaSalida); // Cargar la hora de salida
+        }
+    }//GEN-LAST:event_Tabla_ViajesMouseClicked
 
     private void Entrada_HoraSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_HoraSalidaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Entrada_HoraSalidaActionPerformed
+
+    private void Entrada_RutaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_RutaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Entrada_RutaActionPerformed
+
+    private void Entrada_Segundo_ConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_Segundo_ConductorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Entrada_Segundo_ConductorActionPerformed
+
+    private void Entrada_Primer_ConductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_Primer_ConductorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Entrada_Primer_ConductorActionPerformed
+
+    private void Entrada_BusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_BusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Entrada_BusActionPerformed
+
+    private void Entrada_PrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Entrada_PrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Entrada_PrecioActionPerformed
+
+    
+private void seleccionarItemPorTexto(javax.swing.JComboBox<String> comboBox, String texto) {
+    for (int i = 0; i < comboBox.getItemCount(); i++) {
+        String item = comboBox.getItemAt(i);
+        if (item.contains(texto)) { // Buscar coincidencias parciales o exactas
+            comboBox.setSelectedIndex(i);
+            break;
+        }
+    }
+}
+
+private boolean validarCamposLlenos() {
+    if (Entrada_Bus.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un bus.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Primer_Conductor.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un primer conductor.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Segundo_Conductor.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar un segundo conductor.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Ruta.getSelectedIndex() == -1) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar una ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Precio.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar un precio.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_Fecha.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "Debe seleccionar una fecha de salida.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    if (Entrada_HoraSalida.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar una hora de salida.", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
 
     private void limpiarCampos() {
         Entrada_Bus.setSelectedIndex(0);
@@ -476,12 +567,11 @@ public CRUD_VIAJES(MainMenu menu) {
     public javax.swing.JTable Tabla_Viajes;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

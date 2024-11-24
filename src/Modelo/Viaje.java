@@ -98,13 +98,14 @@ public class Viaje {
 
         String idViaje = ventanaViajes.Tabla_Viajes.getValueAt(fila, 0).toString();
         String idBus = ventanaViajes.Entrada_Bus.getSelectedItem().toString();
+        idBus = idBus.split(" - ")[0].trim();
         String rutaSeleccionada = ventanaViajes.Entrada_Ruta.getSelectedItem().toString();
         String idRuta = rutaSeleccionada.split(" - ")[0].trim();
         String precio = ventanaViajes.Entrada_Precio.getText();
         String conductor1 = ventanaViajes.Entrada_Primer_Conductor.getSelectedItem().toString().split(" - ")[0].trim();
         String conductor2 = ventanaViajes.Entrada_Segundo_Conductor.getSelectedItem().toString().split(" - ")[0].trim();
         String horaSalida = ventanaViajes.Entrada_HoraSalida.getText(); // Hora en formato 'HH:MM:SS'
-
+        
         // Obtener la nueva fecha del JDateChooser
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String fechaSalida = sdf.format(ventanaViajes.Entrada_Fecha.getDate());
@@ -230,5 +231,6 @@ public class Viaje {
             JOptionPane.showMessageDialog(null, "Error al cargar conductores: " + e.getMessage());
         }
     }
-
+    
+    
 }
