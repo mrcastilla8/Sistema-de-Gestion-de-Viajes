@@ -50,6 +50,33 @@ public class Conductor{
         }
     }
     
+    public void consultarCesados() {
+        String sql = "SELECT idConductor, numLicencia, DNI, fecha_baja, razon_baja FROM conductores_cesados";
+
+        try {
+            conet = con.obtenerConexion();
+            st = conet.createStatement();
+            rs = st.executeQuery(sql);
+            Object[] cesados = new Object[5];
+            DefaultTableModel modeloCesados = (DefaultTableModel) ventanaConductores.TablaConductoresCesados.getModel();
+
+            // Limpia la tabla antes de cargar nuevos datos
+            modeloCesados.setRowCount(0);
+
+            while (rs.next()) {
+                cesados[0] = rs.getInt("idConductor");
+                cesados[1] = rs.getString("numLicencia");
+                cesados[2] = rs.getString("DNI");
+                cesados[3] = rs.getDate("fecha_baja");
+                cesados[4] = rs.getString("razon_baja");
+                modeloCesados.addRow(cesados);
+            }
+            ventanaConductores.TablaConductoresCesados.setModel(modeloCesados);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void agregar(){
         String nombre = ventanaConductores.txtfNombre.getText();
         String apellido = ventanaConductores.txtfApellido.getText();
@@ -154,30 +181,59 @@ public class Conductor{
         }        
     }
     
-    public void eliminar(){
+    public void eliminar() {
         int fila = ventanaConductores.TablaConductoresRegulares.getSelectedRow();
-        try{
-            if(fila<0){
+        try {
+            if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
-                limpiarTabla();
-            }
-            else{
-                int idConductor = Integer.parseInt(ventanaConductores.txtfIdConductor.getText());
-                int idPersona = obtenerIdPersonaDesdeIdConductor(idConductor);
-                String sql = "delete from persona where idPersona = "+idPersona;
+            } else {
+                // Obtén el ID del conductor seleccionado
+                int idConductor = Integer.parseInt(ventanaConductores.TablaConductoresRegulares.getValueAt(fila, 0).toString());
+
+                // Consulta para obtener información del conductor a través de la clave foránea
+                String sqlDatos = "SELECT c.numLicencia, p.DNI " +
+                                  "FROM conductores c " +
+                                  "JOIN persona p ON c.idPersona = p.idPersona " +
+                                  "WHERE c.idConductor = " + idConductor;
+
                 conet = con.obtenerConexion();
                 st = conet.createStatement();
-                st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Conductor eliminado!"); 
+                rs = st.executeQuery(sqlDatos);
+
+                String numLicencia = null;
+                String dni = null;
+
+                if (rs.next()) {
+                    numLicencia = rs.getString("numLicencia");
+                    dni = rs.getString("DNI");
+                }
+
+                // Solicitar razón de baja al usuario
+                String razonBaja = JOptionPane.showInputDialog("Ingrese la razón de baja:");
+                if (razonBaja == null || razonBaja.trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Razón de baja requerida");
+                    return;
+                }
+
+                // Insertar datos en la tabla conductores_cesados
+                String sqlInsert = "INSERT INTO conductores_cesados (idConductor, numLicencia, DNI, fecha_baja, razon_baja) " +
+                                   "VALUES (" + idConductor + ", '" + numLicencia + "', '" + dni + "', CURDATE(), '" + razonBaja + "')";
+                st.executeUpdate(sqlInsert);
+
+                // Eliminar de la tabla conductores
+                String sqlDelete = "DELETE FROM conductores WHERE idConductor = " + idConductor;
+                st.executeUpdate(sqlDelete);
+
+                JOptionPane.showMessageDialog(null, "Conductor dado de baja exitosamente!");
+
                 limpiarTabla();
             }
-            
-        }catch(Exception e){
-            
-            limpiarTabla();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al dar de baja al conductor: " + e.getMessage());
         }
     }
-    
+
     public void nuevo(){
         ventanaConductores.txtfNombre.setText("");
         ventanaConductores.txtfApellido.setText("");

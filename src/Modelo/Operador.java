@@ -12,7 +12,7 @@ public class Operador {
     
     Conexion con1= new Conexion();
     Connection conet;
-    DefaultTableModel modelo;
+    DefaultTableModel modelo,modelo1;
     Statement st;
     ResultSet rs;
     int idc;
@@ -186,36 +186,99 @@ public class Operador {
                 return; // Salir si no se encontró
             }
 
-            // Nos conectamos a la base de datos
+            // Primero agregar a operadores cesados
+            agregar_cesados();
+
+            // Luego eliminar de la base de datos
             conet = con1.obtenerConexion();
             st = conet.createStatement();
 
-            // Primero eliminamos el registro de la tabla `operadores`
             String sqlOperador = "DELETE FROM operadores WHERE idOperadores = " + idOperador;
             st.executeUpdate(sqlOperador);
 
-            // Luego eliminamos el registro de la tabla `persona`
             String sqlPersona = "DELETE FROM persona WHERE idPersona = " + idPersona;
             st.executeUpdate(sqlPersona);
 
             JOptionPane.showMessageDialog(null, "Operador eliminado!");
+
             limpiarTabla();
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al eliminar el operador.");
         }
-    }//fin Eliminar()
+    }
+
 
     public void limpiarTabla() {
-    if (modelo == null) {
-        modelo = (DefaultTableModel) ventanaOperadores.TablaOperadorRegular.getModel();
+        if (modelo == null) {
+            modelo = (DefaultTableModel) ventanaOperadores.TablaOperadorRegular.getModel();
+        }
+
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
     }
     
-    while (modelo.getRowCount() > 0) {
-        modelo.removeRow(0);
+    public void limpiarTabla_cesados() {
+        if (modelo1 == null) {
+            modelo1 = (DefaultTableModel) ventanaOperadores.TablaOperadorDespedidos.getModel();
+        }
+
+        while (modelo1.getRowCount() > 0) {
+            modelo1.removeRow(0);
+        }
+    }
+    public void agregar_cesados() {
+    int fila = ventanaOperadores.TablaOperadorRegular.getSelectedRow();
+
+    try {
+        // Limpia la tabla antes de agregar nuevos datos
+        limpiarTabla_cesados();
+
+        // Obtén el idOperador directamente de la tabla seleccionada
+        int idOperador = Integer.parseInt(ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 0).toString());
+        String user = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 3).toString();
+        String contra = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 4).toString();
+        String rol = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 5).toString();
+        String dni = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 6).toString();
+
+        // Nos conectamos a la base de datos
+        conet = con1.obtenerConexion();
+
+        // Insertar los datos en la tabla operadores_cesados
+        String sqDespedidos = "INSERT INTO operadores_cesados (idOperadores, username, password, Rol, DNI) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement pstOperadorDespedido = conet.prepareStatement(sqDespedidos);
+        pstOperadorDespedido.setInt(1, idOperador);
+        pstOperadorDespedido.setString(2, user);
+        pstOperadorDespedido.setString(3, contra);
+        pstOperadorDespedido.setString(4, rol);
+        pstOperadorDespedido.setString(5, dni);
+        pstOperadorDespedido.executeUpdate();
+
+        // Poblar la tabla operadores_cesados en la interfaz gráfica
+        String sqAddCesados = "SELECT idOperadores, username, password, Rol, DNI, fecha_baja, razon_baja FROM operadores_cesados";
+        st = conet.createStatement();
+        rs = st.executeQuery(sqAddCesados);
+        Object[] operadores_cesados = new Object[7];
+        modelo1 = (DefaultTableModel) ventanaOperadores.TablaOperadorDespedidos.getModel();
+        while (rs.next()) {
+            operadores_cesados[0] = rs.getInt("idOperadores");
+            operadores_cesados[1] = rs.getString("username");
+            operadores_cesados[2] = rs.getString("password");
+            operadores_cesados[3] = rs.getString("Rol");
+            operadores_cesados[4] = rs.getString("DNI");
+            operadores_cesados[5] = rs.getString("fecha_baja");
+            operadores_cesados[6] = rs.getString("razon_baja");
+            modelo1.addRow(operadores_cesados);
+        }
+
+        ventanaOperadores.TablaOperadorDespedidos.setModel(modelo1);
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error al agregar el operador cesado.");
     }
 }
-    
+
     
 
     public void nuevo(){

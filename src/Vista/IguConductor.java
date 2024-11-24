@@ -21,6 +21,8 @@ public class IguConductor extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         conductor = new Conductor(this);
         conductor.consultar();
+        conductor.consultarCesados();
+        
     }
 
     /**
@@ -51,17 +53,18 @@ public class IguConductor extends javax.swing.JFrame {
         txtfLicencia = new javax.swing.JTextField();
         txtfEdad = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
-        Regresar = new javax.swing.JToggleButton();
         jLabel20 = new javax.swing.JLabel();
         RegularConductores = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaConductoresRegulares = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaConductoresCesados = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        btnLimpiar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
+        Regresar = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1366, 768));
@@ -80,28 +83,37 @@ public class IguConductor extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(31, 110, 140));
-        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 3, true));
 
         jLabel10.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Nombres");
 
         jLabel11.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Apellidos");
 
         jLabel12.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("DNI");
 
         jLabel13.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Teléfono");
 
         jLabel14.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("ID");
 
         txtfNombre.setBackground(new java.awt.Color(132, 167, 161));
         txtfNombre.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfNombre.setForeground(new java.awt.Color(255, 255, 255));
+        txtfNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        txtfNombre.setCaretColor(new java.awt.Color(204, 204, 204));
 
         txtfApellido.setBackground(new java.awt.Color(132, 167, 161));
         txtfApellido.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         txtfApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfApellidoActionPerformed(evt);
@@ -110,22 +122,28 @@ public class IguConductor extends javax.swing.JFrame {
 
         txtfDNI.setBackground(new java.awt.Color(132, 167, 161));
         txtfDNI.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfDNI.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
         txtfTelefono.setBackground(new java.awt.Color(132, 167, 161));
         txtfTelefono.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
         txtfIdConductor.setEditable(false);
         txtfIdConductor.setBackground(new java.awt.Color(132, 167, 161));
         txtfIdConductor.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfIdConductor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
         jLabel16.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Edad");
 
         jLabel17.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Licencia");
 
         txtfLicencia.setBackground(new java.awt.Color(132, 167, 161));
         txtfLicencia.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfLicencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         txtfLicencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfLicenciaActionPerformed(evt);
@@ -134,6 +152,7 @@ public class IguConductor extends javax.swing.JFrame {
 
         txtfEdad.setBackground(new java.awt.Color(132, 167, 161));
         txtfEdad.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtfEdad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
         txtfEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfEdadActionPerformed(evt);
@@ -169,7 +188,7 @@ public class IguConductor extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtfDNI, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtfLicencia, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+                    .addComponent(txtfLicencia, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
                     .addComponent(txtfIdConductor))
                 .addGap(51, 51, 51))
         );
@@ -177,29 +196,29 @@ public class IguConductor extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtfDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addGap(28, 28, 28)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtfLicencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(txtfIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtfIdConductor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtfNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(txtfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
                             .addComponent(txtfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -214,80 +233,27 @@ public class IguConductor extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setText("Base de Datos");
+        jLabel19.setText("BASE DE DATOS");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
-
-        btnAgregar.setBackground(new java.awt.Color(14, 41, 84));
-        btnAgregar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
-        btnAgregar.setText("Crear");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, -1));
-
-        btnModificar.setBackground(new java.awt.Color(14, 41, 84));
-        btnModificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
-
-        btnEliminar.setBackground(new java.awt.Color(14, 41, 84));
-        btnEliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
-        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
-        btnEliminar.setLabel("Dar de baja");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 360, -1, -1));
-
-        btnLimpiar.setBackground(new java.awt.Color(14, 41, 84));
-        btnLimpiar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, -1, -1));
-
-        Regresar.setBackground(new java.awt.Color(14, 41, 84));
-        Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
-        Regresar.setForeground(new java.awt.Color(255, 255, 255));
-        Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
-        Regresar.setText("Regresar");
-        Regresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 360, -1, -1));
 
         jLabel20.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Datos");
+        jLabel20.setText("DATOS");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
+        RegularConductores.setBackground(new java.awt.Color(14, 41, 84));
+        RegularConductores.setForeground(new java.awt.Color(255, 255, 255));
+        RegularConductores.setFont(new java.awt.Font("SF Pro Display", 1, 18)); // NOI18N
+
+        TablaConductoresRegulares.setBackground(new java.awt.Color(132, 167, 161));
+        TablaConductoresRegulares.setFont(new java.awt.Font("SF Pro Display", 1, 14)); // NOI18N
+        TablaConductoresRegulares.setForeground(new java.awt.Color(255, 255, 255));
         TablaConductoresRegulares.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "id", "nombre", "apellido", "edad", "telefono", "DNI", "numLicencia"
+                "ID", "nombre", "apellido", "edad", "telefono", "DNI", "numLicencia"
             }
         ) {
             Class[] types = new Class [] {
@@ -298,6 +264,7 @@ public class IguConductor extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        TablaConductoresRegulares.setSelectionForeground(new java.awt.Color(132, 167, 161));
         TablaConductoresRegulares.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaConductoresRegularesMouseClicked(evt);
@@ -315,6 +282,9 @@ public class IguConductor extends javax.swing.JFrame {
 
         RegularConductores.addTab("Regulares", jScrollPane1);
 
+        TablaConductoresCesados.setBackground(new java.awt.Color(132, 167, 161));
+        TablaConductoresCesados.setFont(new java.awt.Font("SF Pro Display", 0, 14)); // NOI18N
+        TablaConductoresCesados.setForeground(new java.awt.Color(255, 255, 255));
         TablaConductoresCesados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -324,7 +294,7 @@ public class IguConductor extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -336,6 +306,95 @@ public class IguConductor extends javax.swing.JFrame {
         RegularConductores.addTab("Cesados", jScrollPane2);
 
         jPanel1.add(RegularConductores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 1300, 260));
+
+        jPanel4.setBackground(new java.awt.Color(46, 138, 153));
+
+        btnLimpiar.setBackground(new java.awt.Color(14, 41, 84));
+        btnLimpiar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setBackground(new java.awt.Color(14, 41, 84));
+        btnEliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
+        btnEliminar.setLabel("Dar de baja");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setBackground(new java.awt.Color(14, 41, 84));
+        btnModificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnAgregar.setBackground(new java.awt.Color(14, 41, 84));
+        btnAgregar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
+        btnAgregar.setText("Crear");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
+
+        Regresar.setBackground(new java.awt.Color(14, 41, 84));
+        Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(181, 181, 181)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97)
+                .addComponent(btnModificar)
+                .addGap(97, 97, 97)
+                .addComponent(btnEliminar)
+                .addGap(97, 97, 97)
+                .addComponent(btnLimpiar)
+                .addGap(97, 97, 97)
+                .addComponent(Regresar)
+                .addGap(181, 181, 181))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnAgregar)
+                    .addComponent(Regresar))
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 1330, 70));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
@@ -373,6 +432,7 @@ public class IguConductor extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         conductor.eliminar();
         conductor.consultar();
+        conductor.consultarCesados();
         conductor.nuevo();// TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -437,7 +497,7 @@ public class IguConductor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Regresar;
     public javax.swing.JTabbedPane RegularConductores;
-    private javax.swing.JTable TablaConductoresCesados;
+    public javax.swing.JTable TablaConductoresCesados;
     public javax.swing.JTable TablaConductoresRegulares;
     private javax.swing.JPanel bg;
     private javax.swing.JButton btnAgregar;
@@ -456,6 +516,7 @@ public class IguConductor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTextField txtfApellido;
