@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
+            <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Modelo/Viaje.java</file>
+            <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Vista/IguRuta.java</file>
             <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Vista/VentaBoleto.java</file>
+            <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Vista/CRUD_VIAJES.java</file>
+            <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Modelo/VentaBoletoModelo.java</file>
             <file>file:/C:/Users/c13al/Escritorio/ALGORITMICA2_PROYECT/Codigo%20en%20JAVA/src/Controlador/Main.java</file>
-=======
-            <file>file:/C:/Users/Renato/Desktop/Sistema%20gestion%20viaes/src/Vista/IguRuta.java</file>
-            <file>file:/C:/Users/Renato/Desktop/Sistema%20gestion%20viaes/src/Vista/CRUD_OPERADORES.java</file>
-            <file>file:/C:/Users/Renato/Desktop/Sistema%20gestion%20viaes/src/Vista/MainMenu.java</file>
-            <file>file:/C:/Users/Renato/Desktop/Sistema%20gestion%20viaes/src/Vista/IguConductor.java</file>
-            <file>file:/C:/Users/Renato/Desktop/Sistema%20gestion%20viaes/src/Modelo/Operador.java</file>
->>>>>>> 25c38a3b4f86f35e2ff49f14094f44d13c5a5996
         </group>
     </open-files>
 </project-private>
