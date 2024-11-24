@@ -98,12 +98,6 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jTextFieldFecha.setBackground(new java.awt.Color(132, 167, 161));
         jTextFieldFecha.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
         jTextFieldFecha.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldFecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
-            }
-        });
-
         labelUsuario1.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Fecha");
