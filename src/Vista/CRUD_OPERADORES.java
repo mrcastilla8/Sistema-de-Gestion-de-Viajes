@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package Vista;
 
 import Controlador.Conexion;
@@ -10,7 +14,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Statement;
 public class CRUD_OPERADORES extends javax.swing.JFrame {
-    
     MainMenu menu;
     Operador opera;
     Conexion con1= new Conexion();
@@ -36,127 +39,124 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane6 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
         txtDNI = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        labelUsuario = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
-        labelContraseña = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
-        asdfgdh = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
         optionRol = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         Crear = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
         Limpiar = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TablaOperador = new javax.swing.JTable();
+        Regresar = new javax.swing.JToggleButton();
+        jLabel3 = new javax.swing.JLabel();
+        RegularOperadores = new javax.swing.JTabbedPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TablaOperadorRegular = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TablaOperadorDespedidos = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Serif", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/operador.png"))); // NOI18N
-        jLabel1.setText("Operadores");
-        jLabel1.setAlignmentY(0.0F);
+        jPanel1.setBackground(new java.awt.Color(46, 138, 153));
+        jPanel1.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 14))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("GESTIÓN DE OPERADORES");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel10.setText("Nombres");
+        jPanel2.setBackground(new java.awt.Color(31, 110, 140));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
 
-        txtNombre.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
+        jLabel4.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel4.setText("Nombres");
 
-        txtApellido.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel5.setText("Apellidos");
+
+        jLabel6.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel6.setText("DNI");
+
+        jLabel7.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel7.setText("Teléfono");
+
+        jLabel8.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel8.setText("ID");
+
+        txtNombre.setBackground(new java.awt.Color(132, 167, 161));
+        txtNombre.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+
+        txtApellido.setBackground(new java.awt.Color(132, 167, 161));
+        txtApellido.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
         txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtApellidoActionPerformed(evt);
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel11.setText("Apellidos");
+        txtDNI.setBackground(new java.awt.Color(132, 167, 161));
+        txtDNI.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
 
-        txtDNI.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDNIActionPerformed(evt);
-            }
-        });
+        txtTelefono.setBackground(new java.awt.Color(132, 167, 161));
+        txtTelefono.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
 
-        jLabel12.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel12.setText("DNI");
+        txtID.setEditable(false);
+        txtID.setBackground(new java.awt.Color(132, 167, 161));
+        txtID.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
 
-        txtTelefono.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
+        jLabel9.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel9.setText("Usuario");
 
-        jLabel13.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel13.setText("Telefono");
+        jLabel10.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel10.setText("Edad");
 
-        labelUsuario.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        labelUsuario.setText("Usuario");
+        jLabel11.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel11.setText("Contraseña");
 
-        txtUsuario.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuarioActionPerformed(evt);
-            }
-        });
+        jLabel12.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        jLabel12.setText("Rol");
 
-        labelContraseña.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        labelContraseña.setText("Contraseña");
+        txtUsuario.setBackground(new java.awt.Color(132, 167, 161));
+        txtUsuario.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
 
-        txtContraseña.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        txtContraseña.setBackground(new java.awt.Color(132, 167, 161));
+        txtContraseña.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
         txtContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtContraseñaActionPerformed(evt);
             }
         });
 
-        asdfgdh.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        asdfgdh.setText("Rol");
-
-        jLabel2.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel2.setText("Edad");
-
-        txtEdad.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-
-        jLabel3.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
-        jLabel3.setText("ID");
-
-        txtID.setEditable(false);
-        txtID.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        txtID.addActionListener(new java.awt.event.ActionListener() {
+        txtEdad.setBackground(new java.awt.Color(132, 167, 161));
+        txtEdad.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
+                txtEdadActionPerformed(evt);
             }
         });
 
-        optionRol.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        optionRol.setBackground(new java.awt.Color(132, 167, 161));
+        optionRol.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
         optionRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Operador" }));
         optionRol.setToolTipText("");
         optionRol.addActionListener(new java.awt.event.ActionListener() {
@@ -169,100 +169,89 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel10)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel13)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel12))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel3)))
-                .addGap(26, 26, 26)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
+                .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                    .addComponent(txtDNI)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNombre)
                     .addComponent(txtApellido)
-                    .addComponent(txtID))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(labelContraseña)
-                                        .addGap(47, 47, 47))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(labelUsuario)
-                                        .addGap(59, 59, 59)))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(asdfgdh)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(optionRol, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(57, 57, 57))
+                    .addComponent(txtDNI)
+                    .addComponent(txtTelefono)
+                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE))
+                .addGap(78, 78, 78)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUsuario)
+                    .addComponent(txtContraseña)
+                    .addComponent(txtEdad)
+                    .addComponent(optionRol, 0, 491, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel9)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelUsuario))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelContraseña)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
                             .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(asdfgdh)
-                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(optionRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel7)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel11)
+                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                            .addComponent(jLabel12)
+                            .addComponent(optionRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 1330, 230));
 
-        Crear.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Base de Datos");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
+
+        Crear.setBackground(new java.awt.Color(14, 41, 84));
+        Crear.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        Crear.setForeground(new java.awt.Color(255, 255, 255));
         Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
         Crear.setText("Crear");
         Crear.addActionListener(new java.awt.event.ActionListener() {
@@ -270,8 +259,11 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 CrearActionPerformed(evt);
             }
         });
+        jPanel1.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 110, -1));
 
-        Modificar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Modificar.setBackground(new java.awt.Color(14, 41, 84));
+        Modificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -279,17 +271,24 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 ModificarActionPerformed(evt);
             }
         });
+        jPanel1.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, -1, -1));
 
-        Eliminar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Eliminar.setBackground(new java.awt.Color(14, 41, 84));
+        Eliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        Eliminar.setForeground(new java.awt.Color(255, 255, 255));
         Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
-        Eliminar.setText("Eliminar");
+        Eliminar.setLabel("Dar de baja");
         Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, -1, -1));
+        Eliminar.getAccessibleContext().setAccessibleDescription("");
 
-        Limpiar.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
+        Limpiar.setBackground(new java.awt.Color(14, 41, 84));
+        Limpiar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        Limpiar.setForeground(new java.awt.Color(255, 255, 255));
         Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         Limpiar.setText("Limpiar");
         Limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -297,49 +296,27 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 LimpiarActionPerformed(evt);
             }
         });
+        jPanel1.add(Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 360, -1, -1));
 
-        jToggleButton1.setFont(new java.awt.Font("Serif", 0, 14)); // NOI18N
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
-        jToggleButton1.setText("Regresar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        Regresar.setBackground(new java.awt.Color(14, 41, 84));
+        Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                RegresarActionPerformed(evt);
             }
         });
+        jPanel1.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 360, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Crear)
-                    .addComponent(Modificar)
-                    .addComponent(Eliminar)
-                    .addComponent(Limpiar)
-                    .addComponent(jToggleButton1))
-                .addGap(0, 20, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Datos");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Base de datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-
-        TablaOperador.setModel(new javax.swing.table.DefaultTableModel(
+        TablaOperadorRegular.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        TablaOperadorRegular.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -355,89 +332,73 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TablaOperador.addMouseListener(new java.awt.event.MouseAdapter() {
+        TablaOperadorRegular.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaOperadorMouseClicked(evt);
+                TablaOperadorRegularMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(TablaOperador);
-        if (TablaOperador.getColumnModel().getColumnCount() > 0) {
-            TablaOperador.getColumnModel().getColumn(0).setPreferredWidth(20);
-            TablaOperador.getColumnModel().getColumn(8).setPreferredWidth(20);
-        }
+        jScrollPane4.setViewportView(TablaOperadorRegular);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
+        RegularOperadores.addTab("tab2", jScrollPane4);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        TablaOperadorDespedidos.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        TablaOperadorDespedidos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Usuario", "Contraseña", "Rol", "DNI", "Fecha de baja", "Razón de baja"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaOperadorDespedidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaOperadorDespedidosMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(TablaOperadorDespedidos);
+
+        RegularOperadores.addTab("tab1", jScrollPane3);
+
+        jPanel1.add(RegularOperadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 1300, 260));
+        RegularOperadores.getAccessibleContext().setAccessibleName("asfasf");
+
+        jScrollPane6.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1360, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane6)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+        menu.setVisible(true);
+        this.setVisible(false);// TODO add your handling code here:
+    }//GEN-LAST:event_RegresarActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        opera.nuevo();        // TODO add your handling code here:
+    }//GEN-LAST:event_LimpiarActionPerformed
+
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-       opera.eliminar();
-       opera.consultar();
-       opera.nuevo();// TODO add your handling code here:
+        opera.eliminar();
+        opera.consultar();
+        opera.nuevo();// TODO add your handling code here:
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
@@ -453,45 +414,37 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CrearActionPerformed
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    private void optionRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionRolActionPerformed
 
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoActionPerformed
+    }//GEN-LAST:event_optionRolActionPerformed
 
-    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDNIActionPerformed
-
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
-
-    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuarioActionPerformed
+    }//GEN-LAST:event_txtEdadActionPerformed
 
     private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
-    private void TablaOperadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaOperadorMouseClicked
-        int fila = TablaOperador.getSelectedRow();
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void TablaOperadorDespedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaOperadorDespedidosMouseClicked
+        int fila = TablaOperadorDespedidos.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(null, "Operador no seleccionado");
-            
+
         } else{
-            idc = Integer.parseInt((String) TablaOperador.getValueAt(fila, 0).toString());
-            String nombre = (String) TablaOperador.getValueAt(fila, 1);
-            String apellido = (String) TablaOperador.getValueAt(fila, 2);
-            String user = (String) TablaOperador.getValueAt(fila, 3);
-            String contra = (String) TablaOperador.getValueAt(fila, 4);
-            String rol =(String) TablaOperador.getValueAt(fila, 5);
-            String DNI = (String) TablaOperador.getValueAt(fila, 6);
-            String telefono = (String) TablaOperador.getValueAt(fila, 7);
-            int edad = Integer.parseInt((String) TablaOperador.getValueAt(fila, 8).toString());
+            idc = Integer.parseInt((String) TablaOperadorDespedidos.getValueAt(fila, 0).toString());
+            String nombre = (String) TablaOperadorDespedidos.getValueAt(fila, 1);
+            String apellido = (String) TablaOperadorDespedidos.getValueAt(fila, 2);
+            String user = (String) TablaOperadorDespedidos.getValueAt(fila, 3);
+            String contra = (String) TablaOperadorDespedidos.getValueAt(fila, 4);
+            String rol =(String) TablaOperadorDespedidos.getValueAt(fila, 5);
+            String DNI = (String) TablaOperadorDespedidos.getValueAt(fila, 6);
+            String telefono = (String) TablaOperadorDespedidos.getValueAt(fila, 7);
+            int edad = Integer.parseInt((String) TablaOperadorDespedidos.getValueAt(fila, 8).toString());
             txtID.setText(""+idc);
             txtNombre.setText(nombre);
             txtApellido.setText(apellido);
@@ -502,51 +455,66 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             txtTelefono.setText(telefono);
             txtEdad.setText(""+edad);
         }
-    }//GEN-LAST:event_TablaOperadorMouseClicked
+    }//GEN-LAST:event_TablaOperadorDespedidosMouseClicked
 
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
+    private void TablaOperadorRegularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaOperadorRegularMouseClicked
+        int fila = TablaOperadorRegular.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "Operador no seleccionado");
 
-    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
-        opera.nuevo();        // TODO add your handling code here:
-    }//GEN-LAST:event_LimpiarActionPerformed
-
-    private void optionRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionRolActionPerformed
-    }//GEN-LAST:event_optionRolActionPerformed
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        menu.setVisible(true);
-        this.setVisible(false);// TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        } else{
+            idc = Integer.parseInt((String) TablaOperadorRegular.getValueAt(fila, 0).toString());
+            String nombre = (String) TablaOperadorRegular.getValueAt(fila, 1);
+            String apellido = (String) TablaOperadorRegular.getValueAt(fila, 2);
+            String user = (String) TablaOperadorRegular.getValueAt(fila, 3);
+            String contra = (String) TablaOperadorRegular.getValueAt(fila, 4);
+            String rol =(String) TablaOperadorRegular.getValueAt(fila, 5);
+            String DNI = (String) TablaOperadorRegular.getValueAt(fila, 6);
+            String telefono = (String) TablaOperadorRegular.getValueAt(fila, 7);
+            int edad = Integer.parseInt((String) TablaOperadorRegular.getValueAt(fila, 8).toString());
+            txtID.setText(""+idc);
+            txtNombre.setText(nombre);
+            txtApellido.setText(apellido);
+            txtUsuario.setText(user);
+            txtContraseña.setText(contra);
+            optionRol.setSelectedItem(rol);
+            txtDNI.setText(DNI);
+            txtTelefono.setText(telefono);
+            txtEdad.setText(""+edad);
+        }
+    }//GEN-LAST:event_TablaOperadorRegularMouseClicked
 
     /**
      * @param args the command line arguments
      */
-
     
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Crear;
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Limpiar;
     private javax.swing.JButton Modificar;
-    public javax.swing.JTable TablaOperador;
-    private javax.swing.JLabel asdfgdh;
+    private javax.swing.JToggleButton Regresar;
+    private javax.swing.JTabbedPane RegularOperadores;
+    public javax.swing.JTable TablaOperadorDespedidos;
+    public javax.swing.JTable TablaOperadorRegular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel labelContraseña;
-    private javax.swing.JLabel labelUsuario;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane6;
     public javax.swing.JComboBox<String> optionRol;
     public javax.swing.JTextField txtApellido;
     public javax.swing.JTextField txtContraseña;
