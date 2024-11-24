@@ -73,6 +73,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         TablaOperadorRegular = new javax.swing.JTable();
         ScrollRegulares = new javax.swing.JScrollPane();
         TablaOperadorDespedidos = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -424,6 +425,10 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         jPanel1.add(TabsOperadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 1320, 250));
         TabsOperadores.getAccessibleContext().setAccessibleName("asfasf");
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoOperadores.png"))); // NOI18N
+        jLabel13.setText("jLabel13");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 770));
+
         jScrollPane6.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -565,6 +570,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
