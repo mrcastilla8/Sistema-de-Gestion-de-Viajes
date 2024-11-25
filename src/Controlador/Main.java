@@ -12,10 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         
-        //CRUDD ventanacrud = new CRUDD();
-        //ventanacrud.setVisible(true);
-        
-        //Creo mi objeto ventanaConductor para ejecutar la ventana al seleccionar "gestionar conductores" en el menú
+      
         MainMenu menu = new MainMenu();
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES(menu);
         CRUD_Buses ventanaBuses = new  CRUD_Buses(menu);
@@ -24,7 +21,6 @@ public class Main {
         IguRuta ventanaRuta = new IguRuta(menu);
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador(ventanaOperadores);
-        Archivos archivo = new Archivos();
         
         menu.setVisible(true);
         

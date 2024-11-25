@@ -519,12 +519,12 @@
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="7" rowCount="0">
                             <Column editable="true" title="ID" type="java.lang.Integer"/>
-                            <Column editable="true" title="nombre" type="java.lang.Object"/>
-                            <Column editable="true" title="apellido" type="java.lang.Object"/>
-                            <Column editable="true" title="edad" type="java.lang.Object"/>
-                            <Column editable="true" title="telefono" type="java.lang.Object"/>
+                            <Column editable="true" title="Nombres" type="java.lang.Object"/>
+                            <Column editable="true" title="Apellidos" type="java.lang.Object"/>
+                            <Column editable="true" title="Edad" type="java.lang.Object"/>
+                            <Column editable="true" title="Telefono" type="java.lang.Object"/>
                             <Column editable="true" title="DNI" type="java.lang.Object"/>
-                            <Column editable="true" title="numLicencia" type="java.lang.Object"/>
+                            <Column editable="true" title="Licencia" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -610,10 +610,10 @@
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="5" rowCount="0">
                             <Column editable="false" title="ID" type="java.lang.Object"/>
-                            <Column editable="false" title="licencia" type="java.lang.Object"/>
+                            <Column editable="false" title="Licencia" type="java.lang.Object"/>
                             <Column editable="false" title="DNI" type="java.lang.Object"/>
-                            <Column editable="false" title="fecha_baja" type="java.lang.Object"/>
-                            <Column editable="false" title="razon_baja" type="java.lang.Object"/>
+                            <Column editable="false" title="Fecha de baja" type="java.lang.Object"/>
+                            <Column editable="false" title="Razon de baja" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
