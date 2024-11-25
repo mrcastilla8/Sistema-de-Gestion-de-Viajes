@@ -98,6 +98,7 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jTextFieldFecha.setBackground(new java.awt.Color(132, 167, 161));
         jTextFieldFecha.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
         jTextFieldFecha.setForeground(new java.awt.Color(255, 255, 255));
+     
         labelUsuario1.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Fecha");
@@ -105,12 +106,12 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jComboBoxOrigen.setBackground(new java.awt.Color(132, 167, 161));
         jComboBoxOrigen.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
         jComboBoxOrigen.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBoxOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(origenes.toArray(new String[0])));
 
         jComboBoxDestino.setBackground(new java.awt.Color(132, 167, 161));
         jComboBoxDestino.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
         jComboBoxDestino.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBoxDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDestino.setModel(new javax.swing.DefaultComboBoxModel<>(destinos.toArray(new String[0])));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -189,27 +190,23 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(31, 110, 140));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
 
         jTableViajes.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
-        jTableViajes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+                jTableViajes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Tipo de bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida", "Hora de salida"
             }
         ));
+        
         jScrollPane1.setViewportView(jTableViajes);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -247,6 +244,11 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jButtonContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/continuar.png"))); // NOI18N
         jButtonContinuar.setText("Continuar");
         jButtonContinuar.setBorder(null);
+        jButtonContinuar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonContinuarActionPerformed(evt);
+            }
+        });
 
         jButtonRegresar.setBackground(new java.awt.Color(14, 41, 84));
         jButtonRegresar.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
@@ -254,6 +256,11 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jButtonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         jButtonRegresar.setText("Regresar");
         jButtonRegresar.setBorder(null);
+        jButtonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -319,17 +326,17 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel14)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(38, 38, 38))
         );
 
@@ -362,7 +369,11 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         actualizarComboBox();
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+
+
+   
+
+    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
         int idViaje = Integer.parseInt(jComboIDViajeSelec.getSelectedItem().toString());
         if (modeloVB.obtenerTipoDeBus(idViaje).equals("Estándar")) {
             new SeleccionAsientosEstandarNuevo(this, idViaje).setVisible(true);
@@ -374,12 +385,12 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
             new SeleccionAsientosVIPNuevo(this, idViaje).setVisible(true);
             this.setVisible(false);
         }
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_jButtonContinuarActionPerformed
 
-    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         menu.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
     
     private void actualizarTabla() {
         String origen = jComboBoxOrigen.getSelectedItem().toString();
