@@ -186,6 +186,7 @@ public class Conductor{
         try {
             if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
+                limpiarTabla();
             } else {
                 // Obtén el ID del conductor seleccionado
                 int idConductor = Integer.parseInt(ventanaConductores.TablaConductoresRegulares.getValueAt(fila, 0).toString());
@@ -212,6 +213,7 @@ public class Conductor{
                 String razonBaja = JOptionPane.showInputDialog("Ingrese la razón de baja:");
                 if (razonBaja == null || razonBaja.trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Razón de baja requerida");
+                    
                     return;
                 }
 
@@ -231,6 +233,7 @@ public class Conductor{
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al dar de baja al conductor: " + e.getMessage());
+            limpiarTabla();
         }
     }
 
