@@ -29,6 +29,7 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -97,7 +98,7 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jTextFieldFecha.setBackground(new java.awt.Color(132, 167, 161));
         jTextFieldFecha.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
         jTextFieldFecha.setForeground(new java.awt.Color(255, 255, 255));
-
+     
         labelUsuario1.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
         labelUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         labelUsuario1.setText("Fecha");
@@ -189,35 +190,24 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(31, 110, 140));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
 
         jTableViajes.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
-        jTableViajes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
+                jTableViajes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {},
             new String [] {
                 "ID", "Tipo de bus", "Origen", "Destino", "Precio", "Conductor 1", "Conductor 2", "Fecha de salida", "Hora de salida"
             }
         ));
+        
         jScrollPane1.setViewportView(jTableViajes);
-        TableColumnModel modeloColumna = jTableViajes.getColumnModel();
-        modeloColumna.getColumn(0).setPreferredWidth(40);
-        modeloColumna.getColumn(1).setPreferredWidth(80);
-        modeloColumna.getColumn(2).setPreferredWidth(60);
-        modeloColumna.getColumn(3).setPreferredWidth(70);
-        modeloColumna.getColumn(4).setPreferredWidth(50);
-        modeloColumna.getColumn(5).setPreferredWidth(200);
-        modeloColumna.getColumn(6).setPreferredWidth(200);
-        modeloColumna.getColumn(7).setPreferredWidth(100);
-        modeloColumna.getColumn(8).setPreferredWidth(100);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -281,7 +271,7 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
                 .addComponent(jLabel15)
                 .addGap(18, 18, 18)
                 .addComponent(jComboIDViajeSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,29 +326,31 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel14)
+                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(38, 38, 38))
         );
+
+        jScrollPane2.setViewportView(jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1365, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
         );
 
         pack();
@@ -377,7 +369,11 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
         actualizarComboBox();
     }//GEN-LAST:event_jButtonBuscarActionPerformed
 
-    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+
+
+   
+
+    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
         int idViaje = Integer.parseInt(jComboIDViajeSelec.getSelectedItem().toString());
         if (modeloVB.obtenerTipoDeBus(idViaje).equals("Estándar")) {
             new SeleccionAsientosEstandarNuevo(this, idViaje).setVisible(true);
@@ -389,12 +385,12 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
             new SeleccionAsientosVIPNuevo(this, idViaje).setVisible(true);
             this.setVisible(false);
         }
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    }//GEN-LAST:event_jButtonContinuarActionPerformed
 
-    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jButtonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegresarActionPerformed
         menu.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_jButtonRegresarActionPerformed
     
     private void actualizarTabla() {
         String origen = jComboBoxOrigen.getSelectedItem().toString();
@@ -452,9 +448,9 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableViajes;
-    private javax.swing.JTextField jTextFieldFecha;
+    public javax.swing.JTextField jTextFieldFecha;
     private javax.swing.JLabel labelUsuario1;
-    public javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
