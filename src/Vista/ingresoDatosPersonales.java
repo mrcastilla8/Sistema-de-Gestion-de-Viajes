@@ -95,7 +95,7 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         jButton2.setText("Regresar");
         jButton2.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
@@ -226,9 +226,8 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
             seleccionPremium.setVisible(true);
         } else if (seleccionVIP != null) {
             seleccionVIP.setVisible(true);
-        } else {
-            this.setVisible(false);
-        }  
+        }
+        this.setVisible(false);
     }
 
     /**
