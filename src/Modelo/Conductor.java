@@ -77,50 +77,54 @@ public class Conductor{
         }
     }
 
-    public void agregar(){
+    public void agregar() {
         String nombre = ventanaConductores.txtfNombre.getText();
         String apellido = ventanaConductores.txtfApellido.getText();
         String edadStr = ventanaConductores.txtfEdad.getText();
         String telefono = ventanaConductores.txtfTelefono.getText();
         String DNI = ventanaConductores.txtfDNI.getText();
         String licencia = ventanaConductores.txtfLicencia.getText();
-        
-        try{
-            //Revisamos si algun txtfield está vacío
-            if(nombre.equals("") || apellido.equals("") || edadStr.equals("") 
-                    || telefono.equals("") || DNI.equals("") || licencia.equals("")){
+
+        try {
+            // Revisamos si algún txtfield está vacío
+            if (nombre.equals("") || apellido.equals("") || edadStr.equals("") 
+                    || telefono.equals("") || DNI.equals("") || licencia.equals("")) {
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos!");
-            }
-            else{
+            } else if (DNI.length() != 8) { 
+                // Verificamos si el DNI tiene 8 caracteres
+                JOptionPane.showMessageDialog(null, "DNI incorrecto, ingresar 8 dígitos");
+            } else {
                 // Primero, verificar si existen duplicados
-               if (determinarDuplicados()) {
-                   limpiarTabla();
-                   return;
-               }               
-                
+                if (determinarDuplicados()) {
+                    limpiarTabla();
+                    return;
+                }
+
                 // Convertir edad a int después de verificar que no está vacío
                 int edad = Integer.parseInt(edadStr);
-                
-                //Agregamos a la persona a la tabla persona
-                String sql1 = "Insert into persona(nombre, apellido, edad, DNI, telefono) values ('"+nombre+"','"+apellido+"','"+edad+"','"+DNI+"','"+telefono+"')";
+
+                // Agregamos a la persona a la tabla persona
+                String sql1 = "INSERT INTO persona(nombre, apellido, edad, DNI, telefono) " +
+                              "VALUES ('" + nombre + "', '" + apellido + "', '" + edad + "', '" + DNI + "', '" + telefono + "')";
                 conet = con.obtenerConexion();
                 st = conet.createStatement();
                 st.executeUpdate(sql1, Statement.RETURN_GENERATED_KEYS);
-                
-                //Luego obtenemos el idPersona y ahora agregamos al conductor a la tabla conductores
+
+                // Luego obtenemos el idPersona y ahora agregamos al conductor a la tabla conductores
                 rs = st.getGeneratedKeys();
                 int idPersona = -1;
                 if (rs.next()) {
-                    idPersona = rs.getInt(1); //Aquí obtienes el idPersona generado
-                }             
-                String sql2 = "Insert into conductores(idPersona, numLicencia) values ('"+idPersona+"','"+licencia+"')";
+                    idPersona = rs.getInt(1); // Aquí obtienes el idPersona generado
+                }
+                String sql2 = "INSERT INTO conductores(idPersona, numLicencia) " +
+                              "VALUES ('" + idPersona + "', '" + licencia + "')";
                 st.executeUpdate(sql2);
                 JOptionPane.showMessageDialog(null, "Nuevo conductor agregado!");
                 nuevo();
             }
-            
+
             limpiarTabla();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al agregar conductor.");    
         }
@@ -186,6 +190,7 @@ public class Conductor{
         try {
             if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Conductor no seleccionado");
+                limpiarTabla();
             } else {
                 // Obtén el ID del conductor seleccionado
                 int idConductor = Integer.parseInt(ventanaConductores.TablaConductoresRegulares.getValueAt(fila, 0).toString());
@@ -212,6 +217,7 @@ public class Conductor{
                 String razonBaja = JOptionPane.showInputDialog("Ingrese la razón de baja:");
                 if (razonBaja == null || razonBaja.trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Razón de baja requerida");
+                    
                     return;
                 }
 
@@ -231,6 +237,7 @@ public class Conductor{
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al dar de baja al conductor: " + e.getMessage());
+            limpiarTabla();
         }
     }
 

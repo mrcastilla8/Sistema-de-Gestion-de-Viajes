@@ -253,7 +253,7 @@ public class IguConductor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "nombre", "apellido", "edad", "telefono", "DNI", "numLicencia"
+                "ID", "Nombres", "Apellidos", "Edad", "Telefono", "DNI", "Licencia"
             }
         ) {
             Class[] types = new Class [] {
@@ -290,7 +290,7 @@ public class IguConductor extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "licencia", "DNI", "fecha_baja", "razon_baja"
+                "ID", "Licencia", "DNI", "Fecha de baja", "Razon de baja"
             }
         ) {
             boolean[] canEdit = new boolean [] {
