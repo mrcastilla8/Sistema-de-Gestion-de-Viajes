@@ -8,11 +8,13 @@ import Vista.CRUD_Buses;
 import Vista.IguConductor;
 import Vista.MainMenu;
 import Vista.IguRuta;
+import Vista.Inicio_Sesión;
 public class Main {
 
     public static void main(String[] args) {
         
       
+        Inicio_Sesión login = new Inicio_Sesión();
         MainMenu menu = new MainMenu();
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES(menu);
         CRUD_Buses ventanaBuses = new  CRUD_Buses(menu);
@@ -22,7 +24,7 @@ public class Main {
         Scanner entrada = new Scanner(System.in);
         Operador op1 = new Operador(ventanaOperadores);
         
-        menu.setVisible(true);
+        login.setVisible(true);
         
 
     }
