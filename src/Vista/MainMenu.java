@@ -30,7 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
         ventanaRuta = new IguRuta(this);
         ventanaViajes = new CRUD_VIAJES(this);
         ventanaAsiento = new IguAsientos(this);
-        ventanaBoleto = new VentaBoletoNuevo(this);
+        ventanaBoleto = new VentaBoletoNuevo(this,"Administrador");
     }
 
     /**
