@@ -20,7 +20,7 @@ public class Operador {
 
     public Operador(CRUD_OPERADORES ventanaOperadores) {
         this.ventanaOperadores = ventanaOperadores;
-    }
+    } 
     
      public void consultar(){
         String sq = "SELECT c.idOperadores, p.nombre, p.apellido, p.edad, p.DNI, p.telefono, c.username, c.password, c.Rol " +
@@ -350,6 +350,30 @@ public class Operador {
          JOptionPane.showMessageDialog(null, "Error al obtener el ID de la persona.");
      }
      return idPersona;
+    }
+    
+    public String iniciarSesion(String username, String password) {
+        String sql = "SELECT Rol FROM operadores WHERE username = ? AND password = ?";
+        
+        try {
+            conet = con1.obtenerConexion();
+            PreparedStatement pst = conet.prepareStatement(sql);
+            pst.setString(1, username);
+            pst.setString(2, password);
+            
+            rs = pst.executeQuery();
+            
+            if (rs.next()) {
+                String rol = rs.getString("Rol");
+                return rol; // Retorna el rol del usuario
+            } else {
+                return null; // Credenciales incorrectas
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al intentar iniciar sesión.");
+            return null;
+        } 
     }
 
 
