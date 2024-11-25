@@ -139,16 +139,13 @@ public class Inicio_Sesión extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como " + rol + ".", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
             
             // Redirigir según el rol
-            if(rol.equalsIgnoreCase("Administrador")) {
+            if (rol.equalsIgnoreCase("Administrador")) {
                 MainMenu menu_admin = new MainMenu();
                 menu_admin.setVisible(true);
-   
-            } else if(rol.equalsIgnoreCase("Operador")) {
+            } else if (rol.equalsIgnoreCase("Operador")) {
                 MainMenu menu = new MainMenu(); // O la instancia relevante
-                VentaBoletoNuevo venta_boleto = new VentaBoletoNuevo(menu);
+                VentaBoletoNuevo venta_boleto = new VentaBoletoNuevo(menu, rol);
                 venta_boleto.setVisible(true);
-
-                
             } else {
                 JOptionPane.showMessageDialog(this, "Rol desconocido.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;

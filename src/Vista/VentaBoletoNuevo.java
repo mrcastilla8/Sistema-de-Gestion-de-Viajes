@@ -18,11 +18,16 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
     private List<String> origenes = modeloVB.obtenerOrigenes();
     private List<String> destinos = modeloVB.obtenerDestinos();
 
-    public VentaBoletoNuevo(MainMenu menu) {
+    public VentaBoletoNuevo(MainMenu menu, String rolUsuario) {
         this.menu = menu;
         initComponents();
         setLocationRelativeTo(null);
         actualizarTabla();
+
+        // Ocultar el botón si el rol es "Operador"
+        if (rolUsuario.equalsIgnoreCase("Operador")) {
+            jButtonRegresar.setVisible(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
