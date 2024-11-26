@@ -4,6 +4,7 @@ import Modelo.VentaBoletoModelo;
 
 public class ingresoDatosPersonales extends javax.swing.JFrame {
 
+    VentaBoletoNuevo venta;
     SeleccionAsientosEstandarNuevo seleccionEstandar;
     SeleccionAsientosPremiumNuevo seleccionPremium;
     SeleccionAsientosVIPNuevo seleccionVIP;
@@ -11,13 +12,14 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
     private int idViaje;
     private String numAsiento;
 
-    public ingresoDatosPersonales(SeleccionAsientosEstandarNuevo seleccionEstandar, SeleccionAsientosPremiumNuevo seleccionPremium, 
+    public ingresoDatosPersonales(VentaBoletoNuevo venta, SeleccionAsientosEstandarNuevo seleccionEstandar, SeleccionAsientosPremiumNuevo seleccionPremium, 
                                     SeleccionAsientosVIPNuevo seleccionVip, int idViaje, String numAsiento) {
         this.seleccionEstandar = seleccionEstandar;
         this.seleccionPremium = seleccionPremium;
         this.seleccionVIP = seleccionVip;
         this.idViaje = idViaje;
         this.numAsiento = numAsiento;
+        this.venta = venta;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -213,6 +215,8 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
         if (!nombres.equals("") && !apellidos.equals("") && !dni.equals("")) {
             modeloVB.actualizarAsiento(idViaje, numAsiento);
             modeloVB.imprimirBoleto(idViaje, numAsiento, nombres, apellidos, dni);
+            venta.setVisible(true);
+            new BoletoImpreso().setVisible(true);
             this.setVisible(false);
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
