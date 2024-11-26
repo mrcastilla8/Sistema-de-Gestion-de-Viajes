@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="1" failures="0" hostname="DESKTOP-5KT2QLA" name="MiClaseDePrueba" skipped="0" tests="1" time="0.158" timestamp="2024-11-26T04:12:30">
+<testsuite errors="1" failures="0" hostname="DESKTOP-5KT2QLA" name="Boletos_Prueba" skipped="0" tests="1" time="0.132" timestamp="2024-11-26T04:39:27">
   <properties>
     <property name="" value="======" />
     <property name="javac.test.classpath" value="C:\Users\Renato\Downloads\mysql-connector-j-9.1.0.jar:lib/jcalendar-1.4.jar:C:\Program Files\NetBeans-22\netbeans\java\modules\ext\AbsoluteLayout.jar:lib\itextpdf-5.5.13.4.jar:lib\AbsoluteLayout.jar:build/classes:C:\Users\Renato\Desktop\junit-platform-console-standalone-1.11.3.jar" />
@@ -17,7 +17,7 @@
     <property name="libs.jsp-compilation.src" value="" />
     <property name="libs.JWSAntTasks.javadoc" value="" />
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner MiClaseDePrueba skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Renato\Desktop\GESTION VIAJES\build\test\results\TEST-MiClaseDePrueba.xml crashfile=C:\Users\Renato\Desktop\GESTION VIAJES\build\junitvmwatcher15382066017730676288.properties propsfile=C:\Users\Renato\Desktop\GESTION VIAJES\build\junit9017745636158835192.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner Boletos_Prueba skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Renato\Desktop\GESTION VIAJES\build\test\results\TEST-Boletos_Prueba.xml crashfile=C:\Users\Renato\Desktop\GESTION VIAJES\build\junitvmwatcher13272678175139950171.properties propsfile=C:\Users\Renato\Desktop\GESTION VIAJES\build\junit17569201447430092602.properties" />
     <property name="jdk.debug" value="release" />
     <property name="javadoc.use" value="true" />
     <property name="javadoc.notree" value="false" />
@@ -63,7 +63,7 @@
     <property name="jlink.additionalparam" value="" />
     <property name="libs.testng.maven-pom" value="" />
     <property name="org.openide.version" value="deprecated" />
-    <property name="test.includes" value="MiClaseDePrueba.java" />
+    <property name="test.includes" value="Boletos_Prueba.java" />
     <property name="run.classpath" value="C:\Users\Renato\Downloads\mysql-connector-j-9.1.0.jar:lib/jcalendar-1.4.jar:C:\Program Files\NetBeans-22\netbeans\java\modules\ext\AbsoluteLayout.jar:lib\itextpdf-5.5.13.4.jar:lib\AbsoluteLayout.jar:build/classes" />
     <property name="libs.jaxb.src" value="" />
     <property name="sun.awt.enableExtraMouseButtons" value="true" />
@@ -214,7 +214,7 @@
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans-22\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\servlet4.0-jsp2.3-api.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\glassfish-jspparser-5.1.0.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans-22\netbeans\extide\ant\lib\ant-launcher.jar" />
     <property name="org.apache.commons.logging.Log" value="org.apache.commons.logging.impl.Jdk14Logger" />
     <property name="libs.javaee-api-6.0.classpath" value="C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\javaee-api-6.0.jar" />
-    <property name="javac.includesfile.binary" value="C:\Users\Renato\Desktop\GESTION VIAJES\null11797289" />
+    <property name="javac.includesfile.binary" value="C:\Users\Renato\Desktop\GESTION VIAJES\null1756002840" />
     <property name="libs.javaee-api-7.0.classpath" value="C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\javaee-api-7.0.jar" />
     <property name="sun.cpu.isalist" value="amd64" />
     <property name="libs.restapi.maven-pom" value="" />
@@ -338,7 +338,7 @@
     <property name="empty.dir" value="C:\Users\Renato\Desktop\GESTION VIAJES\build\empty" />
     <property name="libs.jakartaee-api-10.0.classpath" value="C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\jakarta.jakartaee-api-10.0.0.jar" />
     <property name="netbeans.user" value="C:\Users\Renato\AppData\Roaming\NetBeans\22" />
-    <property name="javac.includes.binary" value="C:\Users\Renato\Desktop\GESTION VIAJES\build\test\classes\MiClaseDePrueba.class" />
+    <property name="javac.includes.binary" value="C:\Users\Renato\Desktop\GESTION VIAJES\build\test\classes\Boletos_Prueba.class" />
     <property name="file.separator" value="\" />
     <property name="line.separator" value="&#xd;&#xa;" />
     <property name="javadoc.additionalparam" value="" />
@@ -379,7 +379,7 @@
     <property name="libs.spring-framework500.src" value="" />
     <property name="user.properties.file" value="C:\Users\Renato\AppData\Roaming\NetBeans\22\build.properties" />
     <property name="libs.javaee-api-6.0.src" value="" />
-    <property name="javac.includes" value="MiClaseDePrueba.java" />
+    <property name="javac.includes" value="Boletos_Prueba.java" />
     <property name="netbeans.autoupdate.country" value="ES" />
     <property name="java.class.path" value="C:\Users\Renato\Downloads\mysql-connector-j-9.1.0.jar;C:\Users\Renato\Desktop\GESTION VIAJES\lib\jcalendar-1.4.jar;C:\Program Files\NetBeans-22\netbeans\java\modules\ext\AbsoluteLayout.jar;C:\Users\Renato\Desktop\GESTION VIAJES\lib\itextpdf-5.5.13.4.jar;C:\Users\Renato\Desktop\GESTION VIAJES\lib\AbsoluteLayout.jar;C:\Users\Renato\Desktop\GESTION VIAJES\build\classes;C:\Users\Renato\Desktop\junit-platform-console-standalone-1.11.3.jar;C:\Users\Renato\Desktop\GESTION VIAJES\build\test\classes;C:\Program Files\NetBeans-22\netbeans\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans-22\netbeans\extide\ant\lib\ant.jar;C:\Program Files\NetBeans-22\netbeans\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans-22\netbeans\extide\ant\lib\ant-junit4.jar" />
     <property name="libs.javaee-web-api-6.0.maven-pom" value="" />
@@ -438,7 +438,7 @@
     <property name="libs.metro.javadoc" value="C:\Program Files\NetBeans-22\netbeans\enterprise\docs\webservices-api-javadoc.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\docs\webservices-extra-javadoc.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\docs\webservices-extra-api-javadoc.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\docs\webservices-rt-javadoc.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\docs\webservices-tools-javadoc.jar" />
     <property name="libs.jakartaee-web-api-9.0.src" value="" />
     <property name="libs.jakartaee-web-api-10.0.classpath" value="C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\jakarta.jakartaee-web-api-10.0.0.jar" />
-    <property name="test.class" value="MiClaseDePrueba" />
+    <property name="test.class" value="Boletos_Prueba" />
     <property name="sun.awt.datatransfer.timeout" value="1000" />
     <property name="annotation.processing.run.all.processors" value="true" />
     <property name="libs.jakartaee-api-8.0.src" value="" />
@@ -447,8 +447,8 @@
     <property name="libs.jsp-compiler.classpath" value="C:\Program Files\NetBeans-22\netbeans\enterprise\ant\extra\jspcompile.jar" />
     <property name="libs.javaee-endorsed-api-6.0.classpath" value="C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\javaee6-endorsed\javax.annotation.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\javaee6-endorsed\jaxb-api-osgi.jar;C:\Program Files\NetBeans-22\netbeans\enterprise\modules\ext\javaee6-endorsed\webservices-api-osgi.jar" />
   </properties>
-  <testcase classname="MiClaseDePrueba" name="initializationError" time="0.008">
-    <error message="Invalid test class &apos;MiClaseDePrueba&apos;:&#xa;  1. No runnable methods" type="org.junit.runners.model.InvalidTestClassError">org.junit.runners.model.InvalidTestClassError: Invalid test class &apos;MiClaseDePrueba&apos;:
+  <testcase classname="Boletos_Prueba" name="initializationError" time="0.012">
+    <error message="Invalid test class &apos;Boletos_Prueba&apos;:&#xa;  1. No runnable methods" type="org.junit.runners.model.InvalidTestClassError">org.junit.runners.model.InvalidTestClassError: Invalid test class &apos;Boletos_Prueba&apos;:
   1. No runnable methods
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
