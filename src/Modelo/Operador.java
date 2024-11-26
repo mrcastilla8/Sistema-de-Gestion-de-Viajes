@@ -241,11 +241,13 @@ public class Operador {
         String contra = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 4).toString();
         String rol = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 5).toString();
         String dni = ventanaOperadores.TablaOperadorRegular.getValueAt(fila, 6).toString();
-        String razonBaja = JOptionPane.showInputDialog("Ingrese la razón de baja:");
+        String razonBaja = "";
+        while (razonBaja == null || razonBaja.trim().isEmpty()) {
+            razonBaja = JOptionPane.showInputDialog("Ingrese la razón de baja:");
             if (razonBaja == null || razonBaja.trim().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Razón de baja requerida");
-                return;
             }
+        }
         // Nos conectamos a la base de datos
         conet = con1.obtenerConexion();
         
@@ -253,30 +255,12 @@ public class Operador {
         String sqDespedidos = "INSERT INTO operadores_cesados (idOperadores, username, password, Rol, DNI, fecha_baja, razon_baja) "
                 + "             VALUES (" + idOperador + ", '" + user + "', '" + contra + "', '" + rol + "', '" + dni + "', CURDATE(), '" + razonBaja + "')";
         st.executeUpdate(sqDespedidos);
-
-        // Poblar la tabla operadores_cesados en la interfaz gráfica
-        String sqAddCesados = "SELECT idOperadores, username, password, Rol, DNI, fecha_baja, razon_baja FROM operadores_cesados";
-        st = conet.createStatement();
-        rs = st.executeQuery(sqAddCesados);
-        Object[] operadores_cesados = new Object[7];
-        modelo1 = (DefaultTableModel) ventanaOperadores.TablaOperadorDespedidos.getModel();
-        while (rs.next()) {
-            operadores_cesados[0] = rs.getInt("idOperadores");
-            operadores_cesados[1] = rs.getString("username");
-            operadores_cesados[2] = rs.getString("password");
-            operadores_cesados[3] = rs.getString("Rol");
-            operadores_cesados[4] = rs.getString("DNI");
-            operadores_cesados[5] = rs.getString("fecha_baja");
-            operadores_cesados[6] = rs.getString("razon_baja");
-            modelo1.addRow(operadores_cesados);
+        cargarCesados();
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al agregar el operador cesado.");
         }
-
-        ventanaOperadores.TablaOperadorDespedidos.setModel(modelo1);
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al agregar el operador cesado.");
     }
-}
 
     
 
