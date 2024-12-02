@@ -2,7 +2,6 @@
 package Vista;
 
 import Vista.MainMenu;
-import Modelo.Bus;
 import Modelo.BusCRUD;
 import java.util.List;
 
@@ -69,6 +68,7 @@ public class CRUD_Buses extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(46, 138, 153));
@@ -197,15 +197,7 @@ public class CRUD_Buses extends javax.swing.JFrame {
             new String [] {
                 "ID", "Tipo", "Capacidad", "Estado"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        ));
         TablaBus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaBusMouseClicked(evt);
@@ -313,6 +305,10 @@ public class CRUD_Buses extends javax.swing.JFrame {
         jLabel6.setText("Base de datos");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoOperadores.png"))); // NOI18N
+        jLabel13.setText("jLabel13");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -325,7 +321,7 @@ public class CRUD_Buses extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -358,8 +354,8 @@ public class CRUD_Buses extends javax.swing.JFrame {
         String estado = Estado.getSelectedItem().toString();
         int capacidad = Integer.parseInt(Capacidad.getText());
 
-        Bus bus = new Bus(id, tipo, capacidad, estado);
-        if (busCRUD.modificarBus(bus)) {
+        // Modificar el bus directamente sin crear un objeto Bus
+        if (busCRUD.modificarBus(id, tipo, capacidad, estado)) {
             JOptionPane.showMessageDialog(this, "Bus modificado exitosamente.");
             consultar();
         } else {
@@ -378,24 +374,14 @@ public class CRUD_Buses extends javax.swing.JFrame {
             return;
         }
 
-        Bus bus = new Bus(0, tipo, capacidad, estado);
-        if (busCRUD.crearBus(bus)) {
+        // Crear el bus directamente sin crear un objeto Bus
+        if (busCRUD.crearBus(0, tipo, capacidad, estado)) {
             JOptionPane.showMessageDialog(this, "Bus creado exitosamente.");
             consultar();
         } else {
             JOptionPane.showMessageDialog(this, "Error al crear el bus.");
         }
     }//GEN-LAST:event_CrearActionPerformed
-
-    private void TablaBusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaBusMouseClicked
-        int fila = TablaBus.getSelectedRow();
-        if (fila != -1) {
-            ID.setText(TablaBus.getValueAt(fila, 0).toString());
-            Tipos.setSelectedItem(TablaBus.getValueAt(fila, 1).toString());
-            Capacidad.setText(TablaBus.getValueAt(fila, 2).toString());
-            Estado.setSelectedItem(TablaBus.getValueAt(fila, 3).toString());
-        }
-    }//GEN-LAST:event_TablaBusMouseClicked
 
     private void CapacidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CapacidadActionPerformed
         // TODO add your handling code here:
@@ -409,9 +395,12 @@ public class CRUD_Buses extends javax.swing.JFrame {
         String tipo = Tipos.getSelectedItem().toString();
         String estado = Estado.getSelectedItem().toString();
 
-        List<Bus> buses = busCRUD.buscarBus(tipo, estado);
+        // Obtener la lista de buses
+        List<BusCRUD> buses = busCRUD.buscarBus(tipo, estado);
         limpiarTabla();
-        for (Bus bus : buses) {
+    
+        // Agregar los datos de los buses a la tabla
+        for (BusCRUD bus : buses) {
             modelo.addRow(new Object[]{bus.getId(), bus.getTipo(), bus.getCapacidad(), bus.getEstado()});
         }
     }//GEN-LAST:event_BuscarActionPerformed
@@ -428,17 +417,28 @@ public class CRUD_Buses extends javax.swing.JFrame {
         Estado.setSelectedIndex(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void TablaBusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaBusMouseClicked
+        int fila = TablaBus.getSelectedRow();
+        if (fila != -1) {
+            ID.setText(TablaBus.getValueAt(fila, 0).toString());
+            Tipos.setSelectedItem(TablaBus.getValueAt(fila, 1).toString());
+            Capacidad.setText(TablaBus.getValueAt(fila, 2).toString());
+            Estado.setSelectedItem(TablaBus.getValueAt(fila, 3).toString());
+        }
+    }//GEN-LAST:event_TablaBusMouseClicked
+
     /**
      * @param args the command line arguments
      */
 
       
     private void consultar() {
-        List<Bus> buses = busCRUD.buscarBus("", ""); // Traer todos los buses sin filtro
+        // Traer todos los buses sin filtro
+        List<BusCRUD> buses = busCRUD.buscarBus("", ""); 
         modelo = (DefaultTableModel) TablaBus.getModel();
         limpiarTabla(); // Limpiar la tabla antes de añadir nuevos datos
 
-        for (Bus bus : buses) {
+        for (BusCRUD bus : buses) {
             modelo.addRow(new Object[]{bus.getId(), bus.getTipo(), bus.getCapacidad(), bus.getEstado()});
         }
     }
@@ -462,6 +462,7 @@ public class CRUD_Buses extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

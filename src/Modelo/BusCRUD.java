@@ -1,7 +1,6 @@
 package Modelo;
 
 import Controlador.Conexion;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -12,13 +11,52 @@ import java.util.List;
 public class BusCRUD {
     private final Conexion conexionDB;
 
+    // Atributos del Bus integrados directamente en BusCRUD
+    private int id;
+    private String tipo;
+    private int capacidad;
+    private String estado;
+
     // Constructor
     public BusCRUD() {
         this.conexionDB = new Conexion(); // No cierra la conexión automáticamente
     }
 
+    // Getters y Setters para los atributos del Bus
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     // Método para crear un nuevo bus en la base de datos
-    public boolean crearBus(Bus bus) {
+    public boolean crearBus(int id, String tipo, int capacidad, String estado) {
         // Inserta el nuevo bus en la tabla `buses` (inserta los asientos del bus creado en la tabla 'asientos')
         String queryBus = "INSERT INTO buses (tipo, capacidad, estado) VALUES (?, ?, ?)";
         String queryAsiento = "INSERT INTO asientos (numero_asiento, disponible, id_bus) VALUES (?, ?, ?)";
@@ -27,9 +65,9 @@ public class BusCRUD {
              PreparedStatement stmtAsiento = conexionDB.obtenerConexion().prepareStatement(queryAsiento)) {
 
             // Configura y ejecuta el insert del bus
-            stmtBus.setString(1, bus.getTipo());
-            stmtBus.setInt(2, bus.getCapacidad());
-            stmtBus.setString(3, bus.getEstado());
+            stmtBus.setString(1, tipo);
+            stmtBus.setInt(2, capacidad);
+            stmtBus.setString(3, estado);
             int rowsAffected = stmtBus.executeUpdate();
 
             if (rowsAffected == 0) {
@@ -43,7 +81,7 @@ public class BusCRUD {
 
                     // Determina la cantidad de asientos según el tipo de bus
                     int cantidadAsientos;
-                    switch (bus.getTipo()) {
+                    switch (tipo) {
                         case "Estándar":
                             cantidadAsientos = 60;
                             break;
@@ -94,12 +132,12 @@ public class BusCRUD {
     }
 
     // Método para buscar buses por tipo y estado
-    public List<Bus> buscarBus(String tipo, String estado) {
+    public List<BusCRUD> buscarBus(String tipo, String estado) {
         String query = "SELECT * FROM buses";
         List<String> condiciones = new ArrayList<>();
-        List<Bus> buses = new ArrayList<>();
+        List<BusCRUD> buses = new ArrayList<>();
 
-    // Construir la consulta dinámicamente según los filtros disponibles
+        // Construir la consulta dinámicamente según los filtros disponibles
         if (!tipo.isEmpty()) {
             condiciones.add("tipo = ?");
         }
@@ -121,12 +159,11 @@ public class BusCRUD {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                Bus bus = new Bus(
-                    rs.getInt("id_bus"),
-                    rs.getString("tipo"),
-                    rs.getInt("capacidad"),
-                    rs.getString("estado")
-                );
+                BusCRUD bus = new BusCRUD();
+                bus.setId(rs.getInt("id_bus"));
+                bus.setTipo(rs.getString("tipo"));
+                bus.setCapacidad(rs.getInt("capacidad"));
+                bus.setEstado(rs.getString("estado"));
                 buses.add(bus);
             }
         } catch (SQLException e) {
@@ -136,13 +173,13 @@ public class BusCRUD {
     }
 
     // Método para modificar un bus en la base de datos
-    public boolean modificarBus(Bus bus) {
+    public boolean modificarBus(int id, String tipo, int capacidad, String estado) {
         String query = "UPDATE buses SET tipo = ?, capacidad = ?, estado = ? WHERE id_bus = ?";
         try (PreparedStatement stmt = conexionDB.obtenerConexion().prepareStatement(query)) {
-            stmt.setString(1, bus.getTipo());
-            stmt.setInt(2, bus.getCapacidad());
-            stmt.setString(3, bus.getEstado());
-            stmt.setInt(4, bus.getId());
+            stmt.setString(1, tipo);
+            stmt.setInt(2, capacidad);
+            stmt.setString(3, estado);
+            stmt.setInt(4, id);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.err.println("Error al modificar el bus: " + e.getMessage());
