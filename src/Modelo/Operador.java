@@ -371,4 +371,28 @@ public class Operador {
             return null;
         } 
     }
+    
+        public int obtenerIdOperador(String username, String password) {
+        String sql = "SELECT idOperadores FROM operadores WHERE username = ? AND password = ?";
+
+        try {
+            conet = con1.obtenerConexion();
+            PreparedStatement pst = conet.prepareStatement(sql);
+            pst.setString(1, username);
+            pst.setString(2, password);
+
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                int idOperador = rs.getInt("idOperadores");
+                return idOperador; // Retorna el id del operador
+            } else {
+                return -1; // No se encontró el operador
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al intentar obtener el ID del operador.");
+            return -1;
+        } 
+    }
 }

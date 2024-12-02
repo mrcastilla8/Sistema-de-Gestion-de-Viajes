@@ -1,6 +1,7 @@
 package Vista;
 
 import Modelo.VentaBoletoModelo;
+import java.util.List;
 
 public class ingresoDatosPersonales extends javax.swing.JFrame {
 
@@ -11,15 +12,22 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
     private VentaBoletoModelo modeloVB = new VentaBoletoModelo();
     private int idViaje;
     private String numAsiento;
+    private List<String> asientosElegidos;
+    private int index = 0;
+    private int idOperador;
 
     public ingresoDatosPersonales(VentaBoletoNuevo venta, SeleccionAsientosEstandarNuevo seleccionEstandar, SeleccionAsientosPremiumNuevo seleccionPremium, 
-                                    SeleccionAsientosVIPNuevo seleccionVip, int idViaje, String numAsiento) {
+                                    SeleccionAsientosVIPNuevo seleccionVip, int idViaje, List<String> asientosElegidos, int idOperador) {
         this.seleccionEstandar = seleccionEstandar;
         this.seleccionPremium = seleccionPremium;
         this.seleccionVIP = seleccionVip;
         this.idViaje = idViaje;
-        this.numAsiento = numAsiento;
+        this.asientosElegidos = asientosElegidos;
         this.venta = venta;
+        this.idOperador = idOperador;
+        if (asientosElegidos != null && !asientosElegidos.isEmpty()) {
+            this.numAsiento = asientosElegidos.get(index);
+        }
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -43,6 +51,8 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -61,6 +71,7 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Apellidos:");
+        jLabel3.setToolTipText("");
 
         jLabel4.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,9 +108,19 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         jButton2.setText("Regresar");
         jButton2.setBorder(null);
+
+        jLabel5.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Asiento:");
+
+        jTextField4.setBackground(new java.awt.Color(132, 167, 161));
+        jTextField4.setFont(new java.awt.Font("SF Pro Display", 0, 13)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setText(asientosElegidos.get(index));
+
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                Regresar(evt);
             }
         });
 
@@ -118,6 +139,10 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                     .addComponent(jTextField2))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(112, Short.MAX_VALUE)
@@ -132,7 +157,9 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -212,18 +239,25 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
         String nombres = jTextField1.getText();
         String apellidos = jTextField2.getText();
         String dni = jTextField3.getText();
-        if (!nombres.equals("") && !apellidos.equals("") && !dni.equals("")) {
+        if (!nombres.equals("") && !apellidos.equals("") && !dni.equals("") && !numAsiento.equals("") && index < asientosElegidos.size()) {
             modeloVB.actualizarAsiento(idViaje, numAsiento);
             modeloVB.imprimirBoleto(idViaje, numAsiento, nombres, apellidos, dni);
-            venta.setVisible(true);
             new BoletoImpreso().setVisible(true);
-            this.setVisible(false);
+            if (index < asientosElegidos.size() - 1) {
+                index++;
+                numAsiento = asientosElegidos.get(index);
+                jTextField4.setText(numAsiento);
+            } else {
+                venta.setVisible(true);
+                this.setVisible(false);
+            }
+            limpiarCampos();
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Debe completar todos los campos");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void Regresar(java.awt.event.ActionEvent evt) {
         if (seleccionEstandar != null) {
             seleccionEstandar.setVisible(true);
         } else if (seleccionPremium != null) {
@@ -232,6 +266,12 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
             seleccionVIP.setVisible(true);
         }
         this.setVisible(false);
+    }
+
+    private void limpiarCampos() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
     }
 
     /**
@@ -244,11 +284,13 @@ public class ingresoDatosPersonales extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

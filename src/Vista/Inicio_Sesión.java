@@ -134,7 +134,7 @@ public class Inicio_Sesión extends javax.swing.JFrame {
 
         Operador operador = new Operador(null); // Ajusta si necesitas pasar una instancia de CRUD_OPERADORES
         String rol = operador.iniciarSesion(username, password);
-
+         int idOperador = operador.obtenerIdOperador(username, password);    
         if(rol != null) {
             JOptionPane.showMessageDialog(this, "Inicio de sesión exitoso como " + rol + ".", "Bienvenido", JOptionPane.INFORMATION_MESSAGE);
             
@@ -144,7 +144,7 @@ public class Inicio_Sesión extends javax.swing.JFrame {
                 menu_admin.setVisible(true);
             } else if (rol.equalsIgnoreCase("Operador")) {
                 MainMenu menu = new MainMenu(); // O la instancia relevante
-                VentaBoletoNuevo venta_boleto = new VentaBoletoNuevo(menu, rol);
+                VentaBoletoNuevo venta_boleto = new VentaBoletoNuevo(menu, rol, idOperador);
                 venta_boleto.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Rol desconocido.", "Error", JOptionPane.ERROR_MESSAGE);
