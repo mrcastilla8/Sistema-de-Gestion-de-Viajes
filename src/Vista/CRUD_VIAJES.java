@@ -112,6 +112,9 @@ public CRUD_VIAJES(MainMenu menu) {
         Label_Ruta2.setText("Fecha de salida");
 
         Entrada_Precio.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Precio.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        Entrada_Precio.setForeground(new java.awt.Color(255, 255, 255));
+        Entrada_Precio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Entrada_Precio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Entrada_PrecioActionPerformed(evt);
@@ -119,6 +122,8 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Entrada_Bus.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Bus.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        Entrada_Bus.setForeground(new java.awt.Color(255, 255, 255));
         Entrada_Bus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Bus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +132,8 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Entrada_Primer_Conductor.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Primer_Conductor.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        Entrada_Primer_Conductor.setForeground(new java.awt.Color(255, 255, 255));
         Entrada_Primer_Conductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Primer_Conductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,6 +142,8 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Entrada_Segundo_Conductor.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Segundo_Conductor.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        Entrada_Segundo_Conductor.setForeground(new java.awt.Color(255, 255, 255));
         Entrada_Segundo_Conductor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Segundo_Conductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +152,8 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Entrada_Ruta.setBackground(new java.awt.Color(132, 167, 161));
+        Entrada_Ruta.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
+        Entrada_Ruta.setForeground(new java.awt.Color(255, 255, 255));
         Entrada_Ruta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         Entrada_Ruta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
