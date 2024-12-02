@@ -22,7 +22,7 @@ public class Operador {
         this.ventanaOperadores = ventanaOperadores;
     } 
     
-     public void consultar(){
+    public void consultar(){
         String sq = "SELECT c.idOperadores, p.nombre, p.apellido, p.edad, p.DNI, p.telefono, c.username, c.password, c.Rol " +
              "FROM persona p " +
              "JOIN operadores c ON p.idPersona = c.idPersona";
@@ -109,9 +109,6 @@ public class Operador {
         JOptionPane.showMessageDialog(null, "Error al agregar operador.");
     } 
 }
-
-        
-    
     public void Modificar(){
         String nombre = ventanaOperadores.txtNombre.getText();
         String apellido = ventanaOperadores.txtApellido.getText();
@@ -164,8 +161,7 @@ public class Operador {
             JOptionPane.showMessageDialog(null, "Error al actualizar los datos del operador.");
             limpiarTabla();
         }        
-    }
-    
+    }    
     public void eliminar() {
         int fila = ventanaOperadores.TablaOperadorRegular.getSelectedRow();
         if (fila < 0) {
@@ -207,8 +203,6 @@ public class Operador {
             JOptionPane.showMessageDialog(null, "Error al eliminar el operador.");
         }
     }
-
-
     public void limpiarTabla() {
         if (modelo == null) {
             modelo = (DefaultTableModel) ventanaOperadores.TablaOperadorRegular.getModel();
@@ -217,8 +211,7 @@ public class Operador {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
-    }
-    
+    }   
     public void limpiarTabla_cesados() {
         if (modelo1 == null) {
             modelo1 = (DefaultTableModel) ventanaOperadores.TablaOperadorDespedidos.getModel();
@@ -261,9 +254,6 @@ public class Operador {
             JOptionPane.showMessageDialog(null, "Error al agregar el operador cesado.");
         }
     }
-
-    
-
     public void nuevo(){
         ventanaOperadores.txtNombre.setText("");
         ventanaOperadores.txtApellido.setText("");
@@ -273,8 +263,7 @@ public class Operador {
         ventanaOperadores.txtUsuario.setText("");
         ventanaOperadores.txtContraseña.setText("");
         ventanaOperadores.txtID.setText("");
-    }
-    
+    }  
     public boolean determinarDuplicados() {
     // Obtener los datos ingresados desde la interfaz
     String dni = ventanaOperadores.txtDNI.getText();
@@ -313,7 +302,6 @@ public class Operador {
     } 
     return false;
 }
-
     public void cargarCesados() {
         try {
             limpiarTabla_cesados(); // Limpiar antes de cargar los datos
@@ -342,8 +330,6 @@ public class Operador {
             JOptionPane.showMessageDialog(null, "Error al cargar los operadores cesados.");
         }
     }
-
-    
     public int obtenerIdPersonaDesdeidOperador(int idOperador) {
      int idPersona = -1; // Valor por defecto si no se encuentra
      try {
@@ -361,8 +347,7 @@ public class Operador {
          JOptionPane.showMessageDialog(null, "Error al obtener el ID de la persona.");
      }
      return idPersona;
-    }
-    
+    }    
     public String iniciarSesion(String username, String password) {
         String sql = "SELECT Rol FROM operadores WHERE username = ? AND password = ?";
         
@@ -386,7 +371,4 @@ public class Operador {
             return null;
         } 
     }
-
-
-
 }

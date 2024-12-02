@@ -47,10 +47,6 @@
           <Group type="102" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-=======
->>>>>>> dc63b09b099072eab72a4ad969cb75c9347eafd5
           </Group>
       </Group>
     </DimensionLayout>
@@ -107,12 +103,9 @@
                                   <Component id="Boton_Regresar" min="-2" pref="163" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="379" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
