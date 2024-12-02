@@ -61,7 +61,7 @@ public class VentaBoletoModelo {
         String query = "SELECT v.id_viaje, b.tipo, r.LugarInicio, r.LugarDestino, v.precio, " +
                "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, " +
                "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, " +
-               "v.fecha_salida, v.hora_salida " +
+               "v.fecha_salida, r.horaSalida " +
                "FROM viajes v " +
                "JOIN buses b ON v.id_bus = b.id_bus " +
                "JOIN Ruta r ON v.id_ruta = r.idRuta " +
@@ -108,7 +108,7 @@ public class VentaBoletoModelo {
                 viaje[5] = rs.getString("conductor1_nombre") + " " + rs.getString("conductor1_apellido");
                 viaje[6] = rs.getString("conductor2_nombre") + " " + rs.getString("conductor2_apellido");
                 viaje[7] = rs.getString("fecha_salida");
-                viaje[8] = rs.getString("hora_salida");
+                viaje[8] = rs.getString("horaSalida");
                 viajes.add(viaje);
             }
             return viajes;
@@ -181,7 +181,7 @@ public class VentaBoletoModelo {
         String conductor1 = "";
         String conductor2 = "";
 
-        String query = "SELECT v.id_viaje, v.fecha_salida, v.hora_salida, r.LugarInicio, r.LugarDestino, " +
+        String query = "SELECT v.id_viaje, v.fecha_salida, r.horaSalida, r.LugarInicio, r.LugarDestino, " +
                 "p1.nombre AS conductor1_nombre, p1.apellido AS conductor1_apellido, " +
                 "p2.nombre AS conductor2_nombre, p2.apellido AS conductor2_apellido, " +
                 "a.numero_asiento, v.precio " +
@@ -202,7 +202,7 @@ public class VentaBoletoModelo {
             ResultSet rs = statm.executeQuery();
             while (rs.next()) {
                 fechaSalida = rs.getString("fecha_salida");
-                horaSalida = rs.getString("hora_salida");
+                horaSalida = rs.getString("horaSalida");
                 lugarInicio = rs.getString("LugarInicio");
                 lugarDestino = rs.getString("LugarDestino");
                 precio = rs.getString("precio");
@@ -254,5 +254,9 @@ public class VentaBoletoModelo {
         } catch (Exception e) {
             e.printStackTrace();
         }   
+    }
+
+    public void crearPasajero(int idViaje, String numAsiento, String nombres, String apellidos, String dni) {
+        
     }
 }

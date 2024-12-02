@@ -16,10 +16,13 @@ public class SeleccionAsientosEstandarNuevo extends javax.swing.JFrame {
     private List<JButton> botones = new ArrayList<>();
     private int idViaje;
     private JButton botonAnterior = null;
+    private List<String> asientosElegidos = new ArrayList<>();
+    private int idOperador;
 
-    public SeleccionAsientosEstandarNuevo(VentaBoletoNuevo venta, int idViaje) {
+    public SeleccionAsientosEstandarNuevo(VentaBoletoNuevo venta, int idViaje, int idOperador) {
         this.venta = venta;
         this.idViaje = idViaje;
+        this.idOperador = idOperador;
         initComponents();
         setLocationRelativeTo(null);
         colorearBotones();
@@ -123,16 +126,16 @@ public class SeleccionAsientosEstandarNuevo extends javax.swing.JFrame {
         }
 
         ActionListener accion = new ActionListener() {
-            @Override
+            String numAsiento = "";
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JButton boton = (JButton) evt.getSource();
+                numAsiento = boton.getText();
                 if (boton.getBackground().equals(Color.WHITE)) {
                     boton.setBackground(Color.BLUE);
-                    jTextFieldAsientoSelec.setText(boton.getText());
-                    if (botonAnterior != null && botonAnterior.getBackground().equals(Color.BLUE)) {
-                        botonAnterior.setBackground(Color.WHITE);
-                    }
-                    botonAnterior = boton;
+                    asientosElegidos.add(numAsiento);
+                } else if (boton.getBackground().equals(Color.BLUE)) {
+                    boton.setBackground(Color.WHITE);
+                    asientosElegidos.remove(numAsiento);
                 }
             }
         }; 
@@ -784,8 +787,8 @@ public class SeleccionAsientosEstandarNuevo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        if (!jTextFieldAsientoSelec.getText().equals("Ninguno")) {
-            new ingresoDatosPersonales(venta, this, null, null, idViaje, jTextFieldAsientoSelec.getText()).setVisible(true);
+        if (!asientosElegidos.isEmpty()) {
+            new ingresoDatosPersonales(venta, this, null, null, idViaje, asientosElegidos, idOperador).setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed

@@ -17,9 +17,11 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
     private DefaultTableModel modeloTabla;
     private List<String> origenes = modeloVB.obtenerOrigenes();
     private List<String> destinos = modeloVB.obtenerDestinos();
+    private int idOperador;
 
-    public VentaBoletoNuevo(MainMenu menu, String rolUsuario) {
+    public VentaBoletoNuevo(MainMenu menu, String rolUsuario, int idOperador) {
         this.menu = menu;
+        this.idOperador = idOperador;
         initComponents();
         setLocationRelativeTo(null);
         actualizarTabla();
@@ -381,13 +383,13 @@ public class VentaBoletoNuevo extends javax.swing.JFrame {
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
         int idViaje = Integer.parseInt(jComboIDViajeSelec.getSelectedItem().toString());
         if (modeloVB.obtenerTipoDeBus(idViaje).equals("Estándar")) {
-            new SeleccionAsientosEstandarNuevo(this, idViaje).setVisible(true);
+            new SeleccionAsientosEstandarNuevo(this, idViaje, idOperador).setVisible(true);
             this.setVisible(false);
         } else if (modeloVB.obtenerTipoDeBus(idViaje).equals("Premium")) {
-            new SeleccionAsientosPremiumNuevo(this, idViaje).setVisible(true);
+            new SeleccionAsientosPremiumNuevo(this, idViaje, idOperador).setVisible(true);
             this.setVisible(false);
         } else {
-            new SeleccionAsientosVIPNuevo(this, idViaje).setVisible(true);
+            new SeleccionAsientosVIPNuevo(this, idViaje, idOperador).setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jButtonContinuarActionPerformed
