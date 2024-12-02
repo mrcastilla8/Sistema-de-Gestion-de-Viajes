@@ -5,17 +5,17 @@
 package Vista;
 import javax.swing.JOptionPane;
 import java.awt.Color;
-
 import Modelo.Operador;
 import Vista.VentaBoletoNuevo;
 import Vista.MainMenu;
 
 public class Inicio_Sesión extends javax.swing.JFrame {
-
+    MainMenu menu;
     /**
      * Creates new form Inicio_Sesión
      */
-    public Inicio_Sesión() {
+    public Inicio_Sesión(MainMenu menu) {
+        this.menu=menu;
         initComponents();
         setLocationRelativeTo(null);
     }

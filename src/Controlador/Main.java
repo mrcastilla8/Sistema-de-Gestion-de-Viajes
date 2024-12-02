@@ -14,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
         
       
-        Inicio_Sesión login = new Inicio_Sesión();
         MainMenu menu = new MainMenu();
+        Inicio_Sesión login = new Inicio_Sesión(menu);
         CRUD_OPERADORES ventanaOperadores = new CRUD_OPERADORES(menu);
         CRUD_Buses ventanaBuses = new  CRUD_Buses(menu);
         IguConductor ventanaConductores = new IguConductor(menu);

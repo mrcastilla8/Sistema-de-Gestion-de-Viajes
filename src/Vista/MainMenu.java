@@ -11,8 +11,10 @@ import Vista.IguRuta;
 import Vista.CRUD_VIAJES;
 import Vista.IguAsientos;
 import Vista.VentaBoletoNuevo;
+import Vista.Inicio_Sesión;
 
 public class MainMenu extends javax.swing.JFrame {
+        Inicio_Sesión ventanaLogin;
         CRUD_VIAJES ventanaViajes;
         CRUD_OPERADORES ventanaOperador;
         CRUD_Buses ventanaBuses;
@@ -23,7 +25,7 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         setLocationRelativeTo(null);
-        
+        ventanaLogin = new Inicio_Sesión(this);
         ventanaOperador = new CRUD_OPERADORES(this);
         ventanaBuses = new CRUD_Buses(this);
         ventanaConductor = new IguConductor(this);
@@ -52,6 +54,7 @@ public class MainMenu extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         FONDO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,6 +143,17 @@ public class MainMenu extends javax.swing.JFrame {
         });
         jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(528, 480, 310, 50));
 
+        jButton9.setBackground(new java.awt.Color(14, 41, 84));
+        jButton9.setFont(new java.awt.Font("SF Pro Display", 1, 18)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setText("CERRAR SESIÓN");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 640, 220, 50));
+
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/30975385_2207_w023_n003_2768b_p1_2768.png"))); // NOI18N
         jPanel1.add(FONDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
 
@@ -198,6 +212,12 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        ventanaLogin.setVisible(true);
+        
+        this.setVisible(false);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -242,6 +262,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
