@@ -2,9 +2,10 @@ package Modelo;
 
 import Controlador.Conexion;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
@@ -256,7 +257,101 @@ public class VentaBoletoModelo {
         }   
     }
 
-    public void crearPasajero(int idViaje, String numAsiento, String nombres, String apellidos, String dni) {
-        
+    public void agregarPasajero(int idViaje, String nombres, String apellidos, String dni, int edad, String telefono) {
+        int idPersona = -1;
+        if (!determinarDuplicado(dni)) {
+            String query = "INSERT INTO persona (nombre, apellido, DNI, telefono, edad) VALUES (?, ?, ?, ?, ?)";
+            try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+                statm.setString(1, nombres);
+                statm.setString(2, apellidos);
+                statm.setString(3, dni);
+                statm.setString(4, telefono);
+                statm.setInt(5, edad);
+                statm.executeUpdate();
+                try (ResultSet rs = statm.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        idPersona = rs.getInt(1);
+                    }
+                }
+            } catch (SQLException e) {
+                System.err.println("Error al agregar la persona: " + e.getMessage());
+            }
+        } else {
+            idPersona = obtenerIdPersonaDesdeDNI(dni);
+        }
+
+        int idPasajero = -1;
+        String query2 = "INSERT INTO Pasajero (`id persona`, idViaje) VALUES (?, ?)";
+        try (PreparedStatement statm1 = conexionDB.obtenerConexion().prepareStatement(query2, Statement.RETURN_GENERATED_KEYS)) {
+            statm1.setInt(1, idPersona);
+            statm1.setInt(2, idViaje);
+            statm1.executeUpdate();
+            try (ResultSet rs = statm1.getGeneratedKeys()) {
+                if (rs.next()) {
+                    idPasajero = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al agregar el pasajero: " + e.getMessage());
+        }
+    }
+
+    public boolean determinarDuplicado(String dni) {
+        String query = "SELECT * FROM persona WHERE dni = ?;";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setString(1, dni);
+            try (ResultSet rs = statm.executeQuery()) {
+                return rs.next();
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al determinar duplicado: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public void agregarBoleto(int idViaje, String dni, int idOperador) {
+        String query = "INSERT INTO Boletos (id_viaje, id_operador, idPasajero) VALUES (?, ?, ?);";
+        int idPasajero = obtenerIdPasajeroDesdeIdPersona(dni);
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setInt(1, idViaje);
+            statm.setInt(2, idOperador);
+            statm.setInt(3, idPasajero);
+            statm.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error al agregar el boleto: " + e.getMessage());
+        }
+    }
+
+    public int obtenerIdPersonaDesdeDNI(String dni) {
+        String query = "SELECT idPersona FROM persona WHERE DNI = ?;";
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setString(1, dni);
+            try (ResultSet rs = statm.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("idPersona");
+                }
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el id de la persona: " + e.getMessage());
+            return -1;
+        }
+    }
+
+    public int obtenerIdPasajeroDesdeIdPersona(String dni) {
+        String query = "SELECT idPasajero FROM Pasajero WHERE `id persona` = ?;";
+        int idPersona = obtenerIdPersonaDesdeDNI(dni);
+        try (PreparedStatement statm = conexionDB.obtenerConexion().prepareStatement(query)) {
+            statm.setInt(1, idPersona);
+            try (ResultSet rs = statm.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("idPasajero");
+                }
+                return -1;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener el id de la persona: " + e.getMessage());
+            return -1;
+        }
     }
 }
