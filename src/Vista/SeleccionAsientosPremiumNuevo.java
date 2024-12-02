@@ -709,7 +709,7 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         if (!jTextFieldAsientoSelec.getText().equals("Ninguno")) {
-            new ingresoDatosPersonales(null, this, null, idViaje, jTextFieldAsientoSelec.getText()).setVisible(true);
+            new ingresoDatosPersonales(venta, null, this, null, idViaje, jTextFieldAsientoSelec.getText()).setVisible(true);
             this.setVisible(false);
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed

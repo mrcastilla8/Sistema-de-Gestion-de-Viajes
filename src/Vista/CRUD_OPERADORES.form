@@ -702,6 +702,7 @@
                 <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="asfasf"/>
               </AccessibilityProperties>
               <Events>
+                <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="TabsOperadoresStateChanged"/>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="TabsOperadoresMouseClicked"/>
               </Events>
               <Constraints>

@@ -28,6 +28,7 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         opera = new Operador(this);
         opera.consultar();
+        opera.cargarCesados();
     }
 
     /**
@@ -352,6 +353,11 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
         TabsOperadores.setBackground(new java.awt.Color(14, 41, 84));
         TabsOperadores.setForeground(new java.awt.Color(255, 255, 255));
         TabsOperadores.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        TabsOperadores.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TabsOperadoresStateChanged(evt);
+            }
+        });
         TabsOperadores.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TabsOperadoresMouseClicked(evt);
@@ -542,15 +548,20 @@ public class CRUD_OPERADORES extends javax.swing.JFrame {
             txtEdad.setText(""+edad);
         }
     }//GEN-LAST:event_TablaOperadorRegularMouseClicked
-
+    
     private void TabsOperadoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabsOperadoresMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_TabsOperadoresMouseClicked
 
     private void ScrollRegularesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ScrollRegularesMouseClicked
-        opera.limpiarTabla_cesados();        // TODO add your handling code here:
     }//GEN-LAST:event_ScrollRegularesMouseClicked
 
+    private void TabsOperadoresStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TabsOperadoresStateChanged
+       // TODO add your handling code here:
+    }//GEN-LAST:event_TabsOperadoresStateChanged
+
+    
+    
     /**
      * @param args the command line arguments
      */
