@@ -217,7 +217,7 @@ public class Conductor{
                 String razonBaja = JOptionPane.showInputDialog("Ingrese la razón de baja:");
                 if (razonBaja == null || razonBaja.trim().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Razón de baja requerida");
-                    
+                    limpiarTabla();
                     return;
                 }
 
