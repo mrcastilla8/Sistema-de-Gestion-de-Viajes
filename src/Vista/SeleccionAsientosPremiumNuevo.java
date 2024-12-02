@@ -15,7 +15,6 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
     private VentaBoletoModelo modeloVB = new VentaBoletoModelo();
     private List<JButton> botones = new ArrayList<>();
     private int idViaje;
-    private JButton botonAnterior = null;
     private List<String> asientosElegidos = new ArrayList<>();
     private int idOperador;
 
@@ -95,8 +94,6 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
         jButton49 = new javax.swing.JButton();
         jButton50 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jTextFieldAsientoSelec = new javax.swing.JTextField();
         jButtonContinuar = new javax.swing.JButton();
         jButtonRegresar = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -593,15 +590,6 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(46, 138, 153));
 
-        jLabel9.setFont(new java.awt.Font("SF Pro Display", 0, 17)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Asiento seleccionado: ");
-
-        jTextFieldAsientoSelec.setBackground(new java.awt.Color(132, 167, 161));
-        jTextFieldAsientoSelec.setFont(new java.awt.Font("SF Pro Display", 1, 13)); // NOI18N
-        jTextFieldAsientoSelec.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldAsientoSelec.setText("Ninguno");
-
         jButtonContinuar.setBackground(new java.awt.Color(14, 41, 84));
         jButtonContinuar.setFont(new java.awt.Font("SF Pro Display", 1, 15)); // NOI18N
         jButtonContinuar.setForeground(new java.awt.Color(255, 255, 255));
@@ -634,10 +622,6 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldAsientoSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -647,9 +631,6 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldAsientoSelec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -798,13 +779,11 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JTextField jTextFieldAsientoSelec;
     // End of variables declaration//GEN-END:variables
 }
