@@ -85,22 +85,22 @@ public CRUD_VIAJES(MainMenu menu) {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Label_Bus.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Bus.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
         Label_Bus.setText("ID del bus");
 
-        Label_Conductor1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Conductor1.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
         Label_Conductor1.setText("ID del primer conductor");
 
-        Label_Conductor2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Conductor2.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
         Label_Conductor2.setText("ID del segundo conductor");
 
-        Label_Ruta.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Ruta.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
         Label_Ruta.setText("ID de la ruta");
 
-        Label_Ruta1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Ruta1.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
         Label_Ruta1.setText("Precio");
 
-        Label_Ruta2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Ruta2.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
         Label_Ruta2.setText("Fecha de salida");
 
         Entrada_Precio.setBackground(new java.awt.Color(132, 167, 161));
@@ -228,7 +228,7 @@ public CRUD_VIAJES(MainMenu menu) {
         });
         jScrollPane1.setViewportView(Tabla_Viajes);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText("Base de datos");
 
@@ -254,7 +254,7 @@ public CRUD_VIAJES(MainMenu menu) {
         );
 
         Crear.setBackground(new java.awt.Color(14, 41, 84));
-        Crear.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Crear.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Crear.setForeground(new java.awt.Color(255, 255, 255));
         Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
         Crear.setText("Crear");
@@ -265,7 +265,7 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Eliminar.setBackground(new java.awt.Color(14, 41, 84));
-        Eliminar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Eliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Eliminar.setForeground(new java.awt.Color(255, 255, 255));
         Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
         Eliminar.setText("Eliminar");
@@ -276,7 +276,7 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Modificar.setBackground(new java.awt.Color(14, 41, 84));
-        Modificar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Modificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         Modificar.setText("Modificar");
@@ -287,7 +287,7 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         jButton2.setBackground(new java.awt.Color(14, 41, 84));
-        jButton2.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        jButton2.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         jButton2.setText("Limpiar");
@@ -298,7 +298,7 @@ public CRUD_VIAJES(MainMenu menu) {
         });
 
         Boton_Regresar.setBackground(new java.awt.Color(14, 41, 84));
-        Boton_Regresar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Boton_Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Boton_Regresar.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         Boton_Regresar.setText("Regresar");
@@ -308,7 +308,7 @@ public CRUD_VIAJES(MainMenu menu) {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("GESTIÓN DE VIAJES");
 
@@ -316,7 +316,7 @@ public CRUD_VIAJES(MainMenu menu) {
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Base de datos");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
         jLabel8.setText("Datos");
 
@@ -379,12 +379,12 @@ public CRUD_VIAJES(MainMenu menu) {
                         .addComponent(Boton_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(419, 419, 419)
                     .addComponent(jLabel7)
-                    .addContainerGap(323, Short.MAX_VALUE)))
+                    .addContainerGap(313, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

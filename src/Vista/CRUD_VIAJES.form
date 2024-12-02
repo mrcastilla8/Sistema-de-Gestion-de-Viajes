@@ -141,13 +141,13 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="419" max="-2" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="323" max="32767" attributes="0"/>
+                      <EmptySpace pref="313" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -255,7 +255,7 @@
             <Component class="javax.swing.JLabel" name="Label_Bus">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="17" style="1"/>
+                  <Font name="SF Pro Display" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ID del bus"/>
               </Properties>
@@ -263,7 +263,7 @@
             <Component class="javax.swing.JLabel" name="Label_Conductor1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="17" style="1"/>
+                  <Font name="SF Pro Display" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ID del primer conductor"/>
               </Properties>
@@ -271,7 +271,7 @@
             <Component class="javax.swing.JLabel" name="Label_Conductor2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="17" style="1"/>
+                  <Font name="SF Pro Display" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ID del segundo conductor"/>
               </Properties>
@@ -279,7 +279,7 @@
             <Component class="javax.swing.JLabel" name="Label_Ruta">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="17" style="1"/>
+                  <Font name="SF Pro Display" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="ID de la ruta"/>
               </Properties>
@@ -287,7 +287,7 @@
             <Component class="javax.swing.JLabel" name="Label_Ruta1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="17" style="1"/>
+                  <Font name="SF Pro Display" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Precio"/>
               </Properties>
@@ -295,7 +295,7 @@
             <Component class="javax.swing.JLabel" name="Label_Ruta2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="17" style="1"/>
+                  <Font name="SF Pro Display" size="17" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Fecha de salida"/>
               </Properties>
@@ -543,7 +543,7 @@
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="26" style="1"/>
+                  <Font name="SF Pro Display" size="26" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f2" green="f2" red="f2" type="rgb"/>
@@ -575,7 +575,7 @@
               <Color blue="54" green="29" red="e" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="22" style="1"/>
+              <Font name="SF Pro Display" size="22" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -595,7 +595,7 @@
               <Color blue="54" green="29" red="e" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="22" style="1"/>
+              <Font name="SF Pro Display" size="22" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -615,7 +615,7 @@
               <Color blue="54" green="29" red="e" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="22" style="1"/>
+              <Font name="SF Pro Display" size="22" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -635,7 +635,7 @@
               <Color blue="54" green="29" red="e" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="22" style="1"/>
+              <Font name="SF Pro Display" size="22" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -655,7 +655,7 @@
               <Color blue="54" green="29" red="e" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="22" style="1"/>
+              <Font name="SF Pro Display" size="22" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -672,7 +672,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="26" style="1"/>
+              <Font name="SF Pro Display" size="26" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f2" green="f2" red="f2" type="rgb"/>
@@ -694,7 +694,7 @@
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="26" style="1"/>
+              <Font name="SF Pro Display" size="26" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f2" green="f2" red="f2" type="rgb"/>
