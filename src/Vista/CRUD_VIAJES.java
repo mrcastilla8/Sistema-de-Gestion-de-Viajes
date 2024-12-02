@@ -76,7 +76,6 @@ public CRUD_VIAJES(MainMenu menu) {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -358,9 +357,6 @@ public CRUD_VIAJES(MainMenu menu) {
         jLabel8.setText("Datos");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 63, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoOperadores.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 770));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -530,7 +526,6 @@ private boolean validarCamposLlenos() {
     private javax.swing.JButton Modificar;
     public javax.swing.JTable Tabla_Viajes;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -546,7 +541,7 @@ private boolean validarCamposLlenos() {
         private Image imagen;
         @Override
         public void paint(Graphics g){
-              imagen =  new ImageIcon(getClass().getResource("/imagenes/fondo.jpg ")).getImage();
+              imagen =  new ImageIcon(getClass().getResource("/imagenes/fondoOperadores.png ")).getImage();
               g.drawImage(imagen,0,0,getWidth(),getHeight( ),this);
               setOpaque(false);
               super.paint(g);

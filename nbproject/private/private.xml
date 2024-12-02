@@ -2,13 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Vista/CRUD_VIAJES.java</file>
-            <file>file:/C:/Users/David%20Aldana/OneDrive/Escritorio/GESTIÓN/src/Vista/CRUD_OPERADORES.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Modelo/VentaBoletoModelo.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Modelo/Operador.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Vista/VentaBoletoNuevo.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Modelo/Comprobante.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Vista/CRUD_OPERADORES.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Vista/CRUD_VIAJES.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Modelo/BoletoPasajero.java</file>
+            <file>file:/C:/Users/Renato/Desktop/GESTION%20VIAJES/src/Vista/ingresoDatosPersonales.java</file>
         </group>
->>>>>>> e7ae0a6f76a4507fde78a79d057602325041397c
     </open-files>
 </project-private>
