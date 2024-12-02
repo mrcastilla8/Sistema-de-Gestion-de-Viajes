@@ -76,31 +76,39 @@ public CRUD_VIAJES(MainMenu menu) {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(46, 138, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(31, 110, 140));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Label_Bus.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Bus.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        Label_Bus.setForeground(new java.awt.Color(255, 255, 255));
         Label_Bus.setText("ID del bus");
 
-        Label_Conductor1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Conductor1.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        Label_Conductor1.setForeground(new java.awt.Color(255, 255, 255));
         Label_Conductor1.setText("ID del primer conductor");
 
-        Label_Conductor2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Conductor2.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        Label_Conductor2.setForeground(new java.awt.Color(255, 255, 255));
         Label_Conductor2.setText("ID del segundo conductor");
 
-        Label_Ruta.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Ruta.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        Label_Ruta.setForeground(new java.awt.Color(255, 255, 255));
         Label_Ruta.setText("ID de la ruta");
 
-        Label_Ruta1.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Ruta1.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        Label_Ruta1.setForeground(new java.awt.Color(255, 255, 255));
         Label_Ruta1.setText("Precio");
 
-        Label_Ruta2.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        Label_Ruta2.setFont(new java.awt.Font("SF Pro Display", 1, 17)); // NOI18N
+        Label_Ruta2.setForeground(new java.awt.Color(255, 255, 255));
         Label_Ruta2.setText("Fecha de salida");
 
         Entrada_Precio.setBackground(new java.awt.Color(132, 167, 161));
@@ -207,6 +215,8 @@ public CRUD_VIAJES(MainMenu menu) {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 101, -1, -1));
+
         jPanel4.setBackground(new java.awt.Color(46, 138, 153));
 
         Tabla_Viajes.setBackground(new java.awt.Color(132, 167, 161));
@@ -228,7 +238,7 @@ public CRUD_VIAJES(MainMenu menu) {
         });
         jScrollPane1.setViewportView(Tabla_Viajes);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText("Base de datos");
 
@@ -253,8 +263,12 @@ public CRUD_VIAJES(MainMenu menu) {
                 .addGap(27, 27, 27))
         );
 
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 359, 1350, -1));
+
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(867, 353, -1, -1));
+
         Crear.setBackground(new java.awt.Color(14, 41, 84));
-        Crear.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Crear.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Crear.setForeground(new java.awt.Color(255, 255, 255));
         Crear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
         Crear.setText("Crear");
@@ -263,9 +277,10 @@ public CRUD_VIAJES(MainMenu menu) {
                 CrearActionPerformed(evt);
             }
         });
+        jPanel1.add(Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(61, 302, 110, 51));
 
         Eliminar.setBackground(new java.awt.Color(14, 41, 84));
-        Eliminar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Eliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Eliminar.setForeground(new java.awt.Color(255, 255, 255));
         Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
         Eliminar.setText("Eliminar");
@@ -274,9 +289,10 @@ public CRUD_VIAJES(MainMenu menu) {
                 EliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(Eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 303, 145, 50));
 
         Modificar.setBackground(new java.awt.Color(14, 41, 84));
-        Modificar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Modificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         Modificar.setText("Modificar");
@@ -285,9 +301,10 @@ public CRUD_VIAJES(MainMenu menu) {
                 ModificarActionPerformed(evt);
             }
         });
+        jPanel1.add(Modificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 303, 163, 50));
 
         jButton2.setBackground(new java.awt.Color(14, 41, 84));
-        jButton2.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        jButton2.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         jButton2.setText("Limpiar");
@@ -296,9 +313,10 @@ public CRUD_VIAJES(MainMenu menu) {
                 jButton2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(586, 303, 150, 50));
 
         Boton_Regresar.setBackground(new java.awt.Color(14, 41, 84));
-        Boton_Regresar.setFont(new java.awt.Font("Serif", 1, 22)); // NOI18N
+        Boton_Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Boton_Regresar.setForeground(new java.awt.Color(255, 255, 255));
         Boton_Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         Boton_Regresar.setText("Regresar");
@@ -307,100 +325,35 @@ public CRUD_VIAJES(MainMenu menu) {
                 Boton_RegresarActionPerformed(evt);
             }
         });
+        jPanel1.add(Boton_Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(779, 303, 163, 50));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("GESTIÓN DE VIAJES");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(593, 17, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Base de datos");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 419, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 26)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("SF Pro Display", 1, 26)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
         jLabel8.setText("Datos");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 63, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(525, 525, 525))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(489, 489, 489))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(42, 42, 42)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(Boton_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(612, 612, 612)
-                    .addComponent(jLabel7)
-                    .addContainerGap(583, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel5)
-                .addGap(14, 14, 14)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Boton_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(419, 419, 419)
-                    .addComponent(jLabel7)
-                    .addContainerGap(323, Short.MAX_VALUE)))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoOperadores.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -561,6 +514,7 @@ private boolean validarCamposLlenos() {
     private javax.swing.JButton Modificar;
     public javax.swing.JTable Tabla_Viajes;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
