@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.lang.reflect.Field;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import Modelo.VentaBoletoModelo;
 
 public class SeleccionAsientosEstandarNuevo extends javax.swing.JFrame {
@@ -23,6 +24,7 @@ public class SeleccionAsientosEstandarNuevo extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         colorearBotones();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**

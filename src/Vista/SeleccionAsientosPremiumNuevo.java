@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import Modelo.VentaBoletoModelo;
+import javax.swing.JFrame;
 
 public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
 
@@ -23,6 +24,7 @@ public class SeleccionAsientosPremiumNuevo extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         colorearBotones();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")

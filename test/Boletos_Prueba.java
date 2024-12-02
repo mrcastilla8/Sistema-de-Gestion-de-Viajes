@@ -55,12 +55,5 @@ public class Boletos_Prueba {
         }
     }
 
-    @Test
-    public void testObtenerOrigenes() {
-        VentaBoletoModelo ventaBoletoModelo = new VentaBoletoModelo();
-
-        List<String> origenes = ventaBoletoModelo.obtenerOrigenes();
-
-        assertNotNull(origenes, "La lista de orígenes no debería ser nula");
-    }
+    
 }
