@@ -59,12 +59,12 @@ public class IguConductor extends javax.swing.JFrame {
         TablaConductoresRegulares = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaConductoresCesados = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
         btnLimpiar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         Regresar = new javax.swing.JToggleButton();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1366, 768));
@@ -307,94 +307,75 @@ public class IguConductor extends javax.swing.JFrame {
 
         jPanel1.add(RegularConductores, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 1300, 260));
 
-        jPanel4.setBackground(new java.awt.Color(46, 138, 153));
-
         btnLimpiar.setBackground(new java.awt.Color(14, 41, 84));
         btnLimpiar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(null);
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 110, 40));
 
         btnEliminar.setBackground(new java.awt.Color(14, 41, 84));
         btnEliminar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/eliminar1.png"))); // NOI18N
+        btnEliminar.setBorder(null);
         btnEliminar.setLabel("Dar de baja");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 360, 150, 40));
 
         btnModificar.setBackground(new java.awt.Color(14, 41, 84));
         btnModificar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         btnModificar.setForeground(new java.awt.Color(255, 255, 255));
         btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar.png"))); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.setBorder(null);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 140, 40));
 
         btnAgregar.setBackground(new java.awt.Color(14, 41, 84));
         btnAgregar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/crear.png"))); // NOI18N
         btnAgregar.setText("Crear");
+        btnAgregar.setBorder(null);
+        btnAgregar.setPreferredSize(new java.awt.Dimension(90, 30));
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 130, 40));
 
         Regresar.setBackground(new java.awt.Color(14, 41, 84));
         Regresar.setFont(new java.awt.Font("SF Pro Display", 1, 22)); // NOI18N
         Regresar.setForeground(new java.awt.Color(255, 255, 255));
         Regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         Regresar.setText("Regresar");
+        Regresar.setBorder(null);
         Regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RegresarActionPerformed(evt);
             }
         });
+        jPanel1.add(Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 360, 130, 40));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(181, 181, 181)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97)
-                .addComponent(btnModificar)
-                .addGap(97, 97, 97)
-                .addComponent(btnEliminar)
-                .addGap(97, 97, 97)
-                .addComponent(btnLimpiar)
-                .addGap(97, 97, 97)
-                .addComponent(Regresar)
-                .addGap(181, 181, 181))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLimpiar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnModificar)
-                    .addComponent(btnAgregar)
-                    .addComponent(Regresar))
-                .addGap(14, 14, 14))
-        );
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 1330, 70));
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoOperadores.png"))); // NOI18N
+        jLabel15.setText("jLabel13");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 770));
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
@@ -509,6 +490,7 @@ public class IguConductor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
@@ -516,7 +498,6 @@ public class IguConductor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTextField txtfApellido;
